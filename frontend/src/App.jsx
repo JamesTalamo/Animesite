@@ -18,6 +18,9 @@ function App() {
         <Route path='/' element={<Page1 />} />
         <Route path='page2' element={<div>page 2</div>} />
       </Routes>
+      <Box w='full' p='200px' bg='red'>
+        Footer
+      </Box>
     </Box>
   )
 }

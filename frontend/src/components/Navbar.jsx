@@ -1,72 +1,60 @@
 
-import { Box, Button, Container, Flex, HStack, Image, Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
-import { Search2Icon } from '@chakra-ui/icons'
+import React from 'react'
+
+import { Box, Button, Container, Flex, Image, Input, InputGroup, InputLeftElement, useDisclosure } from '@chakra-ui/react'
+import { Search2Icon, HamburgerIcon } from '@chakra-ui/icons'
+
+import {
+    Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton,
+} from '@chakra-ui/react'
 
 const Navbar = () => {
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
     return (
-        <Box
-            as="nav"
-            minW="full"
-            bg="black"
-            position="fixed"
-            top={0}
-            zIndex={1000}
-            boxShadow="md"
-        >
-            <Container maxW="container.xl" >
-                <Flex
-                    align='center'
-                    justify='space-between'
-                    w='full'
-                >
-                    {/* {logo} */}
-                    <Box>
-                        <Image
-                            src="./assets/navbarAssets/Frame%2072.png"
-                            alt="Logo"
-                            boxSize="90px"
-                            objectFit="contain"
-                        />
-                    </Box>
+        <Box w='full' zIndex='5' position='fixed' align='start' p='50px'>
+            <Button colorScheme='purple' onClick={onOpen}  >
+                <HamburgerIcon fontSize='20px' />
+            </Button>
 
-                    {/* Navigation Buttons */}
-                    <Box>
-                        <Flex gap={4}>
-                            <Button size="lg" colorScheme="purple" variant="outline">
-                                Genre
-                            </Button>
-                            <Button size="lg" colorScheme="purple" variant="outline">
-                                Movies
-                            </Button>
-                            <Button size="lg" colorScheme="purple" variant="outline">
-                                ONAs
-                            </Button>
-                            <Button size="lg" colorScheme="purple" variant="outline">
-                                News
-                            </Button>
-                        </Flex>
-                    </Box>
-
-                    {/* Search Bar */}
-                    <Box>
-                        <InputGroup display={{ base: "none", md: "flex" }}>
-                            <InputLeftElement pointerEvents="none">
-                                <Search2Icon color="gray.300" />
-                            </InputLeftElement>
-                            <Input
-                                size="lg"
-                                placeholder="Search Anime"
-                                htmlSize="40"
-                                width="auto"
-                                focusBorderColor="purple.200"
-                                _placeholder={{ color: "white", fontWeight: "bold" }}
+            <Drawer
+                isOpen={isOpen}
+                placement='left'
+                onClose={onClose}
+            >
+                <DrawerOverlay />
+                <DrawerContent>
+                    <DrawerCloseButton />
+                    <DrawerHeader>
+                        <Flex align='center' justify='center'>
+                            <Image
+                                src="./assets/navbarAssets/Frame%2072.png"
                             />
-                        </InputGroup>
-                    </Box>
-                </Flex>
-            </Container>
+                        </Flex>
+                    </DrawerHeader>
+
+                    <DrawerBody>
+                        <Input
+                            placeholder='Search Anime'
+                            focusBorderColor="purple.200"
+                            _placeholder={{ color: "white", fontWeight: "bold" }}
+                        />
+                    </DrawerBody>
+
+
+                </DrawerContent>
+            </Drawer>
         </Box>
-    );
+
+
+    )
 };
 
 export default Navbar;
