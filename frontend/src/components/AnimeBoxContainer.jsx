@@ -1,8 +1,13 @@
+import { Link } from "react-router-dom"
 import AnimeBox from "./AnimeBox"
 
 import { Box, Heading, SimpleGrid } from "@chakra-ui/react"
 
-let AnimeBoxContainer = ({ anime, animeHead }) => {
+let AnimeBoxContainer = ({ anime, animeHead, setSelected }) => {
+    let handleSelect = (anime) => {
+        setSelected(anime)
+    }
+
     return (
         <Box position="relative" w="full">
             <Heading
@@ -26,7 +31,9 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
                 mb='25px'
             >
                 {anime.map((anime) => (
-                    <AnimeBox anime={anime} />
+                    <Link to={`/anime/${anime.name}`} onClick={() => handleSelect(anime)}>
+                        <AnimeBox anime={anime} />
+                    </Link>
                 ))}
             </SimpleGrid>
 

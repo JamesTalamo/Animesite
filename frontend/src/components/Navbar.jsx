@@ -1,8 +1,10 @@
 
 import React from 'react'
 
-import { Box, Button, Container, Flex, Image, Input, InputGroup, InputLeftElement, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, HStack, Image, Input, InputGroup, InputLeftElement, useDisclosure } from '@chakra-ui/react'
 import { Search2Icon, HamburgerIcon } from '@chakra-ui/icons'
+
+import { Link } from 'react-router-dom'
 
 import {
     Drawer,
@@ -19,10 +21,18 @@ const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
-        <Box w='full' zIndex='5' position='fixed' align='start' p='50px'>
-            <Button colorScheme='purple' onClick={onOpen}  >
-                <HamburgerIcon fontSize='20px' />
-            </Button>
+        <Box w='full' zIndex='5' position='fixed' align='start' p='20px' bg='gray.900'>
+            <HStack>
+                <Button colorScheme='purple' onClick={onOpen}  >
+                    <HamburgerIcon fontSize='20px' />
+                </Button>
+
+                <Link to='/'>
+                    <Heading as='span' pl='25px'>
+                        Anime WEEB
+                    </Heading>
+                </Link>
+            </HStack>
 
             <Drawer
                 isOpen={isOpen}
@@ -35,7 +45,7 @@ const Navbar = () => {
                     <DrawerHeader>
                         <Flex align='center' justify='center'>
                             <Image
-                                src="./assets/navbarAssets/Frame%2072.png"
+                                src="/assets/navbarAssets/Frame%2072.png"
                             />
                         </Flex>
                     </DrawerHeader>

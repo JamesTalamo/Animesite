@@ -1,25 +1,13 @@
-import { useEffect, useState } from 'react'
 
-import { Box, Button, Image, Flex, Text, VStack, Heading, SimpleGrid } from '@chakra-ui/react'
+import { Box, Button, Image, Flex, Text, VStack } from '@chakra-ui/react'
 
 import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 
 
 import AnimeBoxContainer from '../components/AnimeBoxContainer'
 
-let Page1 = () => {
-    let [page, setPage] = useState(0)
-    let [featAnime, setfeatAnime] = useState({
-        name: "",
-        poster: "",
-        description: "",
-        rank: "",
-        animeId: ""
-    })
+let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnime, setSelected }) => {
 
-    let [todayAnime, setTodayAnime] = useState([])
-    let [weeklyAnime, setWeeklyAnime] = useState([])
-    let [monthlyAnime, setMonthlyAnime] = useState([])
 
 
 
@@ -34,37 +22,6 @@ let Page1 = () => {
             setPage(page + 1);
         }
     };
-
-
-    let fetchFeatAnime = async () => {
-        let res = await fetch('http://localhost:4000/api/v2/hianime/home')
-        let data = await res.json()
-
-        // console.log(data.data)
-
-        // console.log(todayAnime, weeklyAnime, monthlyAnime)
-
-        let todayAnimeData = data.data.top10Animes.today
-        setTodayAnime(todayAnimeData)
-
-        let weeklyAnimeData = data.data.top10Animes.week
-        setWeeklyAnime(weeklyAnimeData)
-
-        let monthlyAnimeData = data.data.top10Animes.month
-        setMonthlyAnime(monthlyAnimeData)
-
-        setfeatAnime({
-            rank: data.data.spotlightAnimes[page].rank,
-            name: data.data.spotlightAnimes[page].name,
-            poster: data.data.spotlightAnimes[page].poster,
-            description: data.data.spotlightAnimes[page].description,
-            animeId: data.data.spotlightAnimes[page].id,
-        })
-    }
-
-    useEffect(() => {
-        fetchFeatAnime();
-    }, [page]);
 
     return (
         <Box>
@@ -132,7 +89,7 @@ let Page1 = () => {
                     <Button colorScheme="purple" size="lg" position="relative"
                         // bottom="20%"
                         left="10%"
-                        >
+                    >
                         Watch Now
                     </Button>
                 </VStack>
@@ -164,12 +121,12 @@ let Page1 = () => {
                 </Flex>
             </Box>
 
-            <AnimeBoxContainer anime={todayAnime} animeHead={'Top Anime Today'} />
-            <AnimeBoxContainer anime={weeklyAnime} animeHead={'Top Anime Week'} />
-            <AnimeBoxContainer anime={monthlyAnime} animeHead={'Top Anime Month'} />
+            <AnimeBoxContainer anime={todayAnime} animeHead={'Top Anime Today'} setSelected={setSelected} />
+            <AnimeBoxContainer anime={weeklyAnime} animeHead={'Top Anime Week'} setSelected={setSelected} />
+            <AnimeBoxContainer anime={monthlyAnime} animeHead={'Top Anime Month'} setSelected={setSelected} />
         </Box>
 
     )
 }
 
-export default Page1
+export default MainPage
