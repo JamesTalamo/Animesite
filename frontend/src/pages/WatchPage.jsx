@@ -1,11 +1,11 @@
-import { Box, Center } from "@chakra-ui/react"
+import { Box, Center, Spinner } from "@chakra-ui/react"
 import { useParams } from "react-router-dom"
 import { useState, useEffect, useRef } from "react"
 import Hls from "hls.js" // Import Hls.js for handling HLS streams
 
 let WatchPage = ({ episodes }) => {
-    const [watching, setWatching] = useState('')
     const { episode } = useParams()
+    const [watching, setWatching] = useState('')
     const videoRef = useRef(null) // Ref for the video element
     const hlsRef = useRef(null) // Ref for Hls.js instance
 
@@ -21,6 +21,9 @@ let WatchPage = ({ episodes }) => {
         try {
             const res = await fetch(`http://localhost:4000/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-1&category=sub`)
             const data = await res.json()
+
+            console.log(data)
+
             const videoUrl = data.data.sources[0].url
             console.log("Video URL:", videoUrl)
             setWatching(videoUrl)
@@ -59,8 +62,6 @@ let WatchPage = ({ episodes }) => {
                         controls
                         height="auto"
                         style={{ maxWidth: "800px" }}
-                        // width="100%"  // or set a specific value like '80%' or 'auto'
-                        // maxWidth={{ lg: '20%', sm: '100px' }}  // Adjust to the max desired width
                     >
                         {!watching.endsWith(".m3u8") && (
                             <source src={watching} type="video/mp4" />
@@ -70,10 +71,20 @@ let WatchPage = ({ episodes }) => {
                     </video>
                 </Center>
             ) : (
-                <Center>Loading...</Center>
+                <Center>
+                    <Spinner
+                        thickness='4px'
+                        speed='0.65s'
+                        emptyColor='gray.200'
+                        color='blue.500'
+                        size='xl'
+                    />
+                </Center>
             )}
         </Box>
     )
 }
 
 export default WatchPage
+
+

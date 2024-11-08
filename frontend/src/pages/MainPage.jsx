@@ -1,15 +1,24 @@
 
-import { Box, Button, Image, Flex, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Image, Flex, Text, VStack, useDisclosure, HStack } from '@chakra-ui/react'
+
+import { Link } from 'react-router-dom'
+
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+} from '@chakra-ui/react'
 
 import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
-
 
 import AnimeBoxContainer from '../components/AnimeBoxContainer'
 
 let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnime, setSelected }) => {
-
-
-
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     let handleSetPageLeft = () => {
         if (page > 0) {
@@ -25,7 +34,7 @@ let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnim
 
     return (
         <Box>
-            <Box position="relative" w="full" h="100vh">
+            <Box position="relative" w="full" h={{ base: '90vh', lg: '100vh' }}>
                 {/* Background Image */}
                 <Image
                     src={featAnime.poster}
@@ -46,12 +55,11 @@ let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnim
 
                 />
 
-                <VStack align='start' pt={{ base: "30%", md: "20%", lg: "10%" }} spacing='5'>
+
+                <VStack pt={{ base: "25%", md: "15%", lg: "10%" }} spacing={20}>
+
                     {/* Anime Rank */}
                     <Text
-                        position="relative"
-                        top="20%"
-                        left="10%"
                         color="white"
                         fontSize={{ base: "sm", md: "md", lg: "lg" }}
                         fontWeight="bold"
@@ -61,38 +69,51 @@ let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnim
 
                     {/* Anime Title */}
                     <Text
-                        position="relative"
-                        top="25%"
-                        left="10%"
+                        align='center'
                         color="white"
-                        fontSize={{ base: "28px", md: "30px", lg: "48px" }}
+                        fontSize={{ base: "28px", md: "30px", lg: "80px" }}
                         fontWeight="bold"
 
-                        w={{ base: "sm", md: "lg", lg: "3xl" }}
+                        w={{ base: "auto", md: "lg", lg: "3xl" }}
                     >
                         {featAnime.name}
                     </Text>
 
-                    {/* Anime Description */}
-                    <Text
-                        position="relative"
-                        top="35%"
-                        left="10%"
-                        color="white"
-                        fontSize={{ base: "sm", md: "md", lg: "lg" }}
-                        maxW={{ base: "sm", md: "md", lg: "lg" }}
-                    >
-                        {featAnime.description}
-                    </Text>
-                    {/* Watch Now Button */}
+                    <HStack>
+                        {/* Anime Description */}
+                        <Button colorScheme='purple' size='lg' onClick={onOpen}>
+                            Description
+                        </Button>
 
-                    <Button colorScheme="purple" size="lg" position="relative"
-                        // bottom="20%"
-                        left="10%"
-                    >
-                        Watch Now
-                    </Button>
+                        {/* Watch Now Button */}
+                        <Link to={`/anime/${featAnime.animeId}`}>
+                            <Button colorScheme="purple" size="lg">
+                                Watch Now
+                            </Button>
+                        </Link>
+                    </HStack>
+
+                    <Modal isOpen={isOpen} onClose={onClose} size={'xl'}>
+                        <ModalOverlay />
+                        <ModalContent>
+                            <ModalHeader>{featAnime.name}</ModalHeader>
+                            <ModalCloseButton />
+                            <ModalBody>
+                                {featAnime.description}
+                            </ModalBody>
+
+                            <ModalFooter>
+                                <Button colorScheme="purple" mr={3} onClick={onClose}>
+                                    Close
+                                </Button>
+                            </ModalFooter>
+                        </ModalContent>
+                    </Modal>
+
+
+
                 </VStack>
+
 
 
 
@@ -124,7 +145,7 @@ let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnim
             <AnimeBoxContainer anime={todayAnime} animeHead={'Top Anime Today'} setSelected={setSelected} />
             <AnimeBoxContainer anime={weeklyAnime} animeHead={'Top Anime Week'} setSelected={setSelected} />
             <AnimeBoxContainer anime={monthlyAnime} animeHead={'Top Anime Month'} setSelected={setSelected} />
-        </Box>
+        </Box >
 
     )
 }

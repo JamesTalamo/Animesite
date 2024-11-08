@@ -80,7 +80,7 @@ function App() {
           />
         } />
 
-        <Route path='/anime/:animeName' element={
+        <Route path='/anime/:animeId' element={
           <FocusPage
             anime={selected}
             episodes={episodes}
@@ -89,7 +89,7 @@ function App() {
         } />
 
         <Route
-          path='/watch/:animeName/:episode'
+          path='/watch/:animeName/:episode' //{/:episodeId'}
           element={
             <WatchPage
               episodes={episodes}

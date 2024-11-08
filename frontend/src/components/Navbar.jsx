@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-import { Box, Button, Container, Flex, Heading, HStack, Image, Input, InputGroup, InputLeftElement, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, HStack, Image, Input, useDisclosure, Text } from '@chakra-ui/react'
 import { Search2Icon, HamburgerIcon } from '@chakra-ui/icons'
 
 import { Link } from 'react-router-dom'
@@ -28,7 +28,9 @@ const Navbar = () => {
                 </Button>
 
                 <Link to='/'>
-                    <Heading as='span' pl='25px'>
+                    <Heading as='span' pl='25px'
+                        fontSize={{ base: '2xl', lg: '4xl' }}
+                    >
                         Anime WEEB
                     </Heading>
                 </Link>
@@ -43,11 +45,13 @@ const Navbar = () => {
                 <DrawerContent>
                     <DrawerCloseButton />
                     <DrawerHeader>
-                        <Flex align='center' justify='center'>
-                            <Image
-                                src="/assets/navbarAssets/Frame%2072.png"
-                            />
-                        </Flex>
+                        <Link to='/'>
+                            <Flex align='center' justify='center'>
+                                <Image
+                                    src="/assets/navbarAssets/Frame%2072.png"
+                                />
+                            </Flex>
+                        </Link>
                     </DrawerHeader>
 
                     <DrawerBody>
