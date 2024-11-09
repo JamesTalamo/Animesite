@@ -7,6 +7,8 @@ import { Link, useParams } from "react-router-dom";
 let FocusPage = ({ setEpisodes, episodes }) => {
     const { animeId } = useParams();  // Retrieve the animeName parameter
 
+    // console.log(animeId)
+
     let [currentAnime, setCurrentAnime] = useState('')
 
     let fetchAnimeInfo = async (animeId) => {
@@ -26,8 +28,6 @@ let FocusPage = ({ setEpisodes, episodes }) => {
     useEffect(() => {
         fetchAnimeInfo(animeId)
     }, [])
-
-    console.log(episodes)
 
     return (
         <Box minH='100vh' bg='gray.700'>
@@ -64,20 +64,18 @@ let FocusPage = ({ setEpisodes, episodes }) => {
                             Episodes
                         </Heading>
                         <VStack spacing='10px'>
-                                {episodes.map((episode) => (
+                            {episodes.map((episode) => (
 
-                                    <Box w="100%" h="50px" bg="gray.600" key={episode.number}>
-                                        <Link to={`/watch/${currentAnime.name}/${episode.number}/?${episode.episodeId}`} >
-                                            <Flex justify="space-between" align="center" w="100%" h="100%" spacing='50px' pl={{ lg: '100px', sm: '50px' }} pr={{ lg: '100px', sm: '50px' }}>
-                                                <Text textAlign="center" fontWeight='bold'>{episode.number}</Text>
-                                                <Text textAlign="center" fontWeight='bold'>{episode.episodeId}</Text>
+                                <Box w="100%" h="50px" bg="gray.600">
+                                    <Link to={`/watch/${currentAnime.id}/${episode.number}`} >
+                                        <Flex justify="space-between" align="center" w="100%" h="100%" spacing='50px' pl={{ lg: '100px', sm: '50px' }} pr={{ lg: '100px', sm: '50px' }}>
+                                            <Text textAlign="center" fontWeight='bold'>{episode.number}</Text>
+                                            <Text textAlign="center" fontWeight='bold' fontSize={{ lg: "md", sm: 'sm' }}>{episode.title}</Text>
+                                        </Flex>
+                                    </Link>
+                                </Box>
 
-                                                <Text textAlign="center" fontWeight='bold' fontSize={{ lg: "md", sm: 'sm' }}>{episode.title}</Text>
-                                            </Flex>
-                                        </Link>
-                                    </Box>
-
-                                ))}
+                            ))}
 
 
                         </VStack>

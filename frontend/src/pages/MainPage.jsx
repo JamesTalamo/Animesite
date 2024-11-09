@@ -20,6 +20,7 @@ import AnimeBoxContainer from '../components/AnimeBoxContainer'
 let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnime, setSelected }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
+
     let handleSetPageLeft = () => {
         if (page > 0) {
             setPage(page - 1)
@@ -43,7 +44,7 @@ let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnim
                     objectFit="cover"
                     w="100%"
                     h="100%"
-                    opacity={0.9}
+                    opacity={0.5}
                     position="absolute"
                     top={0}
                     right={0}

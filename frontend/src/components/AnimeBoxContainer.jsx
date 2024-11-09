@@ -32,7 +32,7 @@ let AnimeBoxContainer = ({ anime, animeHead, setSelected }) => {
             >
                 {anime.map((anime) => (
                     <Link to={`/anime/${anime.id}`} onClick={() => handleSelect(anime)}>
-                        <AnimeBox anime={anime} />
+                        <AnimeBox key={anime.id} anime={anime} />
                     </Link>
                 ))}
             </SimpleGrid>
