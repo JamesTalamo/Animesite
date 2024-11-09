@@ -1,7 +1,8 @@
 import { Box, Center, Spinner, Button, VStack, Container, Text, HStack, Spacer } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import Hls from "hls.js";
+import videojs from "video.js";
+import "video.js/dist/video-js.css";  // Import video.js CSS
 
 const WatchPage = ({ episodes }) => {
     const { episode } = useParams();
@@ -12,15 +13,26 @@ const WatchPage = ({ episodes }) => {
     const [sub, setSub] = useState([]);
     const [dub, setDub] = useState([]);
     const videoRef = useRef(null);
-    const hlsRef = useRef(null);
-
-    const isFetchingRef = useRef(false); // Flag to track if data is being fetched
+    const isFetchingRef = useRef(false);
 
     const handleEpisodeServer = (episodeServer) => {
         setEpServer(episodeServer);
     };
 
     useEffect(() => {
+        const fetchServer = async (episodeId) => {
+            try {
+                const res2 = await fetch(
+                    `${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/servers?animeEpisodeId=${episodeId}`
+                );
+                const data2 = await res2.json();
+                setSub(data2.data.sub);
+                setDub(data2.data.dub);
+            } catch (error) {
+                console.error("Error fetching server data:", error);
+            }
+        };
+
         const fetchEpisode = async (episodeId) => {
             try {
                 isFetchingRef.current = true; // Set flag before fetch starts
@@ -29,14 +41,6 @@ const WatchPage = ({ episodes }) => {
                     `${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=${epServer}&category=sub`
                 );
                 const data = await res.json();
-
-                const res2 = await fetch(
-                    `${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/servers?animeEpisodeId=${episodeId}`
-                );
-                const data2 = await res2.json();
-
-                setSub(data2.data.sub);
-                setDub(data2.data.dub);
 
                 const videoUrl = data.data.sources[0].url;
                 const videoTracks = data.data.tracks;
@@ -55,24 +59,41 @@ const WatchPage = ({ episodes }) => {
         // Only fetch if data is not already being fetched
         if (episode && episodes[episode - 1] && !isFetchingRef.current) {
             const episodeId = episodes[episode - 1].episodeId;
+            fetchServer(episodeId);
             fetchEpisode(episodeId);
         }
     }, [episode, episodes, epServer]);
 
     useEffect(() => {
+        // Ensure to reset the video player when the server changes
         if (watching && videoRef.current) {
-            if (Hls.isSupported() && watching.endsWith(".m3u8")) {
-                hlsRef.current = new Hls();
-                hlsRef.current.loadSource(watching);
-                hlsRef.current.attachMedia(videoRef.current);
-            }
+            // Initialize video.js player
+            const player = videojs(videoRef.current, {
+                controls: true,
+                autoplay: true,
+                preload: "auto",
+                sources: [{
+                    src: watching,
+                    type: "application/x-mpegURL", // Assuming this is an HLS stream, modify if needed
+                }],
+                tracks: [{
+                    kind: vidTrack.kind,
+                    label: vidTrack.label,
+                    src: vidTrack.file, // Use the subtitle file URL dynamically
+                    default: vidTrack.default,
+                }]
+            });
+
+            // Dispose of the previous player when the component or video changes
+            return () => {
+                if (player) {
+                    player.dispose();
+                }
+            };
         }
-        return () => {
-            if (hlsRef.current) {
-                hlsRef.current.destroy();
-            }
-        };
-    }, [watching]);
+    }, [watching, vidTrack, epServer]);  // Adding `epServer` to trigger effect when server changes
+
+
 
     return (
         <Box minH="100vh" pt="200px" pb="100px">
@@ -85,22 +106,13 @@ const WatchPage = ({ episodes }) => {
                         transition="opacity 0.5s ease-in-out"
                     >
                         {watching ? (
-                            <video ref={videoRef} controls style={{ width: "100%", height: "100%" }} autoPlay>
-                                {/* {!watching.endsWith(".m3u8") && <source src={watching} type="video/mp4" />} */}
-                                <track
-                                    kind={vidTrack.kind}
-                                    label={vidTrack.label}
-                                    src={vidTrack.file}
-                                    default={vidTrack.default}
-
-                                    width='400px'
-                                />
-                                {/* {console.log(vidTrack.file)}
-                                {console.log(vidTrack.label)}
-                                {console.log(vidTrack.kind)}
-                                {console.log(vidTrack.default)}
-                                {console.log(watching)} */}
-                            </video>
+                            <Box data-vjs-player style={{ width: "100%", height: "100%" }}>
+                                <video
+                                    ref={videoRef}
+                                    className="video-js vjs-default-skin"
+                                    controls
+                                ></video>
+                            </Box>
                         ) : (
                             <Center h="100%">
                                 <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl" />
@@ -167,4 +179,5 @@ const WatchPage = ({ episodes }) => {
 };
 
 export default WatchPage;
+
 
