@@ -29,7 +29,7 @@ function App() {
   let [episodes, setEpisodes] = useState([])
 
   let fetchFeatAnime = async () => {
-    let res = await fetch('http://localhost:4000/api/v2/hianime/home')
+    let res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/home`);
     let data = await res.json()
 
     // console.log(data.data)

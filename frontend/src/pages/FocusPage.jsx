@@ -12,10 +12,10 @@ let FocusPage = ({ setEpisodes, episodes }) => {
     let [currentAnime, setCurrentAnime] = useState('')
 
     let fetchAnimeInfo = async (animeId) => {
-        let res = await fetch(`http://localhost:4000/api/v2/hianime/anime/${animeId}`)
+        let res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}`)
         let data = await res.json()
 
-        let res2 = await fetch(`http://localhost:4000/api/v2/hianime/anime/${animeId}/episodes`)
+        let res2 = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}/episodes`)
         let data2 = await res2.json()
 
         // console.log(data2.data.episodes)

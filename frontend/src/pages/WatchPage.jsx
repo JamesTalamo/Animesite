@@ -26,12 +26,12 @@ const WatchPage = ({ episodes }) => {
                 isFetchingRef.current = true; // Set flag before fetch starts
 
                 const res = await fetch(
-                    `http://localhost:4000/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=${epServer}&category=sub`
+                    `${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=${epServer}&category=sub`
                 );
                 const data = await res.json();
 
                 const res2 = await fetch(
-                    `http://localhost:4000/api/v2/hianime/episode/servers?animeEpisodeId=${episodeId}`
+                    `${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/servers?animeEpisodeId=${episodeId}`
                 );
                 const data2 = await res2.json();
 
@@ -41,9 +41,6 @@ const WatchPage = ({ episodes }) => {
                 const videoUrl = data.data.sources[0].url;
                 const videoTracks = data.data.tracks;
                 const englishSubtitle = videoTracks.find(track => track.label === "English");
-
-                console.log(videoUrl)
-                console.log(videoTracks)
 
                 setVidTrack(englishSubtitle);
                 setWatching(videoUrl);
@@ -89,13 +86,20 @@ const WatchPage = ({ episodes }) => {
                     >
                         {watching ? (
                             <video ref={videoRef} controls style={{ width: "100%", height: "100%" }} autoPlay>
-                                {!watching.endsWith(".m3u8") && <source src={watching} type="video/mp4" />}
+                                {/* {!watching.endsWith(".m3u8") && <source src={watching} type="video/mp4" />} */}
                                 <track
                                     kind={vidTrack.kind}
                                     label={vidTrack.label}
                                     src={vidTrack.file}
-                                    default="true"
+                                    default={vidTrack.default}
+
+                                    width='400px'
                                 />
+                                {/* {console.log(vidTrack.file)}
+                                {console.log(vidTrack.label)}
+                                {console.log(vidTrack.kind)}
+                                {console.log(vidTrack.default)}
+                                {console.log(watching)} */}
                             </video>
                         ) : (
                             <Center h="100%">
