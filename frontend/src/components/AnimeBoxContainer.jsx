@@ -19,8 +19,8 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
 
             <SimpleGrid
                 columns={{
-                    base: 5,
-                    sm: 5,
+                    base: 2,
+                    sm: 2,
                     md: 5,
                     lg: 5,
                 }}
