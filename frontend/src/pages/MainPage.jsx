@@ -1,5 +1,4 @@
-
-import { Box, Button, Image, Flex, Text, VStack, useDisclosure, HStack } from '@chakra-ui/react'
+import { Box, Button, Image, Flex, Text, VStack, useDisclosure, HStack, Container } from '@chakra-ui/react'
 
 import { Link } from 'react-router-dom'
 
@@ -17,7 +16,13 @@ import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 
 import AnimeBoxContainer from '../components/AnimeBoxContainer'
 
-let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnime, setSelected }) => {
+import { useAnimeStore } from '../product/AnimeStore.js'
+
+
+let MainPage = () => {
+
+    let { page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnime } = useAnimeStore()
+
     const { isOpen, onOpen, onClose } = useDisclosure()
 
 
@@ -35,8 +40,9 @@ let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnim
 
     return (
         <Box>
-            <Box position="relative" w="full" h={{ base: '90vh', lg: '100vh' }}>
-                {/* Background Image */}
+
+            {/* <Box position="relative" w="full" h={{ base: '90vh', lg: '100vh' }}>
+              
                 <Image
                     src={featAnime.poster}
                     alt="Anime Poster"
@@ -59,7 +65,7 @@ let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnim
 
                 <VStack pt={{ base: "25%", md: "15%", lg: "10%" }} spacing={20}>
 
-                    {/* Anime Rank */}
+                   
                     <Text
                         color="white"
                         fontSize={{ base: "sm", md: "md", lg: "lg" }}
@@ -68,7 +74,7 @@ let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnim
                         {`RANK ${featAnime.rank}!`}
                     </Text>
 
-                    {/* Anime Title */}
+                   
                     <Text
                         align='center'
                         color="white"
@@ -81,12 +87,12 @@ let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnim
                     </Text>
 
                     <HStack>
-                        {/* Anime Description */}
+                      
                         <Button colorScheme='purple' size='lg' onClick={onOpen}>
                             Description
                         </Button>
 
-                        {/* Watch Now Button */}
+                       
                         <Link to={`/anime/${featAnime.animeId}`}>
                             <Button colorScheme="purple" size="lg">
                                 Watch Now
@@ -119,7 +125,6 @@ let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnim
 
 
 
-                {/* Navigation Buttons (Left/Right) */}
                 <Flex
                     position="absolute"
                     bottom="20px"
@@ -141,11 +146,15 @@ let MainPage = ({ page, setPage, featAnime, todayAnime, weeklyAnime, monthlyAnim
                         <ArrowForwardIcon />
                     </Button>
                 </Flex>
+            </Box>  */}
+
+            <Box w="full" h="100vh" position='relative'>
+
             </Box>
 
-            <AnimeBoxContainer anime={todayAnime} animeHead={'Top Anime Today'} setSelected={setSelected} />
-            <AnimeBoxContainer anime={weeklyAnime} animeHead={'Top Anime Week'} setSelected={setSelected} />
-            <AnimeBoxContainer anime={monthlyAnime} animeHead={'Top Anime Month'} setSelected={setSelected} />
+            <AnimeBoxContainer anime={todayAnime} animeHead={'Top Anime Today'} />
+            <AnimeBoxContainer anime={weeklyAnime} animeHead={'Top Anime Week'} />
+            <AnimeBoxContainer anime={monthlyAnime} animeHead={'Top Anime Month'} />
         </Box >
 
     )

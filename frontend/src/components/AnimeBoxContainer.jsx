@@ -3,7 +3,9 @@ import AnimeBox from "./AnimeBox"
 
 import { Box, Heading, SimpleGrid } from "@chakra-ui/react"
 
-let AnimeBoxContainer = ({ anime, animeHead, setSelected }) => {
+
+let AnimeBoxContainer = ({ anime, animeHead}) => {
+
     let handleSelect = (anime) => {
         setSelected(anime)
     }
