@@ -25,6 +25,9 @@ function App() {
     let res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/home`);
     let data = await res.json();
 
+
+    console.log(`Fetching from : ${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/home`)
+
     // Updating Zustand store
 
     setFeatAnime(data.data.spotlightAnimes);
