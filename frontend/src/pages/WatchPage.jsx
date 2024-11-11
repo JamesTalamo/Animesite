@@ -38,6 +38,8 @@ const WatchPage = () => {
         const videoUrl = await res.json();
 
         setEpUrl(videoUrl.data.sources[0].url);
+        console.log(videoUrl.data)
+
         setTracks(videoUrl.data.tracks || []);
     };
 
@@ -48,13 +50,11 @@ const WatchPage = () => {
     }, [animeId, episode]);
 
     useEffect(() => {
-        console.log(videoRef.current)
         if (epUrl && videoRef.current) {
 
-            // if (playerRef.current) {
-            //     playerRef.current.dispose();
-            // }
+            console.log(playerRef.current);
 
+            // Initialize the video player
             playerRef.current = videojs(videoRef.current, {
                 autoplay: true,
                 controls: true,
@@ -65,39 +65,40 @@ const WatchPage = () => {
                 }],
             });
 
+            // Add remote text tracks and set English as default
             tracks.forEach((track) => {
                 playerRef.current.addRemoteTextTrack(
                     {
                         kind: track.kind,
                         src: track.file,
                         label: track.label,
-                        default: track.default || false,
+                        default: track.label === 'English', // Set as default if label is "English"
                     },
                     false
                 );
             });
-        }
 
-        // return () => {
-        //     if (playerRef.current) {
-        //         playerRef.current.dispose();
-        //     }
-        // };
+            // Ensure only the default track is visible
+            const textTracks = playerRef.current.textTracks();
+            for (let i = 0; i < textTracks.length; i++) {
+                const textTrack = textTracks[i];
+                textTrack.mode = textTrack.label === 'English' ? 'showing' : 'disabled';
+            }
+        }
     }, [epUrl, tracks]);
+
 
     return (
         <Box minH="100vh" pt="200px" pb="100px">
             <Center>
                 <VStack w="100%">
-                    <Box w={{ base: "100%", md: "70%", lg: "50%" }} h="450px" bg="gray.900">
-                        <Box data-vjs-player style={{ width: "100%", height: "100%" }}>
-                            <video
-                                ref={videoRef}
-                                className="video-js vjs-default-skin"
-                                controls
-                                style={{ width: '100%', height: '100%' }}
-                            />
-                        </Box>
+                    <Box w={{ base: "100%", md: "70%", lg: "50%" }} h='450px'>
+                        <video
+                            ref={videoRef}
+                            className="video-js vjs-default-skin"
+                            // controls
+                            style={{ width: '100%', height: '100%' }}
+                        />
                     </Box>
 
                     <Box w={{ base: "100%", md: "70%", lg: "50%" }} p="4">
