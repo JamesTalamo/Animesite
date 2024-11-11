@@ -41,6 +41,7 @@ let FocusPage = () => {
                             src={selectedAnime.poster}
                             position="relative"
                             order={{ sm: 1, lg: 0 }} // On small screens, this will place the Image first
+                            title={selectedAnime.name}
                         />
 
                         <Container order={{ sm: 2, lg: 0 }}> {/* Container will be below the Image on small screens */}
