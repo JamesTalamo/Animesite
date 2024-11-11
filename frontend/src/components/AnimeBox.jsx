@@ -3,9 +3,7 @@ import { Box, Image } from "@chakra-ui/react"
 let AnimeBox = ({ anime }) => {
     return (
         <Box
-            bg='yellow'
-            w='50%'
-            h='auto'
+            bg='yellow's
             shadow={'lg'}
             rounded={'lg'}
             overflow={'hidden'}

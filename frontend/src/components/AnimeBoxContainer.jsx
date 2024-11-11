@@ -4,33 +4,30 @@ import AnimeBox from "./AnimeBox"
 import { Box, Heading, SimpleGrid } from "@chakra-ui/react"
 
 
-let AnimeBoxContainer = ({ anime, animeHead}) => {
+let AnimeBoxContainer = ({ anime, animeHead }) => {
 
     let handleSelect = (anime) => {
         setSelected(anime)
     }
 
     return (
-        <Box position="relative" w="full">
+        <Box w={{ lg: 'container.xl', md: 'container.md', sm: 'container.sm' }}>
             <Heading
-                as='h2'
-                pl='10%'
-                mt='25px'
-                mb='25px'
+                align='start'
             >{animeHead}</Heading>
 
 
             <SimpleGrid
+                bg='red'
                 columns={{
-                    base: 2,
-                    sm: 2,
-                    md: 3,
+                    base: 5,
+                    sm: 5,
+                    md: 5,
                     lg: 5,
                 }}
-                spacing={5}
-                w="full"
-                pl="10%"
+                spacing={4}
                 mb='25px'
+
             >
                 {anime.map((anime) => (
                     <Link to={`/anime/${anime.id}`} onClick={() => handleSelect(anime)}>

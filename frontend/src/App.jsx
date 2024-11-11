@@ -14,6 +14,7 @@ import FocusPage from "./pages/FocusPage"
 import ScrollToTop from './components/ScrollTop'
 
 import { useAnimeStore } from './product/AnimeStore.js'
+import Footer from './components/Footer.jsx'
 
 function App() {
   const { page, setFeatAnime, setTodayAnime, setWeeklyAnime, setMonthlyAnime } = useAnimeStore()
@@ -59,9 +60,7 @@ function App() {
 
       </Routes>
 
-      <Box w='full' h='250px' bg='gray.900'>
-
-      </Box>
+      <Footer />
     </Box>
   )
 }
