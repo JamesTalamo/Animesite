@@ -3,7 +3,7 @@ import { Box, Container, VStack } from '@chakra-ui/react'
 import AnimeBoxContainer from '../components/AnimeBoxContainer'
 
 import { useAnimeStore } from '../product/AnimeStore.js'
-import CarouselPage from './Carousel.jsx'
+import CarouselPage from '../components/Carousel.jsx'
 
 
 let MainPage = () => {
