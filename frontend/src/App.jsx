@@ -54,9 +54,9 @@ function App() {
       {/* Use Suspense for lazy-loaded components */}
       {/* <Suspense fallback={<div>Loading...</div>}> */}
         <Routes>
-          <Route path="*" element={<MainPage />} />
-          <Route path="/anime/:animeId" element={<FocusPage />} />
           <Route path="/watch/:animeId/:episode" element={<WatchPage />} />
+          <Route path="/anime/:animeId" element={<FocusPage />} />
+          <Route path="*" element={<MainPage />} />
         </Routes>
       {/* </Suspense> */}
 
