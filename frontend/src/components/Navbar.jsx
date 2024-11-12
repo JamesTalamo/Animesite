@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom'
 import {
     Drawer,
     DrawerBody,
-    DrawerFooter,
     DrawerHeader,
     DrawerOverlay,
     DrawerContent,
@@ -30,6 +29,7 @@ const Navbar = () => {
                 <Link to='/'>
                     <Heading as='span' pl='25px'
                         fontSize={{ base: '2xl', lg: '4xl' }}
+                        color='white'
                     >
                         Anime WEEB
                     </Heading>
@@ -42,8 +42,10 @@ const Navbar = () => {
                 onClose={onClose}
             >
                 <DrawerOverlay />
-                <DrawerContent>
-                    <DrawerCloseButton />
+                <DrawerContent bg='gray.700'>
+                    <DrawerCloseButton 
+                        color='white'
+                    />
                     <DrawerHeader>
                         <Link to='/'>
                             <Flex align='center' justify='center'>

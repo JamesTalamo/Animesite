@@ -46,15 +46,12 @@ function App() {
       <Navbar />
       <ScrollToTop />
 
-    
-  
         <Routes>
           <Route path="/test" element={<div>Route is Working!</div>} />
           <Route path="/watch/:animeId/:episode" element={<WatchPage />} />
           <Route path="/anime/:animeId" element={<FocusPage />} />
           <Route path="*" element={<MainPage />} />
         </Routes>
-  
 
       <Footer />
     </Box>

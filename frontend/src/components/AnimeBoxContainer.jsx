@@ -11,9 +11,10 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
     }
 
     return (
-        <Box w={{ lg: 'container.xl', md: 'container.md', sm: 'container.sm' }}>
+        <Box w={{ lg: 'container.xl', md: 'container.md', sm: 'container.sm' }} bg='gray.800'>
             <Heading
                 align='start'
+                color='white'
             >{animeHead}</Heading>
 
 

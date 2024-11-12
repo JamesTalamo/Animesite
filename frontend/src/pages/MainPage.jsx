@@ -1,22 +1,24 @@
 import { Box, VStack } from '@chakra-ui/react'
 
-import AnimeBoxContainer from '../components/AnimeBoxContainer'
+
 
 import { useAnimeStore } from '../product/AnimeStore.js'
+
+import AnimeBoxContainer from '../components/AnimeBoxContainer'
+
 import CarouselPage from '../components/Carousel.jsx'
 
 
 let MainPage = () => {
 
     let { featAnime, todayAnime, weeklyAnime, monthlyAnime } = useAnimeStore()
-    console.log(featAnime)
     return (
         <Box>
-            <Box w="full" h="63vh" position='relative' pt='80px' overflow='hidden'>
+            <Box w="full" h="63vh" position='relative' pt='80px' overflow='hidden' bg='gray.800'>
                 <CarouselPage featAnime={featAnime} />
             </Box>
 
-            <Box w="full" align='center'>
+            <Box w="full" align='center' bg='gray.800'>
                 <VStack spacing={6}>
 
                     <AnimeBoxContainer anime={todayAnime} animeHead={'Top Anime Today'} />

@@ -45,10 +45,12 @@ let FocusPage = () => {
 
                         <Container order={{ sm: 2, lg: 0 }}> {/* Container will be below the Image on small screens */}
                             <VStack>
-                                <Heading>
+                                <Heading
+                                    color='white'
+                                >
                                     {selectedAnime.name}
                                 </Heading>
-                                <Text fontSize="sm" alignContent="center">
+                                <Text fontSize="sm" alignContent="center" color='white'>
                                     {selectedAnime.description}
                                 </Text>
                             </VStack>
@@ -58,7 +60,7 @@ let FocusPage = () => {
 
 
                     <Container maxW='container.xl'>
-                        <Heading as='h5' align='center' bg='gray.900'>
+                        <Heading as='h5' align='center' bg='gray.900' color='white'>
                             Episodes
                         </Heading>
                         <VStack spacing='10px'>
@@ -66,8 +68,8 @@ let FocusPage = () => {
                                 <Box w="100%" h="50px" bg="gray.600" key={episode.episodeId}>
                                     <Link to={`/watch/${selectedAnime.id}/${episode.number}`} >
                                         <Flex justify="space-between" align="center" w="100%" h="100%" spacing='50px' pl={{ lg: '100px', sm: '50px' }} pr={{ lg: '100px', sm: '50px' }}>
-                                            <Text textAlign="center" fontWeight='bold'>{episode.number}</Text>
-                                            <Text textAlign="center" fontWeight='bold' fontSize={{ lg: "md", sm: 'sm' }}>{episode.title}</Text>
+                                            <Text textAlign="center" fontWeight='bold' color='white'>{episode.number}</Text>
+                                            <Text textAlign="center" fontWeight='bold' fontSize={{ lg: "md", sm: 'sm' }} color='white'>{episode.title}</Text>
                                         </Flex>
                                     </Link>
                                 </Box>

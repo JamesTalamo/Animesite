@@ -4,7 +4,7 @@ let Footer = () => {
     return (
         <Box w="full" h="250px" bg="gray.900">
             <Container>
-                <Text textAlign="center" fontWeight="bold" pt="50px">
+                <Text textAlign="center" fontWeight="bold" pt="50px" color='white'>
                     POWERED BY FOLLOWING TECH STACKS
                 </Text>
 

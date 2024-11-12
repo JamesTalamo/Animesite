@@ -115,7 +115,7 @@ const WatchPage = () => {
     }, [isVideoVisible, epUrl, tracks]);
 
     return (
-        <Box minH="100vh" pt="200px" pb="100px">
+        <Box minH="100vh" pt="200px" pb="100px" bg='gray.800'>
             <Center>
                 <VStack w="100%">
                     <Box w={{ base: "100%", md: "70%", lg: "50%" }} h='450px'>
