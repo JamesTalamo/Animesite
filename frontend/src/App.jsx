@@ -12,13 +12,13 @@ import Footer from './components/Footer.jsx'
 import { useAnimeStore } from './product/AnimeStore.js'
 
 // Lazy load pages for code-splitting
-const MainPage = lazy(() => import("./pages/MainPage"))
-const FocusPage = lazy(() => import("./pages/FocusPage"))
-const WatchPage = lazy(() => import("./pages/WatchPage"))
+// const MainPage = lazy(() => import("./pages/MainPage"))
+// const FocusPage = lazy(() => import("./pages/FocusPage"))
+// const WatchPage = lazy(() => import("./pages/WatchPage"))
 
-// import MainPage from './pages/MainPage.jsx'
-// import FocusPage from './pages/FocusPage.jsx'
-// import WatchPage from './pages/WatchPage.jsx'
+import MainPage from './pages/MainPage.jsx'
+import FocusPage from './pages/FocusPage.jsx'
+import WatchPage from './pages/WatchPage.jsx'
 
 
 
@@ -52,13 +52,13 @@ function App() {
       <ScrollToTop />
 
       {/* Use Suspense for lazy-loaded components */}
-      <Suspense fallback={<div>Loading...</div>}>
+      {/* <Suspense fallback={<div>Loading...</div>}> */}
         <Routes>
           <Route path="/watch/:animeId/:episode" element={<WatchPage />} />
           <Route path="/anime/:animeId" element={<FocusPage />} />
           <Route path="*" element={<MainPage />} />
         </Routes>
-      </Suspense>
+      {/* </Suspense> */}
 
       <Footer />
     </Box>
