@@ -1,5 +1,5 @@
-
-import { Box, Center, Button, VStack, Container, Text, HStack, Spacer } from "@chakra-ui/react";import videojs from "video.js";
+import { Box, Center, Button, VStack, Container, Text, HStack, Spacer } from "@chakra-ui/react";
+import videojs from "video.js";
 import "video.js/dist/video-js.css";  // Import video.js CSS
 
 import { useParams } from "react-router-dom";
@@ -11,13 +11,11 @@ const WatchPage = () => {
     const [tracks, setTracks] = useState([]);
     const [sub, setSub] = useState([]);
     const [dub, setDub] = useState([]);
-    const [isVideoVisible, setIsVideoVisible] = useState(false);
 
     const { animeId, episode } = useParams();
     const videoRef = useRef(null);
     const playerRef = useRef(null);
 
-    // Fetch episode ID from backend
     const fetchAnimeEpisodeId = async (animeId) => {
         let animeEp = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}/episodes`);
         let animeEpData = await animeEp.json();
@@ -28,7 +26,6 @@ const WatchPage = () => {
         fetchAnimeEpisodeWatch(episodeId, 'hd-1', 'sub');
     };
 
-    // Fetch server data (Sub and Dub servers)
     const fetchAnimeServer = async (episodeId) => {
         const animeServer = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/servers?animeEpisodeId=${episodeId}`);
         const animeServerData = await animeServer.json();
@@ -36,7 +33,6 @@ const WatchPage = () => {
         setDub(animeServerData.data.dub);
     };
 
-    // Fetch video URL and tracks
     const fetchAnimeEpisodeWatch = async (episodeId, epServer, category) => {
         const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=${epServer}&category=${category}`);
         const videoUrl = await res.json();
@@ -53,32 +49,9 @@ const WatchPage = () => {
         }
     }, [animeId, episode]);
 
-    // Intersection observer to detect when the video comes into the viewport
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVideoVisible(true);
-                    observer.disconnect(); // Stop observing after the video is visible
-                }
-            },
-            { threshold: 0.5 } // Trigger when 50% of the video element is visible
-        );
+        if (epUrl && videoRef.current) {
 
-        if (videoRef.current) {
-            observer.observe(videoRef.current);
-        }
-
-        return () => {
-            if (videoRef.current) {
-                observer.unobserve(videoRef.current);
-            }
-        };
-    }, []);
-
-    // Initialize video.js player only if the video is visible
-    useEffect(() => {
-        if (isVideoVisible && epUrl && videoRef.current) {
             console.log(playerRef.current);
 
             // Initialize the video player
@@ -112,14 +85,13 @@ const WatchPage = () => {
                 textTrack.mode = textTrack.label === 'English' ? 'showing' : 'disabled';
             }
         }
-    }, [isVideoVisible, epUrl, tracks]);
+    }, [epUrl, tracks]);
 
     return (
         <Box minH="100vh" pt="200px" pb="100px" bg='gray.800'>
             <Center>
                 <VStack w="100%">
                     <Box w={{ base: "100%", md: "70%", lg: "50%" }} h='450px'>
-                        {/* Video element only initialized if visible */}
                         <video
                             ref={videoRef}
                             className="video-js vjs-default-skin"
