@@ -1,6 +1,6 @@
 //CODE BELOW IS WITH LAZY  LOADING.
 
-import { lazy, Suspense, useEffect } from 'react'
+import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import { Box } from '@chakra-ui/react'
@@ -11,14 +11,9 @@ import Footer from './components/Footer.jsx'
 
 import { useAnimeStore } from './product/AnimeStore.js'
 
-// Lazy load pages for code-splitting
-const MainPage = lazy(() => import("./pages/MainPage"))
-const FocusPage = lazy(() => import("./pages/FocusPage"))
-const WatchPage = lazy(() => import("./pages/WatchPage"))
-
-// import MainPage from './pages/MainPage.jsx'
-// import FocusPage from './pages/FocusPage.jsx'
-// import WatchPage from './pages/WatchPage.jsx'
+import MainPage from './pages/MainPage.jsx'
+import FocusPage from './pages/FocusPage.jsx'
+import WatchPage from './pages/WatchPage.jsx'
 
 
 
@@ -51,15 +46,15 @@ function App() {
       <Navbar />
       <ScrollToTop />
 
-      {/* Use Suspense for lazy-loaded components */}
-      <Suspense fallback={<div>Loading...</div>}>
+    
+  
         <Routes>
           <Route path="/test" element={<div>Route is Working!</div>} />
           <Route path="/watch/:animeId/:episode" element={<WatchPage />} />
           <Route path="/anime/:animeId" element={<FocusPage />} />
           <Route path="*" element={<MainPage />} />
         </Routes>
-      </Suspense>
+  
 
       <Footer />
     </Box>
