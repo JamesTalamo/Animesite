@@ -1,4 +1,4 @@
-import { Box, Container, VStack } from '@chakra-ui/react'
+import { Box, VStack } from '@chakra-ui/react'
 
 import AnimeBoxContainer from '../components/AnimeBoxContainer'
 

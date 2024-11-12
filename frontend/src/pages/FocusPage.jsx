@@ -6,8 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { useAnimeStore } from "../product/AnimeStore";
 
 let FocusPage = () => {
-
-
+    
     const { selectedAnime, setSelectedAnime, animeEpisodes, setAnimeEpisodes } = useAnimeStore()
     const { animeId } = useParams();  // Retrieve the animeName parameter
 
@@ -64,8 +63,7 @@ let FocusPage = () => {
                         </Heading>
                         <VStack spacing='10px'>
                             {animeEpisodes.map((episode) => (
-
-                                <Box w="100%" h="50px" bg="gray.600">
+                                <Box w="100%" h="50px" bg="gray.600" key={episode.episodeId}>
                                     <Link to={`/watch/${selectedAnime.id}/${episode.number}`} >
                                         <Flex justify="space-between" align="center" w="100%" h="100%" spacing='50px' pl={{ lg: '100px', sm: '50px' }} pr={{ lg: '100px', sm: '50px' }}>
                                             <Text textAlign="center" fontWeight='bold'>{episode.number}</Text>

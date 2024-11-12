@@ -9,7 +9,7 @@ const CarouselPage = ({ featAnime }) => (
     < Carousel autoplay >
 
         {featAnime.map((anime) => (
-            <Link to={`/anime/${anime.id}`}>
+            <Link to={`/anime/${anime.id}`} key={anime.id}>
                 <Box w='full' h='500px' position='relative' title={anime.name}>
                     <Image
                         src={anime.poster}

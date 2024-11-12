@@ -29,7 +29,7 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
 
             >
                 {anime.map((anime) => (
-                    <Link to={`/anime/${anime.id}`} onClick={() => handleSelect(anime)}>
+                    <Link to={`/anime/${anime.id}`} onClick={() => handleSelect(anime)} key={anime.id}>
                         <AnimeBox key={anime.id} anime={anime} />
                     </Link>
                 ))}
