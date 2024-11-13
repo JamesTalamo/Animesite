@@ -25,8 +25,6 @@ function App() {
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/home`)
       const data = await res.json()
 
-      console.log(`Fetching from: ${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/home`)
-
       // Updating Zustand store
       setFeatAnime(data.data.spotlightAnimes)
       setTodayAnime(data.data.top10Animes.today)

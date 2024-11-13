@@ -52,8 +52,6 @@ const WatchPage = () => {
     useEffect(() => {
         if (epUrl && videoRef.current) {
 
-            console.log(playerRef.current);
-
             // Initialize the video player
             playerRef.current = videojs(videoRef.current, {
                 autoplay: true,
