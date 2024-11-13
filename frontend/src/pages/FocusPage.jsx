@@ -6,25 +6,13 @@ import { Link, useParams } from "react-router-dom";
 import { useAnimeStore } from "../product/AnimeStore";
 
 let FocusPage = () => {
-    
-    const { selectedAnime, setSelectedAnime, animeEpisodes, setAnimeEpisodes } = useAnimeStore()
+
+    const { selectedAnime, animeEpisodes, fetchFocusPageData } = useAnimeStore()
     const { animeId } = useParams();  // Retrieve the animeName parameter
 
     useEffect(() => {
-        fetchAnimeInfo(animeId)
+        fetchFocusPageData(animeId)
     }, [])
-
-    let fetchAnimeInfo = async (animeId) => {
-        let animeInfo = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}`)
-        let animeInfoData = await animeInfo.json()
-
-        let animeEp = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}/episodes`)
-        let animeEpData = await animeEp.json()
-
-        setSelectedAnime(animeInfoData.data.anime.info)
-        setAnimeEpisodes(animeEpData.data.episodes)
-
-    }
 
     return (
         <Box minH='100vh' bg='gray.700'>

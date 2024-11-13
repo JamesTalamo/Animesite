@@ -1,17 +1,22 @@
 import { Box, VStack } from '@chakra-ui/react'
 
-
-
 import { useAnimeStore } from '../product/AnimeStore.js'
 
 import AnimeBoxContainer from '../components/AnimeBoxContainer'
 
 import CarouselPage from '../components/Carousel.jsx'
 
+import { useEffect } from 'react'
+
 
 let MainPage = () => {
 
-    let { featAnime, todayAnime, weeklyAnime, monthlyAnime } = useAnimeStore()
+    let { featAnime, todayAnime, weeklyAnime, monthlyAnime, fetchMainPageData } = useAnimeStore()
+
+    useEffect(() => {
+        fetchMainPageData()
+    }, [])
+
     return (
         <Box>
             <Box w="full" h="63vh" position='relative' pt='80px' overflow='hidden' bg='gray.800'>

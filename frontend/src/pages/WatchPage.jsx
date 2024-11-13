@@ -2,68 +2,47 @@ import { Box, Center, Button, VStack, Container, Text, HStack, Spacer } from "@c
 import videojs from "video.js";
 import "video.js/dist/video-js.css";  // Import video.js CSS
 
+import { useAnimeStore } from "../product/AnimeStore";
+
 import { useParams } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const WatchPage = () => {
-    const [epId, setEpId] = useState('');
-    const [epUrl, setEpUrl] = useState('');
-    const [tracks, setTracks] = useState([]);
-    const [sub, setSub] = useState([]);
-    const [dub, setDub] = useState([]);
-
     const { animeId, episode } = useParams();
+
+    let { sub, dub, epId, fetchWatchPageData, fetchWatchPageDataVideo, videoUrl, tracks } = useAnimeStore()
+
     const videoRef = useRef(null);
     const playerRef = useRef(null);
 
-    const fetchAnimeEpisodeId = async (animeId) => {
-        let animeEp = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}/episodes`);
-        let animeEpData = await animeEp.json();
-
-        let episodeId = animeEpData.data.episodes[episode - 1].episodeId;
-        setEpId(episodeId);
-        fetchAnimeServer(episodeId);
-        fetchAnimeEpisodeWatch(episodeId, 'hd-1', 'sub');
-    };
-
-    const fetchAnimeServer = async (episodeId) => {
-        const animeServer = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/servers?animeEpisodeId=${episodeId}`);
-        const animeServerData = await animeServer.json();
-        setSub(animeServerData.data.sub);
-        setDub(animeServerData.data.dub);
-    };
-
-    const fetchAnimeEpisodeWatch = async (episodeId, epServer, category) => {
-        const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=${epServer}&category=${category}`);
-        const videoUrl = await res.json();
-
-        setEpUrl(videoUrl.data.sources[0].url);
-        console.log(videoUrl.data);
-
-        setTracks(videoUrl.data.tracks || []);
-    };
 
     useEffect(() => {
-        if (animeId) {
-            fetchAnimeEpisodeId(animeId);
-        }
-    }, [animeId, episode]);
+        fetchWatchPageData(animeId, episode)
+    }, [])
+
+    let videoUrlFetch = (epId, serverName, category) => {
+        fetchWatchPageDataVideo(epId, serverName, category)
+    }
 
     useEffect(() => {
-        if (epUrl && videoRef.current) {
 
+        if (videoUrl) {
             // Initialize the video player
             playerRef.current = videojs(videoRef.current, {
                 autoplay: true,
                 controls: true,
                 preload: 'auto',
                 sources: [{
-                    src: epUrl,
+                    src: videoUrl,
                     type: 'application/x-mpegURL',
                 }],
             });
 
             // Add remote text tracks and set English as default
+            {tracks.map((track) => {
+                {track.label === 'English' ? console.log(track) : 'fuck'}
+            })}
+
             tracks.forEach((track) => {
                 playerRef.current.addRemoteTextTrack(
                     {
@@ -82,8 +61,9 @@ const WatchPage = () => {
                 const textTrack = textTracks[i];
                 textTrack.mode = textTrack.label === 'English' ? 'showing' : 'disabled';
             }
+
         }
-    }, [epUrl, tracks]);
+    }, [videoUrl, tracks]);
 
     return (
         <Box minH="100vh" pt="200px" pb="100px" bg='gray.800'>
@@ -115,7 +95,7 @@ const WatchPage = () => {
                                         <Spacer />
                                         <HStack spacing="2">
                                             {sub.map((server) => (
-                                                <Button key={server.serverName} colorScheme="purple" onClick={() => fetchAnimeEpisodeWatch(epId, server.serverName, 'sub')}>
+                                                <Button key={server.serverName} colorScheme="purple" onClick={() => videoUrlFetch(epId, server.serverName, 'sub')}>
                                                     {server.serverName}
                                                 </Button>
                                             ))}
@@ -131,7 +111,7 @@ const WatchPage = () => {
                                         <Spacer />
                                         <HStack spacing="2">
                                             {dub.map((server) => (
-                                                <Button key={server.serverName} colorScheme="purple" onClick={() => fetchAnimeEpisodeWatch(epId, server.serverName, 'dub')}>
+                                                <Button key={server.serverName} colorScheme="purple" onClick={() => videoUrlFetch(epId, server.serverName, 'dub')}>
                                                     {server.serverName}
                                                 </Button>
                                             ))}
