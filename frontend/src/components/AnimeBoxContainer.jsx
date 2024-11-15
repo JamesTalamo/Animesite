@@ -1,7 +1,6 @@
-import { Flex } from "antd"
 import AnimeBox from "./AnimeBox"
+import { Box, Heading, SimpleGrid } from "@chakra-ui/react"
 
-import { Box, Heading, SimpleGrid, Grid } from "@chakra-ui/react"
 
 
 let AnimeBoxContainer = ({ anime, animeHead }) => {
@@ -16,6 +15,7 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
             </Heading>
 
 
+
             <SimpleGrid
                 w='100%'
                 columns={{
@@ -28,10 +28,10 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
                 align="center"       // Centers items vertically in the grid
                 spacing={4}
             >
+
                 {anime.map((anime) => (
                     <AnimeBox anime={anime} />
                 ))}
-
 
 
             </SimpleGrid>
