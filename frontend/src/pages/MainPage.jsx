@@ -1,4 +1,4 @@
-import { Box, VStack } from '@chakra-ui/react'
+import { Box, VStack, Text, Grid, GridItem } from '@chakra-ui/react'
 
 import { useAnimeStore } from '../product/AnimeStore.js'
 
@@ -17,20 +17,20 @@ let MainPage = () => {
         fetchMainPageData()
     }, [])
 
+    console.log(featAnime)
+
     return (
-        <Box>
-            <Box w="full" h="63vh" position='relative' pt='80px' overflow='hidden' bg='gray.800'>
-                <CarouselPage featAnime={featAnime} />
-            </Box>
+        <Box maxW={{ lg: 'container.xl', sm: '100%' }}>
 
-            <Box w="full" align='center' bg='gray.800'>
-                <VStack spacing={6}>
+            <CarouselPage featAnime={featAnime} />
 
-                    <AnimeBoxContainer anime={todayAnime} animeHead={'Top Anime Today'} />
-                    <AnimeBoxContainer anime={weeklyAnime} animeHead={'Top Anime Week'} />
-                    <AnimeBoxContainer anime={monthlyAnime} animeHead={'Top Anime Month'} />
-                </VStack>
-            </Box>
+
+            <VStack spacing={6}>
+
+                <AnimeBoxContainer anime={todayAnime} animeHead={'Top Anime Today'} />
+                <AnimeBoxContainer anime={weeklyAnime} animeHead={'Top Anime Week'} />
+                <AnimeBoxContainer anime={monthlyAnime} animeHead={'Top Anime Month'} />
+            </VStack>
         </Box >
 
     )

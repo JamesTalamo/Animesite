@@ -1,45 +1,74 @@
 import React from 'react';
 import { Carousel } from 'antd';
-import { Box, Heading, Image } from '@chakra-ui/react';
+import { Button, Box, Heading, Text, Image, VStack } from '@chakra-ui/react';
 
 import { Link } from 'react-router-dom'
 
 const CarouselPage = ({ featAnime }) => (
 
-    < Carousel autoplay >
-
-        {featAnime.map((anime) => (
-            <Link to={`/anime/${anime.id}`} key={anime.id}>
-                <Box w='full' h='500px' position='relative' title={anime.name}>
+    <Box
+        h="600px"
+        position='relative'
+        pt='80px'
+        overflow='hidden'
+    >
+        < Carousel autoplay >
+            {featAnime.map((anime) => (
+                <Box h='500px' position='relative'>
                     <Image
                         src={anime.poster}
-                        objectFit="contain"  // or "cover" for different effects
+                        objectFit="fit"
                         w="100%"
                         h="100%"
-                        bg="blackAlpha.100"  // Dark overlay for extra drama
                         alt="Anime Poster"
-                        borderRadius="lg"  // Smooth, rounded edges (you can adjust this value)
-                        boxShadow="md"  // Optional: add a subtle shadow for more depth
-                        filter="blur(1px)"  // Apply blur effect to the image
-                        opacity="0.8"
+                        opacity="0.2"
 
                     />
-                    <Heading
+                    <VStack
+                        fontSize='20px'
                         position="absolute"
-                        top="50%"  // Position the text just below the heading
-                        left="50%"
-                        transform='translate(-50%, -50%)'
-                        color="white"
-                        fontSize={{lg:'48px', md : '40px', sm :'sm'}}
-                        textAlign='center'
+                        left='5%'
+                        top='15%'
+                        align='start'
                     >
-                        {anime.name}  {/* Display a short description of the anime */}
-                    </Heading>
-                </Box>
-            </Link>
-        ))}
+                        <Text
+                            fontWeight='bold'
+                            color='#FEB2B2'
+                        >Rank #{anime.rank}</Text>
+                        <Heading
+                            color='white'
+                            w={{ lg: "400px", sm: '300px' }}
+                            align='start'
+                        >
+                            {anime.name}
+                        </Heading>
+                        <Text
+                            fontSize="18px"
+                            color="white"
+                            align="start"
+                            noOfLines={3}
+                            w={{ lg: "800px", sm: '400px' }}
 
-    </Carousel >
+                        >
+                            {anime.description}
+                        </Text>
+
+
+                        <Link to={`/anime/${anime.id}`}>
+                            <Button colorScheme='red' >
+                                Watch Now
+                            </Button>
+                        </Link>
+                    </VStack>
+                </Box>
+
+            ))}
+
+
+        </Carousel >
+    </Box>
+
+
 );
 
 

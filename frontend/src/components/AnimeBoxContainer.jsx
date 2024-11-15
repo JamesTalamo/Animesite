@@ -1,41 +1,40 @@
-import { Link } from "react-router-dom"
+import { Flex } from "antd"
 import AnimeBox from "./AnimeBox"
 
-import { Box, Heading, SimpleGrid } from "@chakra-ui/react"
+import { Box, Heading, SimpleGrid, Grid } from "@chakra-ui/react"
 
 
 let AnimeBoxContainer = ({ anime, animeHead }) => {
 
-    let handleSelect = (anime) => {
-        setSelected(anime)
-    }
-
     return (
-        <Box w={{ lg: 'container.xl', md: 'container.md', sm: 'container.sm' }} bg='gray.800'>
+        <Box w={{ lg: 'container.xl', md: 'container.md', sm: 'container.sm' }} bg='gray.600' borderRadius='lg'>
             <Heading
                 align='start'
                 color='white'
-            >{animeHead}</Heading>
+                pl='25px'
+            >{animeHead}
+            </Heading>
 
 
             <SimpleGrid
+                w='100%'
                 columns={{
                     base: 2,
                     sm: 2,
                     md: 5,
                     lg: 5,
                 }}
+                justify="center"  // Centers items horizontally in the grid
+                align="center"       // Centers items vertically in the grid
                 spacing={4}
-                mb='25px'
-
             >
                 {anime.map((anime) => (
-                    <Link to={`/anime/${anime.id}`} onClick={() => handleSelect(anime)} key={anime.id}>
-                        <AnimeBox key={anime.id} anime={anime} />
-                    </Link>
+                    <AnimeBox anime={anime} />
                 ))}
-            </SimpleGrid>
 
+
+
+            </SimpleGrid>
 
         </Box>
     )
