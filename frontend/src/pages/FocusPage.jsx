@@ -133,7 +133,7 @@ let FocusPage = () => {
 
                             {animeEpisodes.map((episode) => (
                                 <Link to={`/watch/${selectedAnime.id}/${episode.number}`} >
-                                    <Flex color='white' w='50px' height='50px' bg='gray.800' borderRadius='lg' justify='center' align='center' flexShrink='0' key={episode.id}>{episode.number}</Flex>
+                                    <Flex color='white' w='50px' height='50px' bg='gray.700' borderRadius='lg' justify='center' align='center' flexShrink='0' key={episode.id}>{episode.number}</Flex>
                                 </Link>
                             ))}
 
