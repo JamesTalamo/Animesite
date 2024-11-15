@@ -17,9 +17,10 @@ const CarouselPage = ({ featAnime }) => (
                 <Box h='500px' position='relative'>
                     <Image
                         src={anime.poster}
-                        objectFit="fit"
-                        w="100%"
-                        h="100%"
+                        objectFit="cover"
+                        objectPosition={{ lg: "center", base: "bottom" }} // Adjust position for zoom effect
+                        w={{ lg: "100%", base: '500%' }}
+                        h={{ lg: "100%", base: '100%' }}
                         alt="Anime Poster"
                         opacity="0.2"
 
