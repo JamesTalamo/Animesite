@@ -22,7 +22,7 @@ let FocusPage = () => {
 
     return (
 
-        <Box minH='100vh' bg='gray.700' align='center' pt='60px'>
+        <Box minH='100vh' bg='gray.800' align='center' pt='60px'>
 
             <Box maxW='container.xl' h={{ lg: '500px', base: '100vh' }}
                 borderRadius='xl'
