@@ -19,7 +19,7 @@ const CarouselPage = ({ featAnime }) => (
                         src={anime.poster}
                         objectFit="cover"
                         objectPosition={{ lg: "center", base: "bottom" }} // Adjust position for zoom effect
-                        w={{ lg: "100%", base: '500%' }}
+                        w='100%'
                         h={{ lg: "100%", base: '100%' }}
                         alt="Anime Poster"
                         opacity="0.2"
