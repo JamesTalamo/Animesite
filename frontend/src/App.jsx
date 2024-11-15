@@ -18,7 +18,7 @@ import WatchPage from './pages/WatchPage.jsx'
 function App() {
 
   return (
-    <Box minH="100vh" align='center'>
+    <Box minH="100vh" align='center' bg='gray.800'>
       <Navbar />
       <ScrollToTop />
 
