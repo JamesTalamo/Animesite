@@ -27,35 +27,44 @@ const CarouselPage = ({ featAnime }) => (
                     <VStack
                         fontSize='20px'
                         position="absolute"
-                        left='5%'
                         top='15%'
-                        align='start'
+                        align={{ lg: 'start', sm: 'center' }}
+                        w='100%'
+
+
+                        pl={{ lg: '5%', sm: '0' }}
+
                     >
                         <Text
                             fontWeight='bold'
                             color='#FEB2B2'
                         >Rank #{anime.rank}</Text>
-                        <Heading
+
+                        <Text
+                            fontWeight='bold'
+                            fontSize='30px'
+
                             color='white'
                             w={{ lg: "400px", sm: '300px' }}
-                            align='start'
+                            align={{ lg: 'start', sm: 'center' }}
                         >
                             {anime.name}
-                        </Heading>
+                        </Text>
                         <Text
                             fontSize="18px"
                             color="white"
-                            align="start"
                             noOfLines={3}
-                            w={{ lg: "800px", sm: '400px' }}
-
+                            maxW={{ lg: "800px", md: '400px', sm: '250px' }}
+                            align={{ lg: 'start', sm: 'center' }}
                         >
                             {anime.description}
                         </Text>
 
 
                         <Link to={`/anime/${anime.id}`}>
-                            <Button colorScheme='red' >
+                            <Button
+                                colorScheme='red'
+                            >
                                 Watch Now
                             </Button>
                         </Link>
@@ -66,7 +75,7 @@ const CarouselPage = ({ featAnime }) => (
 
 
         </Carousel >
-    </Box>
+    </Box >
 
 
 );

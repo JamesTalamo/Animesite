@@ -13,15 +13,13 @@ export const useAnimeStore = create((set) => ({
     // Focus Page States
     animeEpisodes: [],
 
-
-
     // Loading state to track loading status
     loading: false,
 
     // Fetch Calls
 
     fetchMainPageData: async () => {
-        set({ loading: true }); // Set loading to true when fetch starts
+        set({ loading: true }); 
         try {
             const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/home`);
             const data = await res.json();
@@ -30,16 +28,16 @@ export const useAnimeStore = create((set) => ({
                 todayAnime: data.data.top10Animes.today,
                 weeklyAnime: data.data.top10Animes.week,
                 monthlyAnime: data.data.top10Animes.month,
-                loading: false, // Set loading to false once data is fetched
+                loading: false, 
             });
         } catch (error) {
             console.error("Failed to fetch featured anime:", error);
-            set({ loading: false }); // Set loading to false if error occurs
+            set({ loading: false }); 
         }
     },
 
     fetchFocusPageData: async (animeId) => {
-        set({ loading: true }); // Set loading to true when fetch starts
+        set({ loading: true }); 
         try {
             let animeInfo = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}`);
             let animeInfoData = await animeInfo.json();
@@ -50,11 +48,11 @@ export const useAnimeStore = create((set) => ({
             set({
                 selectedAnime: animeInfoData.data.anime.info,
                 animeEpisodes: animeEpData.data.episodes,
-                loading: false, // Set loading to false once data is fetched
+                loading: false, 
             });
         } catch (error) {
             console.error("Failed to fetch focus page data:", error);
-            set({ loading: false }); // Set loading to false if error occurs
+            set({ loading: false }); 
         }
     },
 
@@ -66,7 +64,7 @@ export const useAnimeStore = create((set) => ({
     videoUrl: "",
     tracks: [],
     fetchWatchPageData: async (animeId, episode) => {
-        set({ loading: true }); // Set loading to true when fetch starts
+        set({ loading: true }); 
         try {
             let animeEp = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}/episodes`);
             let animeEpData = await animeEp.json();
@@ -79,16 +77,16 @@ export const useAnimeStore = create((set) => ({
                 epId: episodeId,
                 sub: animeServerData.data.sub,
                 dub: animeServerData.data.dub,
-                loading: false, // Set loading to false once data is fetched
+                loading: false, 
             });
         } catch (error) {
             console.error("Failed to fetch focus page data:", error);
-            set({ loading: false }); // Set loading to false if error occurs
+            set({ loading: false });
         }
     },
 
     fetchWatchPageDataVideo: async (epId, serverName, category) => {
-        set({ loading: true }); // Set loading to true when fetch starts
+        set({ loading: true }); 
         try {
             const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/sources?animeEpisodeId=${epId}&server=${serverName}&category=${category}`);
             const videoUrl = await res.json();
@@ -96,11 +94,11 @@ export const useAnimeStore = create((set) => ({
             set({
                 videoUrl: videoUrl.data.sources[0].url,
                 tracks: videoUrl.data.tracks,
-                loading: false, // Set loading to false once data is fetched
+                loading: false, 
             });
         } catch (error) {
             console.error("Failed to fetch focus page data:", error);
-            set({ loading: false }); // Set loading to false if error occurs
+            set({ loading: false }); 
         }
     }
 }))

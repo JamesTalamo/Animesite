@@ -1,5 +1,7 @@
 import AnimeBox from "./AnimeBox"
-import { Box, Heading, SimpleGrid } from "@chakra-ui/react"
+import { Box, Flex, Heading, SimpleGrid } from "@chakra-ui/react"
+
+import { Carousel } from "antd";
 
 
 
