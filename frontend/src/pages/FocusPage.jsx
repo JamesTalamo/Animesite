@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Image, Text, VStack, Flex } from "@chakra-ui/react"
+import { Box, Image, Text, VStack, Flex } from "@chakra-ui/react"
 import { useEffect } from "react"
 
 import { Link, useParams } from "react-router-dom";
@@ -8,7 +8,7 @@ import LoadingPage from "../components/LoadingPage";
 
 let FocusPage = () => {
 
-    const { selectedAnime, animeEpisodes, fetchFocusPageData, loading } = useAnimeStore()
+    const { selectedAnime, animeEpisodes, fetchFocusPageData, loading, moreInfoAnime } = useAnimeStore()
     const { animeId } = useParams();
 
     useEffect(() => {
@@ -18,12 +18,16 @@ let FocusPage = () => {
     if (loading) {
         return <LoadingPage />
     }
-    console.log(selectedAnime)
+    console.log(moreInfoAnime)
 
     return (
+
         <Box minH='100vh' bg='gray.700' align='center' pt='60px'>
 
-            <Box maxW='container.xl' h={{ lg: '500px', sm: '100vh' }} borderRadius='xl' overflow='hidden' position='relative'>
+            <Box maxW='container.xl' h={{ lg: '500px', base: '100vh' }}
+                borderRadius='xl'
+                overflow='hidden'
+                position='relative'>
                 <Flex
                     w='100%'
                     height='100%'
@@ -47,8 +51,6 @@ let FocusPage = () => {
                         opacity="0.1"
                     />
 
-
-                    {/* Content */}
                     <Box>
                         <Image
                             src={selectedAnime.poster}
@@ -72,32 +74,73 @@ let FocusPage = () => {
                             <Text
                                 color='white'
                                 w='400px'
-                                noOfLines={5}>{selectedAnime.description}</Text>
+                                noOfLines={5}
+                                align='center'
+                            >
+                                {selectedAnime.description}</Text>
                         </VStack>
                     </Box>
                 </Flex>
             </Box>
 
-            <Container maxW='container.xl'>
-                <Heading as='h5' align='center' bg='gray.900' color='white'>
-                    Episodes
-                </Heading>
-                <VStack spacing='10px'>
-                    {animeEpisodes.map((episode) => (
-                        <Box w="100%" h="50px" bg="gray.600" key={episode.episodeId}>
-                            <Link to={`/watch/${selectedAnime.id}/${episode.number}`} >
-                                <Flex justify="space-between" align="center" w="100%" h="100%" spacing='50px' pl={{ lg: '100px', sm: '50px' }} pr={{ lg: '100px', sm: '50px' }}>
-                                    <Text textAlign="center" fontWeight='bold' color='white'>{episode.number}</Text>
-                                    <Text textAlign="center" fontWeight='bold' fontSize={{ lg: "md", sm: 'sm' }} color='white'>{episode.title}</Text>
-                                </Flex>
-                            </Link>
+            <Box maxW='container.xl' mt='10px' borderRadius='lg' overflow='hidden'>
+                <Flex w='100%' align='center' justify='space-between' flexDirection={{ lg: 'row', sm: 'column' }}>
+                    <Box
+                        p='10px'
+                        border='1px rgba(255, 255, 255, 0.16) solid'
+                        h='200px'
+                        w={{ lg: '800px', base: '100%' }}
+                        borderRadius='lg'>
+                        <Text align='start' pl='2%' fontWeight='bold' fontSize='xl' color='white'>Details</Text>
+
+                        <VStack align='start' p='2%'>
+                            <Text fontWeight="bold" color='white'>
+                                Name: <Text as="span" fontWeight="normal" color='white'>{selectedAnime.name}</Text>
+                            </Text>
+                            <Text fontWeight="bold" color='white'>
+                                Japanese Name: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.japanese}</Text>
+                            </Text>
+                            <Text fontWeight="bold" color='white'>
+                                Duration: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.duration}</Text>
+                            </Text>
+                            <Text fontWeight="bold" color='white'>
+                                Status: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.status}</Text>
+                            </Text>
+
+
+                        </VStack>
+                    </Box>
+
+                    <Box
+                        p='10px'
+                        h='200px'
+                        w={{ lg: '400px', base: '100%' }}
+                        borderRadius='lg'
+                        border='1px rgba(255, 255, 255, 0.16) solid'
+                        overflow='auto'
+                    >
+                        <Text align='start' pl='2%' fontWeight='bold' fontSize='xl' color='white'>Episodes</Text>
+
+                        <Box
+                            display="flex"
+                            flexDirection="row"
+                            align='start'
+                            justify='start'
+                            overflowY="auto"
+                            flexWrap="wrap"
+                            gap="3px"
+                        >
+
+                            {animeEpisodes.map((episode) => (
+                                <Link to={`/watch/${selectedAnime.id}/${episode.number}`} >
+                                    <Flex color='white' w='50px' height='50px' bg='gray.800' borderRadius='lg' justify='center' align='center' flexShrink='0' key={episode.id}>{episode.number}</Flex>
+                                </Link>
+                            ))}
+
                         </Box>
-
-                    ))}
-
-
-                </VStack>
-            </Container>
+                    </Box>
+                </Flex>
+            </Box>
         </Box >
     )
 }

@@ -6,7 +6,6 @@ let AnimeBox = ({ anime }) => {
     return (
         <Link to={`/anime/${anime.id}`} >
             <Box
-                bg='yellow' s
                 shadow={'lg'}
                 rounded={'lg'}
                 overflow={'hidden'}
