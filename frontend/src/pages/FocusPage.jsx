@@ -65,15 +65,17 @@ let FocusPage = () => {
                         <VStack>
 
                             <Text
+                                bg='red'
                                 align='center'
-                                w='500px'
+                                w={{ lg: '500px', base: '100%' }}
                                 fontSize='40px'
                                 fontWeight='bold'
                                 color='white'
                             >{selectedAnime.name}</Text>
                             <Text
+                                bg='red'
                                 color='white'
-                                w='400px'
+                                w={{ lg: '400px', base: '100%' }}
                                 noOfLines={5}
                                 align='center'
                             >
@@ -84,7 +86,7 @@ let FocusPage = () => {
             </Box>
 
             <Box maxW='container.xl' mt='10px' borderRadius='lg' overflow='hidden'>
-                <Flex w='100%' align='center' justify='space-between' flexDirection={{ lg: 'row', sm: 'column' }}>
+                <Flex w='100%' align='center' justify='space-between' flexDirection={{ lg: 'row', base: 'column' }}>
                     <Box
                         p='10px'
                         border='1px rgba(255, 255, 255, 0.16) solid'
