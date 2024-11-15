@@ -66,14 +66,14 @@ let FocusPage = () => {
 
                             <Text    
                                 align='center'
-                                w={{ lg: '500px', base: '100%' }}
+                                w={{ lg: '500px', base: '95%' }}
                                 fontSize='40px'
                                 fontWeight='bold'
                                 color='white'
                             >{selectedAnime.name}</Text>
                             <Text     
                                 color='white'
-                                w={{ lg: '400px', base: '100%' }}
+                                w={{ lg: '400px', base: '95%' }}
                                 noOfLines={5}
                                 align='center'
                             >
