@@ -6,6 +6,7 @@ import { useAnimeStore } from "../product/AnimeStore";
 
 import { useParams } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import LoadingPage from "../components/LoadingPage";
 
 const WatchPage = () => {
     const { animeId, episode } = useParams();
@@ -19,6 +20,8 @@ const WatchPage = () => {
     useEffect(() => {
         fetchWatchPageData(animeId, episode)
     }, [])
+
+
 
     let videoUrlFetch = (epId, serverName, category) => {
         fetchWatchPageDataVideo(epId, serverName, category)
@@ -39,9 +42,11 @@ const WatchPage = () => {
             });
 
             // Add remote text tracks and set English as default
-            {tracks.map((track) => {
-                {track.label === 'English' ? console.log(track) : 'fuck'}
-            })}
+            {
+                tracks.map((track) => {
+                    { track.label === 'English' ? console.log(track) : 'fuck' }
+                })
+            }
 
             tracks.forEach((track) => {
                 playerRef.current.addRemoteTextTrack(

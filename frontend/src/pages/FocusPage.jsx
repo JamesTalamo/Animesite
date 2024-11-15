@@ -4,22 +4,26 @@ import { useEffect } from "react"
 import { Link, useParams } from "react-router-dom";
 
 import { useAnimeStore } from "../product/AnimeStore";
+import LoadingPage from "../components/LoadingPage";
 
 let FocusPage = () => {
 
-    const { selectedAnime, animeEpisodes, fetchFocusPageData } = useAnimeStore()
+    const { selectedAnime, animeEpisodes, fetchFocusPageData, loading } = useAnimeStore()
     const { animeId } = useParams();
 
     useEffect(() => {
         fetchFocusPageData(animeId)
     }, [])
 
+    if (loading) {
+        return <LoadingPage />
+    }
     console.log(selectedAnime)
 
     return (
         <Box minH='100vh' bg='gray.700' align='center' pt='60px'>
 
-            <Box maxW='container.xl' h={{lg:'500px', sm:'100vh'}} borderRadius='xl' overflow='hidden' position='relative'>
+            <Box maxW='container.xl' h={{ lg: '500px', sm: '100vh' }} borderRadius='xl' overflow='hidden' position='relative'>
                 <Flex
                     w='100%'
                     height='100%'
@@ -57,10 +61,7 @@ let FocusPage = () => {
 
                     <Box align='start'>
                         <VStack>
-                            {/* <Text
-                                fontWeight='bold'
-                                color='#FEB2B2'
-                            >{selectedAnime.stats.rating}</Text> */}
+
                             <Text
                                 align='center'
                                 w='500px'
