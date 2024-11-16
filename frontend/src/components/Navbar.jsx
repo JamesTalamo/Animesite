@@ -28,7 +28,7 @@ const Navbar = () => {
                         </Text>
                     </Link>
                     <Text>
-                        Placeholder to
+                        .
                     </Text>
                 </Flex>
             </Box>

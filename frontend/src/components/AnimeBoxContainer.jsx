@@ -1,9 +1,12 @@
 import AnimeBox from "./AnimeBox"
-import { Box, Text } from "@chakra-ui/react"
+import { Box, Text, Button } from "@chakra-ui/react"
+
+import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 
 
 var settings = {
@@ -13,6 +16,8 @@ var settings = {
     slidesToShow: 5,
     slidesToScroll: 5,
     initialSlide: 0,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     responsive: [
         {
             breakpoint: 1024,
@@ -42,10 +47,60 @@ var settings = {
 };
 
 
+function SampleNextArrow(props) {
+    const { onClick } = props;
+    return (
+        <Button
+            w="40px"
+            h="40px"
+            cursor="pointer"
+            position="absolute"
+            top="-25%"
+            right={{lg:"1%", base :'0%'}}
+            bg="gray.700"
+            borderRadius="lg"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            onClick={onClick}
+        >
+            <ArrowForwardIcon />
+        </Button>
+    );
+}
+
+function SamplePrevArrow(props) {
+    const { onClick } = props;
+    return (
+        <Button
+            w="40px"
+            h="40px"
+            cursor="pointer"
+            position="absolute"
+            top='-25%'
+            right={{lg:"10%", base :'15%'}}
+            bg="gray.700"
+            borderRadius="lg"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            onClick={onClick}
+        ><ArrowBackIcon /></Button>
+    );
+}
+
+
 let AnimeBoxContainer = ({ anime, animeHead }) => {
 
     return (
-        <Box w={{ lg: '70%', md: '90%', base: '100%' }} pb='15px' bg='gray.800' borderRadius='lg' border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }} p='25px'>
+        <Box
+            w={{ lg: '70%', md: '90%', base: '100%' }}
+            pb='15px'
+            bg='gray.800'
+            borderRadius='lg'
+            border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
+            p='25px'
+            position='relative'>
             <Text
                 fontWeight='bold'
                 fontSize='xl'
@@ -56,13 +111,13 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
             >{animeHead}
             </Text>
 
-            <div className="slider-container">
-                <Slider {...settings}>
-                    {anime.map((anime) => (
-                        <AnimeBox anime={anime} />
-                    ))}
-                </Slider>
-            </div>
+
+            <Slider {...settings} style={{ position: 'relative' }}>
+                {anime.map((anime) => (
+                    <AnimeBox anime={anime} />
+                ))}
+            </Slider>
+
         </Box>
     )
 }
