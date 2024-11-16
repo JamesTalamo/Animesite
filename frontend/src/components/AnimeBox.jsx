@@ -24,7 +24,7 @@ const AnimeBox = ({ anime }) => {
                 role="group" // Enables group-based hover targeting
                 _hover={{
                     backgroundColor: '#2D3748',
-                    border: 'rgba(255, 255, 255, 0.16) solid'
+                    border: '1px rgba(255, 255, 255, 0.16) solid'
                 }}
 
 
