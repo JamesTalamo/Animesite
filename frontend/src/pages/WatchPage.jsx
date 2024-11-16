@@ -6,7 +6,6 @@ import { useAnimeStore } from "../product/AnimeStore";
 
 import { useParams } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import LoadingPage from "../components/LoadingPage";
 
 const WatchPage = () => {
     const { animeId, episode } = useParams();

@@ -87,7 +87,7 @@ let FocusPage = () => {
                 <Flex w='100%' align='center' justify='space-between' flexDirection={{ lg: 'row', base: 'column' }}>
                     <Box
                         p='10px'
-                        border='1px rgba(255, 255, 255, 0.16) solid'
+                        border={{lg:'1px rgba(255, 255, 255, 0.16) solid', base:'none'}}
                         h='200px'
                         w={{ lg: '800px', base: '100%' }}
                         borderRadius='lg'>
@@ -116,7 +116,7 @@ let FocusPage = () => {
                         h='200px'
                         w={{ lg: '400px', base: '100%' }}
                         borderRadius='lg'
-                        border='1px rgba(255, 255, 255, 0.16) solid'
+                        border={{lg:'1px rgba(255, 255, 255, 0.16) solid', base:'none'}}
                         overflow='auto'
                     >
                         <Text align='start' pl='2%' fontWeight='bold' fontSize='xl' color='white'>Episodes</Text>
