@@ -38,7 +38,7 @@ const CarouselPage = ({ featAnime }) => (
                     >
                         <Text
                             fontWeight='bold'
-                            color='#FEB2B2'
+                            color='rgb(244 63 94)'
                         >Rank #{anime.rank}</Text>
 
                         <Text
@@ -64,6 +64,7 @@ const CarouselPage = ({ featAnime }) => (
 
                         <Link to={`/anime/${anime.id}`}>
                             <Button
+                                color='rgb(244 63 94)'
                                 colorScheme='red'
                             >
                                 Watch Now

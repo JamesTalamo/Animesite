@@ -46,8 +46,10 @@ export const useAnimeStore = create((set) => ({
             let animeEp = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}/episodes`);
             let animeEpData = await animeEp.json();
 
+            console.log('Im being called')
+
             set({
-                moreInfoAnime :animeInfoData.data.anime.moreInfo,
+                moreInfoAnime: animeInfoData.data.anime.moreInfo,
                 selectedAnime: animeInfoData.data.anime.info,
                 animeEpisodes: animeEpData.data.episodes,
                 loading: false,

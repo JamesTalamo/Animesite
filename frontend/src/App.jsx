@@ -13,10 +13,7 @@ import MainPage from './pages/MainPage.jsx'
 import FocusPage from './pages/FocusPage.jsx'
 import WatchPage from './pages/WatchPage.jsx'
 
-
-
 function App() {
-
   return (
     <Box minH="100vh" align='center' bg='gray.800'>
       <Navbar />

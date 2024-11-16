@@ -56,8 +56,9 @@ function SampleNextArrow(props) {
             cursor="pointer"
             position="absolute"
             top="-25%"
-            right={{lg:"1%", base :'0%'}}
-            bg="gray.700"
+            right={{ lg: "1%", base: '0%' }}
+            border='1px rgba(255, 255, 255, 0.16) solid'
+            bg='gray.800'
             borderRadius="lg"
             display="flex"
             alignItems="center"
@@ -78,8 +79,9 @@ function SamplePrevArrow(props) {
             cursor="pointer"
             position="absolute"
             top='-25%'
-            right={{lg:"10%", base :'15%'}}
-            bg="gray.700"
+            right={{ lg: "10%", base: '10%' }}
+            border='1px rgba(255, 255, 255, 0.16) solid'
+            bg='gray.800'
             borderRadius="lg"
             display="flex"
             alignItems="center"
@@ -95,11 +97,10 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
     return (
         <Box
             w={{ lg: '70%', md: '90%', base: '100%' }}
-            pb='15px'
             bg='gray.800'
             borderRadius='lg'
             border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
-            p='25px'
+            p='35px'
             position='relative'>
             <Text
                 fontWeight='bold'
@@ -108,6 +109,8 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
                 color='white'
                 pl='25px'
                 b='red'
+                position='relative'
+                top='-15px'
             >{animeHead}
             </Text>
 
