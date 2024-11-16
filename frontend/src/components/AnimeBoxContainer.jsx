@@ -1,5 +1,5 @@
 import AnimeBox from "./AnimeBox"
-import { Box, Text} from "@chakra-ui/react"
+import { Box, Text } from "@chakra-ui/react"
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -34,8 +34,8 @@ var settings = {
         {
             breakpoint: 480,
             settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
+                slidesToShow: 2,
+                slidesToScroll: 2
             }
         }
     ]
@@ -45,7 +45,7 @@ var settings = {
 let AnimeBoxContainer = ({ anime, animeHead }) => {
 
     return (
-        <Box w={{ lg: '70%',md:'90%', base: '100%' }} pb='15px' bg='gray.800' borderRadius='lg' border={{lg:'1px rgba(255, 255, 255, 0.16) solid', base:'none'}} p='25px'>
+        <Box w={{ lg: '70%', md: '90%', base: '100%' }} pb='15px' bg='gray.800' borderRadius='lg' border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }} p='25px'>
             <Text
                 fontWeight='bold'
                 fontSize='xl'
@@ -59,7 +59,7 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
             <div className="slider-container">
                 <Slider {...settings}>
                     {anime.map((anime) => (
-                        <AnimeBox anime={anime}/>
+                        <AnimeBox anime={anime} />
                     ))}
                 </Slider>
             </div>
@@ -68,3 +68,4 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
 }
 
 export default AnimeBoxContainer
+

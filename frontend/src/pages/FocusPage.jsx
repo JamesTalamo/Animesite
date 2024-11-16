@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { useAnimeStore } from "../product/AnimeStore";
 import LoadingPage from "../components/LoadingPage";
 
+
 let FocusPage = () => {
 
     const { selectedAnime, animeEpisodes, fetchFocusPageData, loading, moreInfoAnime } = useAnimeStore()
@@ -141,6 +142,7 @@ let FocusPage = () => {
                     </Box>
                 </Flex>
             </Box>
+
         </Box >
     )
 }
