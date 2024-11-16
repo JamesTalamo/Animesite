@@ -9,7 +9,7 @@ const CarouselPage = ({ featAnime }) => (
     <Box
         h="600px"
         position='relative'
-        pt='80px'
+        pt='70px'
         overflow='hidden'
     >
         < Carousel autoplay >
@@ -38,7 +38,7 @@ const CarouselPage = ({ featAnime }) => (
                     >
                         <Text
                             fontWeight='bold'
-                            color='rgb(244 63 94)'
+                            color='#E53E3E'
                         >Rank #{anime.rank}</Text>
 
                         <Text

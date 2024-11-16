@@ -24,7 +24,7 @@ const Navbar = () => {
                             color='white'
                             fontWeight='bold'
                             fontSize={{ base: '30px', lg: '40px' }}
-                        >Anime WEEB
+                        >Anime <Text as='span' color='#E53E3E'>WEEB</Text>
                         </Text>
                     </Link>
                     <Text>
