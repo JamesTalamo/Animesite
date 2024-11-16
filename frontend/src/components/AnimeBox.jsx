@@ -9,10 +9,6 @@ const AnimeBox = ({ anime }) => {
     return (
         <Link to={`/anime/${anime.id}`}>
             <Box
-                onClick={() => {
-                    console.log("Redirect triggered", anime.id);
-                    // Simulate redirection for testing
-                }}
                 p="25px"
                 shadow="lg"
                 rounded="lg"
@@ -21,7 +17,7 @@ const AnimeBox = ({ anime }) => {
                 w="150px"
                 h="230px"
                 overflow="hidden"
-                role="group" // Enables group-based hover targeting
+                role="group" 
                 _hover={{
                     backgroundColor: '#2D3748',
                     border: '1px rgba(255, 255, 255, 0.16) solid'
@@ -39,7 +35,7 @@ const AnimeBox = ({ anime }) => {
                     position="relative"
                     transition="all 0.3s"
                     _groupHover={{
-                        transform: "scale(1.1)", // Zoom the image on box hover
+                        transform: "scale(1.1)", 
 
                     }}
                 />

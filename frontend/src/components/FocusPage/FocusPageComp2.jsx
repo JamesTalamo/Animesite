@@ -9,7 +9,7 @@ let FocusPageComp2 = ({ selectedAnime, moreInfoAnime, animeEpisodes }) => {
                     p='10px'
                     border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
                     h='200px'
-                    w={{ lg: '800px', base: '100%' }}
+                    w={{ lg: '70%', base: '100%' }}
                     borderRadius='lg'>
                     <Text align='start' pl='2%' fontWeight='bold' fontSize='xl' color='white'>Details :</Text>
 
@@ -34,7 +34,7 @@ let FocusPageComp2 = ({ selectedAnime, moreInfoAnime, animeEpisodes }) => {
                 <Box
                     p='10px'
                     h='200px'
-                    w={{ lg: '400px', base: '100%' }}
+                    w={{ lg: '29%', base: '100%' }}
                     borderRadius='lg'
                     border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
                     overflow='auto'
