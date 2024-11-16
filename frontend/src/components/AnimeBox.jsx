@@ -26,12 +26,12 @@ const AnimeBox = ({ anime }) => {
                     backgroundColor: '#2D3748',
                     border: '1px rgba(255, 255, 255, 0.16) solid'
                 }}
-
+                title={anime.name}
 
             >
                 <Image
                     borderRadius='lg'
-                    title={anime.name}
+
                     src={anime.poster}
                     objectFit="cover"
                     w="100%"
