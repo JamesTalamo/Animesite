@@ -10,7 +10,6 @@ let AnimeBox = ({ anime }) => {
                 rounded={'lg'}
                 overflow={'hidden'}
                 transition={'all 0.3s'}
-                _hover={{ transform: 'translateY(-5px)', shadow: '1px' }}
                 cursor='pointer'
                 w='150px'
                 h='200px'
@@ -22,6 +21,11 @@ let AnimeBox = ({ anime }) => {
                     w='100%'
                     h='100%'
                     position='relative'
+                    transition={'all 0.3s'}
+                    _hover={{
+                        transform: 'scale(1.1)',
+                        shadow: 'xl'
+                    }}
                 />
             </Box>
         </Link>

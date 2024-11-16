@@ -1,43 +1,68 @@
 import AnimeBox from "./AnimeBox"
-import { Box, Flex, Heading, SimpleGrid } from "@chakra-ui/react"
+import { Box, Text} from "@chakra-ui/react"
 
-import { Carousel } from "antd";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
+
+var settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    initialSlide: 0,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: false
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                initialSlide: 2
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+    ]
+};
 
 
 let AnimeBoxContainer = ({ anime, animeHead }) => {
 
     return (
-        <Box w={{ lg: 'container.xl', md: 'container.md', sm: 'container.sm' }} pb='15px' bg='gray.800' borderRadius='lg' border='1px rgba(255, 255, 255, 0.16) solid'>
-            <Heading
+        <Box w={{ lg: '70%',md:'90%', base: '100%' }} pb='15px' bg='gray.800' borderRadius='lg' border={{lg:'1px rgba(255, 255, 255, 0.16) solid', base:'none'}} p='25px'>
+            <Text
+                fontWeight='bold'
+                fontSize='xl'
                 align='start'
                 color='white'
                 pl='25px'
+                b='red'
             >{animeHead}
-            </Heading>
+            </Text>
 
-
-
-            <SimpleGrid
-                w='100%'
-                columns={{
-                    base: 2,
-                    sm: 2,
-                    md: 5,
-                    lg: 5,
-                }}
-                justify="center"  // Centers items horizontally in the grid
-                align="center"       // Centers items vertically in the grid
-                spacing={4}
-            >
-
-                {anime.map((anime) => (
-                    <AnimeBox anime={anime} />
-                ))}
-
-
-            </SimpleGrid>
-
+            <div className="slider-container">
+                <Slider {...settings}>
+                    {anime.map((anime) => (
+                        <AnimeBox anime={anime}/>
+                    ))}
+                </Slider>
+            </div>
         </Box>
     )
 }

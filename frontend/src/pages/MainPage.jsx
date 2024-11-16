@@ -9,7 +9,7 @@ let MainPage = () => {
     let { featAnime, todayAnime, weeklyAnime, monthlyAnime, fetchMainPageData, loading } = useAnimeStore();
 
     useEffect(() => {
-        fetchMainPageData(); 
+        fetchMainPageData();
     }, []);
 
 
@@ -18,13 +18,15 @@ let MainPage = () => {
     }
 
     return (
-        <Box maxW={{ lg: 'container.xl', sm: '100%' }}>
+        <Box maxW={{ lg: 'container.xl', sm: '100%' }} >
             <CarouselPage featAnime={featAnime} />
-            <VStack spacing={6}>
+
+            <VStack spacing={6} align={{ lg: 'start', base: 'center' }}>
                 <AnimeBoxContainer anime={todayAnime} animeHead={'Top Anime Today'} />
                 <AnimeBoxContainer anime={weeklyAnime} animeHead={'Top Anime Week'} />
                 <AnimeBoxContainer anime={monthlyAnime} animeHead={'Top Anime Month'} />
             </VStack>
+
         </Box>
     );
 };
