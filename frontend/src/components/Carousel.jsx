@@ -64,7 +64,7 @@ const CarouselPage = ({ featAnime }) => (
 
                         <Link to={`/anime/${anime.id}`}>
                             <Button
-                                color='rgb(244 63 94)'
+                                color='white'
                                 colorScheme='red'
                             >
                                 Watch Now

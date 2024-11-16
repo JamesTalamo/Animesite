@@ -51,6 +51,7 @@ function SampleNextArrow(props) {
     const { onClick } = props;
     return (
         <Button
+            color='white'
             w="40px"
             h="40px"
             cursor="pointer"
@@ -74,12 +75,13 @@ function SamplePrevArrow(props) {
     const { onClick } = props;
     return (
         <Button
+            color='white'
             w="40px"
             h="40px"
             cursor="pointer"
             position="absolute"
             top='-25%'
-            right={{ lg: "10%", base: '10%' }}
+            right={{ lg: "10%", base: '20%' }}
             border='1px rgba(255, 255, 255, 0.16) solid'
             bg='gray.800'
             borderRadius="lg"
@@ -107,7 +109,7 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
                 fontSize='xl'
                 align='start'
                 color='white'
-                pl='25px'
+                
                 b='red'
                 position='relative'
                 top='-15px'
