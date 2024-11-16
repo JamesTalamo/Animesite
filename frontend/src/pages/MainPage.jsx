@@ -1,7 +1,7 @@
 import { Box, VStack } from '@chakra-ui/react';
 import { useAnimeStore } from '../product/AnimeStore.js';
-import AnimeBoxContainer from '../components/AnimeBoxContainer';
-import CarouselPage from '../components/Carousel.jsx';
+import AnimeBoxContainer from '../components/MainPage/AnimeBoxContainer.jsx';
+import CarouselPage from '../components/MainPage/Carousel.jsx'
 import LoadingPage from '../components/LoadingPage.jsx';
 import { useEffect } from 'react';
 

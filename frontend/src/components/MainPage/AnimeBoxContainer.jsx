@@ -1,4 +1,4 @@
-import AnimeBox from "./AnimeBox"
+import AnimeBox from "../AnimeBox"
 import { Box, Text, Button } from "@chakra-ui/react"
 
 import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
@@ -56,7 +56,7 @@ function SampleNextArrow(props) {
             h="40px"
             cursor="pointer"
             position="absolute"
-            top="-25%"
+            top="-20%"
             right={{ lg: "1%", base: '0%' }}
             border='1px rgba(255, 255, 255, 0.16) solid'
             bg='gray.800'
@@ -80,7 +80,7 @@ function SamplePrevArrow(props) {
             h="40px"
             cursor="pointer"
             position="absolute"
-            top='-25%'
+            top='-20%'
             right={{ lg: "10%", base: '20%' }}
             border='1px rgba(255, 255, 255, 0.16) solid'
             bg='gray.800'
@@ -109,7 +109,7 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
                 fontSize='xl'
                 align='start'
                 color='white'
-                
+
                 b='red'
                 position='relative'
                 top='-15px'
@@ -119,7 +119,7 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
 
             <Slider {...settings} style={{ position: 'relative' }}>
                 {anime.map((anime) => (
-                    <AnimeBox anime={anime} />
+                    <AnimeBox anime={anime} key={anime.id}/>
                 ))}
             </Slider>
 

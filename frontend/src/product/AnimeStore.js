@@ -13,6 +13,8 @@ export const useAnimeStore = create((set) => ({
     // Focus Page States
     animeEpisodes: [],
     moreInfoAnime: [],
+    recoAnime: [],
+    relatedAnime: [],
 
     // Loading state to track loading status
     loading: false,
@@ -24,6 +26,8 @@ export const useAnimeStore = create((set) => ({
         try {
             const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/home`);
             const data = await res.json();
+
+            // console.log(data.data)
             set({
                 featAnime: data.data.spotlightAnimes,
                 todayAnime: data.data.top10Animes.today,
@@ -46,9 +50,11 @@ export const useAnimeStore = create((set) => ({
             let animeEp = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}/episodes`);
             let animeEpData = await animeEp.json();
 
-            console.log('Im being called')
+            console.log(animeInfoData.data)
 
             set({
+                recoAnime: animeInfoData.data.recommendedAnimes,
+                relatedAnime: animeInfoData.data.relatedAnimes,
                 moreInfoAnime: animeInfoData.data.anime.moreInfo,
                 selectedAnime: animeInfoData.data.anime.info,
                 animeEpisodes: animeEpData.data.episodes,

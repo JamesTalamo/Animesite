@@ -14,7 +14,7 @@ const CarouselPage = ({ featAnime }) => (
     >
         < Carousel autoplay >
             {featAnime.map((anime) => (
-                <Box h='500px' position='relative'>
+                <Box h='500px' position='relative' key={anime.id}>
                     <Image
                         src={anime.poster}
                         objectFit="cover"
