@@ -37,7 +37,7 @@ let RightSideCards = ({ anime }) => {
 
 
                 <Box p='5%'>
-                    <Text fontWeight='bold' align='start'>{anime.name}</Text>
+                    <Text fontWeight='bold' align='start' color='white'>{anime.name}</Text>
                 </Box>
             </Box>
         </Link>

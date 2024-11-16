@@ -34,10 +34,10 @@ let RightSideComp = ({ todayAnime, weeklyAnime, monthlyAnime }) => {
                         fontWeight="bold"
                         h="50px"
                         w="100px"
-                        borderTopLeftRadius="lg"
-                        borderBottomLeftRadius="xl"
+
                         onClick={today}
-                        variant="outline"
+                        bg='gray.800'
+                        border='1px rgba(255, 255, 255, 0.16) solid'
                         _hover={{
                             backgroundColor: "rgba(229, 62, 62, 0.2)",
                             color: "#E53E3E",
@@ -50,13 +50,15 @@ let RightSideComp = ({ todayAnime, weeklyAnime, monthlyAnime }) => {
                     >
                         Today
                     </Button>
+
                     <Button
                         color="white"
                         fontWeight="bold"
                         h="50px"
                         w="100px"
                         onClick={week}
-                        variant="outline"
+                        bg='gray.800'
+                        border='1px rgba(255, 255, 255, 0.16) solid'
                         _hover={{
                             backgroundColor: "rgba(229, 62, 62, 0.2)",
                             color: "#E53E3E",
@@ -68,15 +70,16 @@ let RightSideComp = ({ todayAnime, weeklyAnime, monthlyAnime }) => {
                     >
                         Week
                     </Button>
+
                     <Button
                         color="white"
                         fontWeight="bold"
                         h="50px"
                         w="100px"
-                        borderTopRightRadius="lg"
-                        borderBottomRightRadius="xl"
+
                         onClick={month}
-                        variant="outline"
+                        bg='gray.800'
+                        border='1px rgba(255, 255, 255, 0.16) solid'
                         _hover={{
                             backgroundColor: "rgba(229, 62, 62, 0.2)",
                             color: "#E53E3E",
