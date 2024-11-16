@@ -1,4 +1,4 @@
-import { Spinner, Flex, Heading } from "@chakra-ui/react";
+import { Spinner, Flex, Heading, Text } from "@chakra-ui/react";
 
 let LoadingPage = () => {
     return (
@@ -14,7 +14,7 @@ let LoadingPage = () => {
             <Heading
                 color='white'
             >
-                Anime WEEB
+                Anime <Text as='span' color='#E53E3E'>WEEB</Text>
             </Heading>
             <Spinner color="red.500" size="xl" />
         </Flex>
