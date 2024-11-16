@@ -60,6 +60,10 @@ function SampleNextArrow(props) {
             right={{ lg: "1%", base: '0%' }}
             border='1px rgba(255, 255, 255, 0.16) solid'
             bg='gray.800'
+            _hover={{
+                backgroundColor: "rgba(229, 62, 62, 0.2)",
+                color: "#E53E3E",
+            }}
             borderRadius="lg"
             display="flex"
             alignItems="center"
@@ -84,6 +88,10 @@ function SamplePrevArrow(props) {
             right={{ lg: "10%", base: '20%' }}
             border='1px rgba(255, 255, 255, 0.16) solid'
             bg='gray.800'
+            _hover={{
+                backgroundColor: "rgba(229, 62, 62, 0.2)",
+                color: "#E53E3E",
+            }}
             borderRadius="lg"
             display="flex"
             alignItems="center"
