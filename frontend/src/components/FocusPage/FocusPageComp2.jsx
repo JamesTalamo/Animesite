@@ -1,4 +1,4 @@
-import { Box, Flex, Text, VStack } from "@chakra-ui/react"
+import { Box, Flex, Text, VStack, Button } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 
 let FocusPageComp2 = ({ selectedAnime, moreInfoAnime, animeEpisodes }) => {
@@ -49,13 +49,27 @@ let FocusPageComp2 = ({ selectedAnime, moreInfoAnime, animeEpisodes }) => {
                         overflowY="auto"
                         flexWrap="wrap"
                         gap="3px"
-                        border={{base :'1px rgba(255, 255, 255, 0.16) solid', lg:'none'}}
+                        border={{ base: '1px rgba(255, 255, 255, 0.16) solid', lg: 'none' }}
                         borderRadius='lg'
                     >
 
                         {animeEpisodes.map((episode) => (
                             <Link to={`/watch/${selectedAnime.id}/${episode.number}`} key={episode.number} >
-                                <Flex color='white' w='50px' height='50px' bg='gray.700' borderRadius='lg' justify='center' align='center' flexShrink='0' fontWeight='bold'>{episode.number}</Flex>
+                                <Button
+                                    color='white'
+                                    w='50px'
+                                    height='50px'
+                                    bg='gray.700'
+                                    borderRadius='lg'
+                                    justify='center'
+                                    align='center'
+                                    flexShrink='0'
+                                    fontWeight='bold'
+                                    _hover={{
+                                        backgroundColor: "rgba(229, 62, 62, 0.2)",
+                                        color: "#E53E3E",
+                                    }}
+                                >{episode.number}</Button>
                             </Link>
                         ))}
 
