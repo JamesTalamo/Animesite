@@ -49,6 +49,8 @@ let FocusPageComp2 = ({ selectedAnime, moreInfoAnime, animeEpisodes }) => {
                         overflowY="auto"
                         flexWrap="wrap"
                         gap="3px"
+                        border={{base :'1px rgba(255, 255, 255, 0.16) solid', lg:'none'}}
+                        borderRadius='lg'
                     >
 
                         {animeEpisodes.map((episode) => (
