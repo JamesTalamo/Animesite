@@ -51,7 +51,7 @@ function SampleNextArrow(props) {
     const { onClick } = props;
     return (
         <Button
-            color='white'
+            color='#E53E3E'
             w="40px"
             h="40px"
             cursor="pointer"
@@ -75,7 +75,7 @@ function SamplePrevArrow(props) {
     const { onClick } = props;
     return (
         <Button
-            color='white'
+            color='#E53E3E'
             w="40px"
             h="40px"
             cursor="pointer"
