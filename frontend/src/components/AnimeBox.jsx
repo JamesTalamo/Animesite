@@ -50,6 +50,7 @@ const AnimeBox = ({ anime }) => {
                     fontSize="sm"
                     isTruncated
                     title={anime.name}
+                    color='white'
                 >
                     {anime.name}
                 </Text>
