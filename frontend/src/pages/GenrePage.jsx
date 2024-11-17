@@ -8,7 +8,7 @@ import { useEffect } from "react"
 import LoadingPage from "../components/LoadingPage.jsx"
 import RightSideCompGenre from "../components/GenrePage/RightSideCompGenre.jsx"
 import LeftSideCompGenre from "../components/GenrePage/LeftSideCompGenre.jsx"
-import SmallGenreBox from "../components/GenrePage/smallGenreBox.jsx"
+import SmallGenreBox from "../components/GenrePage/SmallGenreBox.jsx"
 
 
 
