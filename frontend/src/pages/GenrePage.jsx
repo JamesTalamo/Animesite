@@ -7,6 +7,7 @@ import { useEffect } from "react"
 import RightSideCompGenre from "../components/GenrePage/RightSideCompGenre"
 import LeftSideCompGenre from "../components/GenrePage/LeftSideCompGenre"
 import LoadingPage from "../components/LoadingPage"
+import SmallGenreBox from "../components/GenrePage/smallGenreBox"
 
 
 let GenrePage = () => {
@@ -32,17 +33,10 @@ let GenrePage = () => {
                     <LeftSideCompGenre genreName={genre} />
                 </Box>
                 <Flex w={{ lg: '29%', base: '100%' }} borderRadius='lg' gap='15px' flexDirection='column'>
+
                     <RightSideCompGenre anime={genrePageTopAiring} />
 
-                    {/* Component to later */}
-                    <Box
-                        w='100%'
-                        h='845px'
-                        borderRadius='xl'
-                        border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
-                    >
-
-                    </Box>
+                    <SmallGenreBox />
 
                 </Flex>
             </Flex>

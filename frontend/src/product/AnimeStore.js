@@ -141,12 +141,26 @@ export const useAnimeStore = create((set, get) => ({
     fetchGenrePage: async (genre, page) => {
         set({ loading: true });
         try {
-            let genreInfo = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/genre/${genre}?page=${page}`);
-            let genreData = await genreInfo.json()
-            console.log(genreData.data)
+            //pag nagsamila sa genrepage yung request, tyaka palang to mag aactivate yung fetch na ito!.
+            let genreData = null;
+            const { genres } = get();
+
+            if (!genres || genres.length === 0) {
+                const genre = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/home`);
+                const genreFetch = await genre.json();
+                genreData = genreFetch.data.genres;
+            }
+            //
+
+            let genreVideos = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/genre/${genre}?page=${page}`);
+            let genreVideosData = await genreVideos.json()
+            console.log(genreVideosData.data)
             set({
-                genreAnimes: genreData.data.animes,
-                genrePageTopAiring: genreData.data.topAiringAnimes,
+
+                genres: genreData || genres,
+
+                genreAnimes: genreVideosData.data.animes,
+                genrePageTopAiring: genreVideosData.data.topAiringAnimes,
                 loading: false,
             })
         } catch (error) {
