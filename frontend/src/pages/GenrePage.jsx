@@ -4,10 +4,12 @@ import { useParams } from "react-router-dom"
 
 import { useAnimeStore } from "../product/AnimeStore"
 import { useEffect } from "react"
+
+import LoadingPage from "../components/LoadingPage"
 import RightSideCompGenre from "../components/GenrePage/RightSideCompGenre"
 import LeftSideCompGenre from "../components/GenrePage/LeftSideCompGenre"
-import LoadingPage from "../components/LoadingPage"
 import SmallGenreBox from "../components/GenrePage/smallGenreBox"
+
 
 
 let GenrePage = () => {
