@@ -10,17 +10,21 @@ let SmallGenreBox = () => {
         <Box
             w="100%"
             borderRadius="xl"
-            border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
+            border='1px rgba(255, 255, 255, 0.16) solid'
+            p={1}
+            bg='gray.800'
         >
             <Text align="start" fontWeight="bold" fontSize="xl" p="25px" color="white">
-                Genres
+                <span style={{ color: '#E53E3E' }}>G</span>enres
             </Text>
 
-            <Wrap justify="start" p="25px">
+            <Wrap spacing={1} justify="start" p="25px">
                 {genres.map((genre, index) => (
                     <WrapItem key={index}>
-                        <Link to={`/genre/${genre}/1`}>
+                        <Link to={`/genre/${genre}/1`} style={{ width: '150px' }}>
                             <Box
+                                key={index}
+                                flex="0 1 155px"
                                 h="40px"
                                 display="flex"
                                 alignItems="center"
@@ -34,9 +38,12 @@ let SmallGenreBox = () => {
                                     backgroundColor: "rgba(229, 62, 62, 0.2)",
                                     color: "#E53E3E",
                                 }}
-                                color="white"
+                                color='white'
+
                             >
-                                <Text p="10px">{genre}</Text>
+                                <Text p='25px'>
+                                    {genre}
+                                </Text>
                             </Box>
                         </Link>
                     </WrapItem>

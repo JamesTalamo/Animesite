@@ -13,7 +13,10 @@ let GenreBox = () => {
             p={1}
             bg='gray.800'
         >
-            <Text align='Start' fontWeight='bold' fontSize='xl' pl='25px' pt='1%' pb='1%' color='white'><span style={{ color: '#E53E3E' }}>G</span>enres</Text>
+            <Text align='Start' fontWeight='bold' fontSize='xl' pl='25px' pt='1%' pb='1%' color='white'>
+                <span style={{ color: '#E53E3E' }}>G</span>enres
+            </Text>
+            
             <Wrap spacing={1} justify="start">
                 {genres.map((genre, index) => (
                     <Link key={index} to={`/genre/${genre}/1`} style={{ width: '155px' }}>
