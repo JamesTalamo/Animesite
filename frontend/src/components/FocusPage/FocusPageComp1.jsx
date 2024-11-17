@@ -31,7 +31,7 @@ let FocusPageComp1 = ({ selectedAnime }) => {
                 />
 
                 <Box>
-                    <Image
+                    <Image 
                         src={selectedAnime.poster}
                         position="relative"
                         w='200px'

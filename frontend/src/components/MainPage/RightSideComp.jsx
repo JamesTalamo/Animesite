@@ -20,12 +20,8 @@ let RightSideComp = ({ todayAnime, weeklyAnime, monthlyAnime }) => {
         setSelect(monthlyAnime)
     }
 
-    useEffect(() => {
-        console.log(select)
-    }, [])
-
-    return (
-        <Box h='1040px' border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }} borderRadius='lg'>
+    return ( 
+        <Box h='1040px' border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }} borderRadius='lg' >
             <Text color='white' fontWeight='bold' fontSize='xl' p='15px'>Top 10 Animes</Text>
             <Center>
                 <HStack pb='10px' spacing='0'>
@@ -33,7 +29,7 @@ let RightSideComp = ({ todayAnime, weeklyAnime, monthlyAnime }) => {
                         color="white"
                         fontWeight="bold"
                         h="50px"
-                        w="100px"
+                        w="90px"
 
                         onClick={today}
                         bg='gray.800'
@@ -50,12 +46,11 @@ let RightSideComp = ({ todayAnime, weeklyAnime, monthlyAnime }) => {
                     >
                         Today
                     </Button>
-
                     <Button
                         color="white"
                         fontWeight="bold"
                         h="50px"
-                        w="100px"
+                        w="90px"
                         onClick={week}
                         bg='gray.800'
                         border='1px rgba(255, 255, 255, 0.16) solid'
@@ -70,12 +65,11 @@ let RightSideComp = ({ todayAnime, weeklyAnime, monthlyAnime }) => {
                     >
                         Week
                     </Button>
-
                     <Button
                         color="white"
                         fontWeight="bold"
                         h="50px"
-                        w="100px"
+                        w="90px"
 
                         onClick={month}
                         bg='gray.800'

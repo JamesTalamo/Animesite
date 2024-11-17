@@ -21,11 +21,13 @@ let RightSideCards = ({ anime }) => {
                 gap={4}
             >
                 <Box p='25px'>
-                    <Text fontSize='xl' color='white' fontWeight='bold'>{`${anime.rank}`}</Text>
+                    <Text fontSize='xl' color='white' fontWeight='bold'>{anime.rank !== 10 ? (`0${anime.rank}`) : anime.rank}</Text>
                 </Box>
 
 
+
                 <Image
+
                     src={anime.poster}
                     alt={anime.name}
                     w='60px'
@@ -37,8 +39,11 @@ let RightSideCards = ({ anime }) => {
 
 
                 <Box p='5%'>
-                    <Text fontWeight='bold' align='start' color='white'>{anime.name}</Text>
+                    <Text fontWeight='bold' align='start' color='white' overflow='hidden' noOfLines={2}>
+                        {anime.name}
+                    </Text>
                 </Box>
+
             </Box>
         </Link>
     );

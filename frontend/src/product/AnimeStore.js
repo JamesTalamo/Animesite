@@ -2,6 +2,13 @@ import { create } from "zustand"
 
 export const useAnimeStore = create((set) => ({
     page: 0,
+
+    genres : [],
+
+    latestEpisodeAnimes: [],
+    topAiringAnimes: [],
+    trendingAnimes: [],
+
     featAnime: [],
     todayAnime: [],
     weeklyAnime: [],
@@ -27,8 +34,15 @@ export const useAnimeStore = create((set) => ({
             const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/home`);
             const data = await res.json();
 
-            // console.log(data.data)
+            // console.log(data.data) //latestEpisodeAnimes topAiringAnimes trendingAnimes
+
             set({
+                genres : data.data.genres,
+
+                latestEpisodeAnimes: data.data.latestEpisodeAnimes,
+                topAiringAnimes: data.data.topAiringAnimes,
+                trendingAnimes: data.data.trendingAnimes,
+
                 featAnime: data.data.spotlightAnimes,
                 todayAnime: data.data.top10Animes.today,
                 weeklyAnime: data.data.top10Animes.week,
