@@ -5,10 +5,10 @@ import { useParams } from "react-router-dom"
 import { useAnimeStore } from "../product/AnimeStore"
 import { useEffect } from "react"
 
-import LoadingPage from "../components/LoadingPage"
-import RightSideCompGenre from "../components/GenrePage/RightSideCompGenre"
-import LeftSideCompGenre from "../components/GenrePage/LeftSideCompGenre"
-import SmallGenreBox from "../components/GenrePage/smallGenreBox"
+import LoadingPage from "../components/LoadingPage.jsx"
+import RightSideCompGenre from "../components/GenrePage/RightSideCompGenre.jsx"
+import LeftSideCompGenre from "../components/GenrePage/LeftSideCompGenre.jsx"
+import SmallGenreBox from "../components/GenrePage/smallGenreBox.jsx"
 
 
 
@@ -38,7 +38,7 @@ let GenrePage = () => {
 
                     <RightSideCompGenre anime={genrePageTopAiring} />
 
-                    {/* <SmallGenreBox /> */}
+                    <SmallGenreBox />
 
                 </Flex>
             </Flex>
