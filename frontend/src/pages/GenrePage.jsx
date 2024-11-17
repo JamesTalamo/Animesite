@@ -38,7 +38,7 @@ let GenrePage = () => {
 
                     <RightSideCompGenre anime={genrePageTopAiring} />
 
-                    <SmallGenreBox />
+                    {/* <SmallGenreBox /> */}
 
                 </Flex>
             </Flex>
