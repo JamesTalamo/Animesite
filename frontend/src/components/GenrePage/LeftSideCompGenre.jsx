@@ -4,7 +4,7 @@ import { Box, Text, Flex, Image, Button } from "@chakra-ui/react";
 import { useAnimeStore } from "../../product/AnimeStore";
 import { Link } from "react-router-dom";
 
-let LeftSideCompGenre = () => {
+let LeftSideCompGenre = ({genreName}) => {
     let { genreAnimes } = useAnimeStore();
 
     return (
@@ -57,7 +57,7 @@ let LeftSideCompGenre = () => {
                 </Button>
             </Flex>
             <Text color="white" fontWeight="bold" fontSize="xl" p="25px" align="start">
-                Top Airing Animes
+                {`${genreName} Animes`}
             </Text>
 
             <Flex

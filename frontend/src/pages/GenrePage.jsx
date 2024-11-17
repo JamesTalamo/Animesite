@@ -29,7 +29,7 @@ let GenrePage = () => {
         <Box maxW={{ lg: 'container.xl', sm: '100%' }} pt='80px'>
             <Flex width='100%' justify='space-between' align='center' flexDir={{ lg: 'row', base: 'column' }}  >
                 <Box w={{ lg: '70%', base: '100%' }} h='100%'>
-                    <LeftSideCompGenre />
+                    <LeftSideCompGenre genreName={genre} />
                 </Box>
                 <Flex w={{ lg: '29%', base: '100%' }} borderRadius='lg' gap='15px' flexDirection='column'>
                     <RightSideCompGenre anime={genrePageTopAiring} />
