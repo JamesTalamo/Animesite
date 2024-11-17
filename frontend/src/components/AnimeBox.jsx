@@ -9,7 +9,7 @@ const AnimeBox = ({ anime }) => {
     return (
         <Link to={`/anime/${anime.id}`}>
             <Box
-                p="25px"
+                p="15px"
                 shadow="lg"
                 rounded="lg"
                 transition="all 0.3s"

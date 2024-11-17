@@ -1,10 +1,20 @@
 import { create } from "zustand"
 
-export const useAnimeStore = create((set) => ({
-    page: 0,
+export const useAnimeStore = create((set, get) => ({
+    genres: [],
 
-    genres : [],
+    // Selected anime
+    selectedAnime: '',
 
+    // Loading state to track loading status
+    loading: false,
+
+
+
+
+    // Fetch Calls
+
+    //Main Page States
     latestEpisodeAnimes: [],
     topAiringAnimes: [],
     trendingAnimes: [],
@@ -13,31 +23,14 @@ export const useAnimeStore = create((set) => ({
     todayAnime: [],
     weeklyAnime: [],
     monthlyAnime: [],
-
-    // Selected anime
-    selectedAnime: '',
-
-    // Focus Page States
-    animeEpisodes: [],
-    moreInfoAnime: [],
-    recoAnime: [],
-    relatedAnime: [],
-
-    // Loading state to track loading status
-    loading: false,
-
-    // Fetch Calls
-
     fetchMainPageData: async () => {
         set({ loading: true });
         try {
             const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/home`);
             const data = await res.json();
 
-            // console.log(data.data) //latestEpisodeAnimes topAiringAnimes trendingAnimes
-
             set({
-                genres : data.data.genres,
+                genres: data.data.genres,
 
                 latestEpisodeAnimes: data.data.latestEpisodeAnimes,
                 topAiringAnimes: data.data.topAiringAnimes,
@@ -55,18 +48,35 @@ export const useAnimeStore = create((set) => ({
         }
     },
 
+
+    // Focus Page States
+    animeEpisodes: [],
+    moreInfoAnime: [],
+    recoAnime: [],
+    relatedAnime: [],
     fetchFocusPageData: async (animeId) => {
         set({ loading: true });
         try {
+            //pag nagsamila sa focuspage yung request, tyaka palang to mag aactivate yung fetch na ito!.
+            let genreData = null;
+            const { genres } = get();
+
+            if (!genres || genres.length === 0) {
+                const genre = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/home`);
+                const genreFetch = await genre.json();
+                genreData = genreFetch.data.genres;
+            }
+            ///
+
             let animeInfo = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}`);
             let animeInfoData = await animeInfo.json();
 
             let animeEp = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}/episodes`);
             let animeEpData = await animeEp.json();
 
-            console.log(animeInfoData.data)
-
             set({
+                genres: genreData || genres,
+
                 recoAnime: animeInfoData.data.recommendedAnimes,
                 relatedAnime: animeInfoData.data.relatedAnimes,
                 moreInfoAnime: animeInfoData.data.anime.moreInfo,
@@ -80,8 +90,7 @@ export const useAnimeStore = create((set) => ({
         }
     },
 
-    // Watch Page States!
-    //State for WatchPage
+    //Watch Page States
     sub: [], // nakatago sub dito
     dub: [], // nakatago dub dito
     epId: "",
@@ -124,6 +133,28 @@ export const useAnimeStore = create((set) => ({
             console.error("Failed to fetch focus page data:", error);
             set({ loading: false });
         }
+    },
+
+    //Genre Page States
+    genreAnimes: [],
+    genrePageTopAiring: [],
+    fetchGenrePage: async (genre, page) => {
+        set({ loading: true });
+        try {
+            let genreInfo = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/genre/${genre}?page=${page}`);
+            let genreData = await genreInfo.json()
+            console.log(genreData.data)
+            set({
+                genreAnimes: genreData.data.animes,
+                genrePageTopAiring: genreData.data.topAiringAnimes,
+                loading: false,
+            })
+        } catch (error) {
+            console.error("Failed to fetch Genresx:", error);
+            set({ loading: false });
+        }
+
     }
+
 }))
 
