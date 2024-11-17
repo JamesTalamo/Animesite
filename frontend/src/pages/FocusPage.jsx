@@ -9,6 +9,7 @@ import LoadingPage from "../components/LoadingPage";
 import AnimeBoxContainer from "../components/AnimeBoxContainer";
 import FocusPageComp2 from "../components/FocusPage/FocusPageComp2";
 import FocusPageComp1 from "../components/FocusPage/FocusPageComp1";
+import GenreBox from "../components/GenrePage/GenreBox";
 
 let FocusPage = () => {
 
@@ -33,8 +34,10 @@ let FocusPage = () => {
             <Box maxW='container.xl' mt='10px' borderRadius='lg' overflow='hidden'>
                 <FocusPageComp2 selectedAnime={selectedAnime} moreInfoAnime={moreInfoAnime} animeEpisodes={animeEpisodes} />
 
-                <AnimeBoxContainer anime={recoAnime} animeHead={'Suggested Anime'}/>
-                <AnimeBoxContainer anime={relatedAnime} animeHead={'Related Anime'}/>
+                <AnimeBoxContainer anime={recoAnime} animeHead={'Suggested Anime'} />
+                <AnimeBoxContainer anime={relatedAnime} animeHead={'Related Anime'} />
+
+                <GenreBox />
             </Box>
 
 
