@@ -115,15 +115,15 @@ let FocusAnimeBoxContainer = ({ anime, animeHead }) => {
             p='35px'
             position='relative'>
             <Text
-                fontWeight='bold'
-                fontSize='xl'
-                align='start'
-                color='white'
-
-                b='red'
-                position='relative'
-                top='-15px'
-            >{animeHead}
+                fontWeight="bold"
+                fontSize="xl"
+                align="start"
+                color="white"
+                position="relative"
+                top="-15px"
+            >
+                <Text as="span" color="#E53E3E">{animeHead[0]}</Text>
+                {animeHead.slice(1)}
             </Text>
 
 

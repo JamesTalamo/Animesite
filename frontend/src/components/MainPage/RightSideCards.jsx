@@ -21,7 +21,7 @@ let RightSideCards = ({ anime }) => {
                 gap={4}
             >
                 <Box p='25px'>
-                    <Text fontSize='xl' color='white' fontWeight='bold'>{anime.rank !== 10 ? (`0${anime.rank}`) : anime.rank}</Text>
+                    <Text fontSize='xl' fontWeight='bold' color='white'>{anime.rank !== 10 ? (`0${anime.rank}`) : anime.rank}</Text>
                 </Box>
 
 

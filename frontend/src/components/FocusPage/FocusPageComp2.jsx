@@ -11,7 +11,7 @@ let FocusPageComp2 = ({ selectedAnime, moreInfoAnime, animeEpisodes }) => {
                     h='200px'
                     w={{ lg: '70%', base: '100%' }}
                     borderRadius='lg'>
-                    <Text align='start' pl='2%' fontWeight='bold' fontSize='xl' color='white'>Details :</Text>
+                    <Text align='start' pl='2%' fontWeight='bold' fontSize='xl' color='white'><span style={{ color: '#E53E3E' }}>D</span>etails :</Text>
 
                     <VStack align='start' p='2%'>
                         <Text fontWeight="bold" color='white'>
@@ -39,7 +39,7 @@ let FocusPageComp2 = ({ selectedAnime, moreInfoAnime, animeEpisodes }) => {
                     border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
                     overflow='auto'
                 >
-                    <Text align='start' pl='2%' fontWeight='bold' fontSize='xl' color='white'>Episodes :</Text>
+                    <Text align='start' pl='2%' fontWeight='bold' fontSize='xl' color='white'><span style={{ color: '#E53E3E' }}>E</span>pisodes :</Text>
 
                     <Box
                         display="flex"

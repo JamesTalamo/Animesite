@@ -106,33 +106,32 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
 
     return (
         <Box
-            mt='2.5%'
-            mb='2.5%'
+            mt="2.5%"
+            mb="2.5%"
             w={{ lg: '100%', md: '90%', base: '100%' }}
-            bg='gray.800'
-            borderRadius='lg'
+            bg="gray.800"
+            borderRadius="lg"
             border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
-            p='35px'
-            position='relative'>
+            p="35px"
+            position="relative"
+        >
             <Text
-                fontWeight='bold'
-                fontSize='xl'
-                align='start'
-                color='white'
-
-                b='red'
-                position='relative'
-                top='-15px'
-            >{animeHead}
+                fontWeight="bold"
+                fontSize="xl"
+                align="start"
+                color="white"
+                position="relative"
+                top="-15px"
+            >
+                <Text as="span" color="#E53E3E">{animeHead[0]}</Text>
+                {animeHead.slice(1)}
             </Text>
-
 
             <Slider {...settings} style={{ position: 'relative' }}>
                 {anime.map((anime) => (
                     <AnimeBox anime={anime} key={anime.id} />
                 ))}
             </Slider>
-
         </Box>
     )
 }
