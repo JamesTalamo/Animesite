@@ -9,6 +9,7 @@ let LeftSideCompGenre = ({ genreName, addPage, delPage }) => {
 
     return (
         <Box
+            // mt='-10%'
             w="100%"
             border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
             borderRadius="xl"
