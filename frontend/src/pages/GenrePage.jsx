@@ -32,7 +32,7 @@ let GenrePage = () => {
                 <Box w={{ lg: '70%', base: '100%' }} h='100%'>
                     <LeftSideCompGenre genreName={genre} />
                 </Box>
-                <Flex w={{ lg: '29%', base: '100%' }} borderRadius='lg' gap='15px' flexDirection='column'>
+                <Flex w={{ lg: '29%', base: '100%' }} borderRadius='lg' gap='15px' flexDirection='column' align='start' justify='start'>
 
                     <RightSideCompGenre anime={genrePageTopAiring} />
 

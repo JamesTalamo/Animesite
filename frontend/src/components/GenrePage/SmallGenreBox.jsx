@@ -61,8 +61,6 @@ let SmallGenreBox = () => {
     return (
         <Box
             w="100%"
-            // h="845px"
-            mb='144px'
             borderRadius="xl"
             border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
         >

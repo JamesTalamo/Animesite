@@ -4,7 +4,7 @@ import RightSideCradsGenre from '../GenrePage/RightSideCardsGenre'
 
 let RightSideCompGenre = ({ anime }) => {
     return (
-        <Box  border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }} borderRadius='xl' h='1000px' >
+        <Box  border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }} borderRadius='xl' >
             <Text color='white' fontWeight='bold' fontSize='xl' p='25px'>Top Airing Animes</Text>
 
             <VStack spacing='1'>
