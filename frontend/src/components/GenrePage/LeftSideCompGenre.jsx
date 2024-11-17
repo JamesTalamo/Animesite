@@ -4,7 +4,7 @@ import { Box, Text, Flex, Image, Button } from "@chakra-ui/react";
 import { useAnimeStore } from "../../product/AnimeStore";
 import { Link } from "react-router-dom";
 
-let LeftSideCompGenre = ({ genreName }) => {
+let LeftSideCompGenre = ({ genreName, addPage, delPage }) => {
     let { genreAnimes } = useAnimeStore();
 
     return (
@@ -32,7 +32,7 @@ let LeftSideCompGenre = ({ genreName }) => {
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
-
+                    onClick={delPage}
                 >
                     <ArrowBackIcon />
                 </Button>
@@ -51,7 +51,7 @@ let LeftSideCompGenre = ({ genreName }) => {
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
-
+                    onClick={addPage}
                 >
                     <ArrowForwardIcon />
                 </Button>
