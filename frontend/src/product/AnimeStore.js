@@ -93,14 +93,14 @@ export const useAnimeStore = create((set, get) => ({
     //Watch Page States
     sub: [], // nakatago sub dito
     dub: [], // nakatago dub dito
-    epId: "",
+    // animeEpisodes: "",
     videoUrl: "",
     tracks: [],
-    fetchWatchPageData: async (animeId, episode) => {
+    fetchWatchPageData: async (episodeId) => {
         try {
-            let animeEp = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}/episodes`);
+            let animeEp = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${episodeId}/episodes`);
             let animeEpData = await animeEp.json();
-            let episodeId = animeEpData.data.episodes[episode - 1].episodeId;
+            let animeEpisodes = animeEpData.data.episodes
 
             const animeServer = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/servers?animeEpisodeId=${episodeId}`);
             const animeServerData = await animeServer.json();
@@ -108,7 +108,7 @@ export const useAnimeStore = create((set, get) => ({
 
 
             set({
-                epId: episodeId,
+                animeEpisodes: animeEpisodes,
                 sub: animeServerData.data.sub,
                 dub: animeServerData.data.dub,
             });

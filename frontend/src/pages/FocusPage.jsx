@@ -12,7 +12,7 @@ import GenreBox from "../components/GenrePage/GenreBox";
 
 let FocusPage = () => {
 
-    const { relatedAnime, recoAnime, selectedAnime, animeEpisodes, fetchFocusPageData, loading, moreInfoAnime } = useAnimeStore()
+    const { relatedAnime, recoAnime, selectedAnime, fetchFocusPageData, loading } = useAnimeStore()
     const { animeId } = useParams();
 
     useEffect(() => {
@@ -31,7 +31,7 @@ let FocusPage = () => {
             <FocusPageComp1 selectedAnime={selectedAnime} />
 
             <Box maxW='container.xl' mt='20px' borderRadius='lg' overflow='hidden'>
-                <FocusPageComp2 selectedAnime={selectedAnime} moreInfoAnime={moreInfoAnime} animeEpisodes={animeEpisodes} />
+                <FocusPageComp2 />
 
                 <FocusAnimeBoxContainer anime={recoAnime} animeHead={'Suggested Anime'} />
                 <FocusAnimeBoxContainer anime={relatedAnime} animeHead={'Related Anime'} />
