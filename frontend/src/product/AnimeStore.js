@@ -97,7 +97,6 @@ export const useAnimeStore = create((set, get) => ({
     videoUrl: "",
     tracks: [],
     fetchWatchPageData: async (animeId, episode) => {
-        set({ loading: true });
         try {
             let animeEp = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}/episodes`);
             let animeEpData = await animeEp.json();
@@ -106,39 +105,49 @@ export const useAnimeStore = create((set, get) => ({
             const animeServer = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/servers?animeEpisodeId=${episodeId}`);
             const animeServerData = await animeServer.json();
 
+
+
             set({
                 epId: episodeId,
                 sub: animeServerData.data.sub,
                 dub: animeServerData.data.dub,
-                loading: false,
             });
+
+            console.log(epId)
+            console.log(sub)
+            console.log(dub)
+
         } catch (error) {
             console.error("Failed to fetch focus page data:", error);
-            set({ loading: false });
+
         }
     },
 
     fetchWatchPageDataVideo: async (epId, serverName, category) => {
-        set({ loading: true });
         try {
             const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/sources?animeEpisodeId=${epId}&server=${serverName}&category=${category}`);
-            const videoUrl = await res.json();
+            const videoUrlData = await res.json();
+
+
 
             set({
-                videoUrl: videoUrl.data.sources[0].url,
+                videoUrl: videoUrlData.data.sources[0].url,
                 tracks: videoUrl.data.tracks,
                 loading: false,
             });
+
+            console.log(videoUrl)
+            console.log(tracks)
+
         } catch (error) {
             console.error("Failed to fetch focus page data:", error);
-            set({ loading: false });
         }
     },
 
     //Genre Page States
     genreAnimes: [],
     genrePageTopAiring: [],
-    fetchGenrePage: async (genre, page) => { 
+    fetchGenrePage: async (genre, page) => {
         set({ loading: true });
         try {
             //pag nagsamila sa genrepage yung request, tyaka palang to mag aactivate yung fetch na ito!.

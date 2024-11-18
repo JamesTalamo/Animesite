@@ -10,21 +10,22 @@ import { useEffect, useRef } from "react";
 import WatchPageComp1 from "../components/WatchPage/WatchPageComp1";
 
 const WatchPage = () => {
-    const { animeId, episode, episodeId } = useParams();
+    const { episode, episodeId } = useParams();
 
     let { sub, dub, epId, fetchWatchPageData, fetchWatchPageDataVideo, videoUrl, tracks, selectedAnime } = useAnimeStore()
 
     let [search, setSearch] = useSearchParams();
     const ep = search.get('ep'); // Query parameter
 
-    console.log(episode)
-    console.log(episodeId)
-    console.log(ep)
+    // console.log(episode)
+    // console.log(episodeId)
+    // console.log(ep)
 
+    let videoRequest = `${episodeId}?ep=` + ep
 
     useEffect(() => {
-        // fetchWatchPageData()
-        fetchWatchPageDataVideo(ep, 'hd-1', 'sub')
+        fetchWatchPageData(episodeId, episode)
+        fetchWatchPageDataVideo(videoRequest, 'hd-1', 'sub')
     }, [])
 
     return (

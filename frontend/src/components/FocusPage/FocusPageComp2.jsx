@@ -57,7 +57,7 @@ let FocusPageComp2 = ({ selectedAnime, moreInfoAnime, animeEpisodes }) => {
 
                         {animeEpisodes.map((episode) => (
 
-                            <Link to={`/watch/${selectedAnime.id}/${episode.number}/${episode.episodeId}`} key={episode.number} >
+                            <Link to={`/watch/${episode.number}/${episode.episodeId}`} key={episode.number} >
                                 <Button
 
                                     color='white'
