@@ -19,7 +19,7 @@ function App() {
 
       <Routes>
         <Route path="/genre/:genre/:page" element={<GenrePage />} />
-        <Route path="/watch/:animeId/:episode" element={<WatchPage />} />
+        <Route path="/watch/:animeId/:episode/:episodeId" element={<WatchPage />} />
         <Route path="/anime/:animeId" element={<FocusPage />} />
         <Route path="*" element={<MainPage />} />
       </Routes>

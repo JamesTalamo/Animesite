@@ -2,6 +2,7 @@ import { Box, Flex, Text, VStack, Button } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 
 let FocusPageComp2 = ({ selectedAnime, moreInfoAnime, animeEpisodes }) => {
+
     return (
         <Box>
             <Flex w='100%' align='center' justify='space-between' flexDirection={{ lg: 'row', base: 'column' }}>
@@ -55,9 +56,10 @@ let FocusPageComp2 = ({ selectedAnime, moreInfoAnime, animeEpisodes }) => {
                     >
 
                         {animeEpisodes.map((episode) => (
-                            <Link to={`/watch/${selectedAnime.id}/${episode.number}`} key={episode.number} >
+
+                            <Link to={`/watch/${selectedAnime.id}/${episode.number}/${episode.episodeId}`} key={episode.number} >
                                 <Button
-                                    
+
                                     color='white'
                                     w='50px'
                                     height='50px'
