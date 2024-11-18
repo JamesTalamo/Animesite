@@ -14,17 +14,17 @@ const WatchPage = () => {
 
     let { sub, dub, epId, fetchWatchPageData, fetchWatchPageDataVideo, videoUrl, tracks, selectedAnime } = useAnimeStore()
 
-    console.log(episode)
-    console.log(animeId)
-    console.log(episodeId)
-
     let [search, setSearch] = useSearchParams();
     const ep = search.get('ep'); // Query parameter
+
+    console.log(episode)
+    console.log(episodeId)
+    console.log(ep)
 
 
     useEffect(() => {
         // fetchWatchPageData()
-        fetchWatchPageData(ep, 'hd-1', 'sub')
+        fetchWatchPageDataVideo(ep, 'hd-1', 'sub')
     }, [])
 
     return (
