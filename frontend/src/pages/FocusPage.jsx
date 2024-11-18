@@ -30,7 +30,7 @@ let FocusPage = () => {
 
             <FocusPageComp1 selectedAnime={selectedAnime} />
 
-            <Box maxW='container.xl' mt='10px' borderRadius='lg' overflow='hidden'>
+            <Box maxW='container.xl' mt='20px' borderRadius='lg' overflow='hidden'>
                 <FocusPageComp2 selectedAnime={selectedAnime} moreInfoAnime={moreInfoAnime} animeEpisodes={animeEpisodes} />
 
                 <FocusAnimeBoxContainer anime={recoAnime} animeHead={'Suggested Anime'} />

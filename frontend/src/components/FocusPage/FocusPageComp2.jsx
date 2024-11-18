@@ -48,14 +48,16 @@ let FocusPageComp2 = ({ selectedAnime, moreInfoAnime, animeEpisodes }) => {
                         justify='start'
                         overflowY="auto"
                         flexWrap="wrap"
-                        gap="3px"
                         border={{ base: '1px rgba(255, 255, 255, 0.16) solid', lg: 'none' }}
                         borderRadius='lg'
+                        gap='5px'
+                        p='10px'
                     >
 
                         {animeEpisodes.map((episode) => (
                             <Link to={`/watch/${selectedAnime.id}/${episode.number}`} key={episode.number} >
                                 <Button
+                                    
                                     color='white'
                                     w='50px'
                                     height='50px'

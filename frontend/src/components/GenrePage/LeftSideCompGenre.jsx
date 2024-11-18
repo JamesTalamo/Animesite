@@ -9,11 +9,9 @@ let LeftSideCompGenre = ({ genreName, addPage, delPage }) => {
 
     return (
         <Box
-            // mt='-10%'
             w="100%"
             border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
             borderRadius="xl"
-            h="auto"
             position='relative'
         >
 
@@ -57,7 +55,7 @@ let LeftSideCompGenre = ({ genreName, addPage, delPage }) => {
                     <ArrowForwardIcon />
                 </Button>
             </Flex>
-            <Text color="white" fontWeight="bold" fontSize="xl" p="25px" align="start">
+            <Text color="white" fontWeight="bold" fontSize="xl" pt="3%" pl='5%' align="start">
                 <Text as="span" color="#E53E3E">{genreName[0]}</Text>
                 {genreName.slice(1)} Animes
             </Text>
@@ -65,7 +63,7 @@ let LeftSideCompGenre = ({ genreName, addPage, delPage }) => {
 
             <Flex
                 spacing="0"
-                p="35px"
+                p="40px"
                 align="start"
                 wrap="wrap"
                 justifyContent="flex-start"

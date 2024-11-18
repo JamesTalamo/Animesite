@@ -23,7 +23,6 @@ let MainPage = () => {
         fetchMainPageData();
     }, []);
 
-
     if (loading) {
         return <LoadingPage />;
     }
@@ -32,8 +31,8 @@ let MainPage = () => {
         <Box maxW={{ lg: 'container.xl', sm: '100%' }}>
             <CarouselPage featAnime={featAnime} />
 
-            <Box w='100%' >
-                <Flex width='100%' justify='space-between' align='center' flexDir={{ lg: 'row', base: 'column' }} h='100%' >
+            <Box w='100%'>
+                <Flex width='100%' justify='space-between' align='center' flexDir={{ lg: 'row', base: 'column' }}  >
                     <Box w={{ lg: '70%', base: '100%' }}>
 
                         <AnimeBoxContainer anime={trendingAnimes} animeHead={'Trending '} />
@@ -41,7 +40,7 @@ let MainPage = () => {
                         <AnimeBoxContainer anime={latestEpisodeAnimes} animeHead={'Latest Episodes'} />
 
                     </Box>
-                    <Box w={{ lg: '29%', base: '100%' }} h='100%' >
+                    <Box w={{ lg: '29%', base: '100%' }}  display='flex' align='start' justify='start'>
                         <RightSideComp todayAnime={todayAnime} weeklyAnime={weeklyAnime} monthlyAnime={monthlyAnime} />
                     </Box>
                 </Flex>

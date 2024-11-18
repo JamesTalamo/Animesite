@@ -138,7 +138,7 @@ export const useAnimeStore = create((set, get) => ({
     //Genre Page States
     genreAnimes: [],
     genrePageTopAiring: [],
-    fetchGenrePage: async (genre, page) => {
+    fetchGenrePage: async (genre, page) => { 
         set({ loading: true });
         try {
             //pag nagsamila sa genrepage yung request, tyaka palang to mag aactivate yung fetch na ito!.

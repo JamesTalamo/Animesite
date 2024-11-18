@@ -106,7 +106,7 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
 
     return (
         <Box
-            mt="2.5%"
+            // mt="2.5%"
             mb="2.5%"
             w={{ lg: '100%', md: '90%', base: '100%' }}
             bg="gray.800"

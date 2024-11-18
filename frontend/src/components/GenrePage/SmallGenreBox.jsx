@@ -14,7 +14,7 @@ let SmallGenreBox = () => {
             p={1}
             bg='gray.800'
         >
-            <Text align="start" fontWeight="bold" fontSize="xl" p="25px" color="white">
+            <Text align="start" fontWeight="bold" fontSize="xl" pt="10px" pl='25px' color="white">
                 <span style={{ color: '#E53E3E' }}>G</span>enres
             </Text>
 
