@@ -5,7 +5,7 @@ import { Box, Button, Text } from "@chakra-ui/react";
 
 import { useAnimeStore } from "../../product/AnimeStore";
 
-let ServerContainer = () => {
+let ServerContainer = ({ changeServer }) => {
 
     let { sub, dub } = useAnimeStore()
 
@@ -42,6 +42,8 @@ let ServerContainer = () => {
                                 bg='gray.800'
                                 p='20px'
                                 border='1px rgba(255, 255, 255, 0.16) solid'
+                                onClick={() => changeServer(server.serverName, 'sub')}
+                                color='white'
                             >
                                 {server.serverName}
                             </Button>
@@ -63,6 +65,8 @@ let ServerContainer = () => {
                                 bg='gray.800'
                                 p='20px'
                                 border='1px rgba(255, 255, 255, 0.16) solid'
+                                onClick={() => changeServer(server.serverName, 'dub')}
+                                color='white'
                             >
                                 {server.serverName}
                             </Button>

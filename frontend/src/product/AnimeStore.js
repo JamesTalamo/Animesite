@@ -171,14 +171,10 @@ export const useAnimeStore = create((set, get) => ({
                 loading: false
             });
 
-            console.log(sub)
-            console.log(dub)
 
         } catch (error) {
             console.error("Failed to fetch focus page data:", error);
-            set({
-                loading: false
-            })
+            set({ loading: false })
         }
     },
 
@@ -187,17 +183,12 @@ export const useAnimeStore = create((set, get) => ({
             const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/sources?animeEpisodeId=${epId}&server=${serverName}&category=${category}`);
             const videoUrlData = await res.json();
 
-
-
             set({
                 videoUrl: videoUrlData.data.sources[0].url,
-                tracks: videoUrl.data.tracks,
-                loading: false,
+                tracks: videoUrlData.data.tracks
             });
-
-            console.log(videoUrl)
-            console.log(tracks)
-
+            console.log(videoUrlData.data.sources[0].url)
+            console.log(videoUrlData.data.tracks)
         } catch (error) {
             console.error("Failed to fetch focus page data:", error);
         }
