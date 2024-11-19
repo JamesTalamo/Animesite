@@ -12,14 +12,13 @@ import EpisodeContainer from "../components/SharedComponents/EpisodeContainer";
 import DetailsContainer from "../components/SharedComponents/DetailsContainer";
 import GenreBox from "../components/GenrePage/GenreBox";
 import ServerContainer from "../components/WatchPage/ServerContainer";
-import LoadingPage from "../components/LoadingPage";
 
 const WatchPage = () => {
     const { episode, episodeId } = useParams();
     const videoRef = useRef(null); // Ref for the video DOM element
     const playerRef = useRef(null); // Ref for the Video.js player
 
-    const { fetchWatchPageData, fetchWatchPageDataVideo, videoUrl, tracks, selectedAnime, animeEpisodes, moreInfoAnime, loading } = useAnimeStore();
+    const { fetchWatchPageData, fetchWatchPageDataVideo, videoUrl, tracks, selectedAnime, animeEpisodes, moreInfoAnime } = useAnimeStore();
     let [search] = useSearchParams();
     const ep = search.get("ep"); // Query parameter
 
@@ -29,36 +28,31 @@ const WatchPage = () => {
         console.log(`Changed to ${serverName}`);
         console.log(`Category to ${category}`);
         fetchWatchPageDataVideo(videoRequest, serverName, category);
+
+        playerRef.current = videojs(videoRef.current, {
+            controls: true,
+            autoplay: true,
+            preload: "auto",
+            techOrder: ["html5"],
+            sources: [
+                {
+                    src: videoUrl, // M3U8 URL
+                    type: "application/x-mpegURL",
+                },
+            ],
+        });
     };
 
     useEffect(() => {
         // Fetch video data
         fetchWatchPageData(episodeId, videoRequest);
 
-        // Initialize the Video.js player
-        playerRef.current = videojs(videoRef.current, {
-            controls: true,
-            autoplay: true,
-            preload: "auto",
-            fluid: true, // Responsive player
-            techOrder: ["html5"],
-            sources: [{ src: videoUrl, type: "application/x-mpegURL" }], // Use videoUrl from the store
-            textTrackSettings: {
-                backgroundColor: "black",
-                fontSize: "18px",
-                color: "white",
-            },
-        });
-
     }, []);
 
-    if (loading) {
-        return <LoadingPage />;
-    }
 
     return (
         <Box maxW={{ lg: "container.xl", sm: "100%" }} pt="70px" h="auto">
-            <Box w="100%" h="400px" id="videoContainer">
+            <Box w="100%" h="400px" bg='pink' id="videoContainer">
                 {/* Video.js Player */}
                 <video
                     ref={videoRef}

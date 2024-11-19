@@ -133,7 +133,6 @@ export const useAnimeStore = create((set, get) => ({
     videoUrl: "",
     tracks: [],
     fetchWatchPageData: async (animeId, episodeId) => {
-        set({ loading: true });
         try {
 
             //pag nagsamila sa genrepage yung request, tyaka palang to mag aactivate yung fetch na ito!.
@@ -168,13 +167,11 @@ export const useAnimeStore = create((set, get) => ({
                 sub: animeServerData.data.sub,
                 dub: animeServerData.data.dub,
 
-                loading: false
             });
 
 
         } catch (error) {
             console.error("Failed to fetch focus page data:", error);
-            set({ loading: false })
         }
     },
 
