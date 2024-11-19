@@ -60,12 +60,12 @@ const WatchPage = () => {
 
     useEffect(() => {
         fetchWatchPageData(episodeId, videoRequest);
-    }, [episodeId, videoRequest]);
+    }, []);
 
     return (
         <Box maxW={{ lg: "container.xl", sm: "100%" }} pt="70px" h="auto">
             {/* Video container with video.js */}
-            <Box w="100%" h="400px" bg="pink" id="videoContainer">
+            <Box w="100%" h="400px" bg="pink" id="videoContainer" borderRadius='xl'>
                 <video
                     ref={videoRef} 
                     className="video-js vjs-default-skin"
