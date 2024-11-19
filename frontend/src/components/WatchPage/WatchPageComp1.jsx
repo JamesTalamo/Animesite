@@ -47,7 +47,7 @@ let WatchPageComp1 = ({episode}) => {
                 </Button>
 
                 <Box w='100px' h='40px' display='flex' justifyContent='center' alignItems='center'>
-                    <Text fontWeight='bold' fontSize='xl'>
+                    <Text fontWeight='bold' fontSize='xl' color='white'>
                         EP {episode}
                     </Text>
                 </Box>

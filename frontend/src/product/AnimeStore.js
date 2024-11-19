@@ -90,60 +90,6 @@ export const useAnimeStore = create((set, get) => ({
         }
     },
 
-    //Watch Page States
-    sub: [], // nakatago sub dito
-    dub: [], // nakatago dub dito
-    // animeEpisodes: "",
-    videoUrl: "",
-    tracks: [],
-    fetchWatchPageData: async (episodeId) => {
-        try {
-            let animeEp = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${episodeId}/episodes`);
-            let animeEpData = await animeEp.json();
-            let animeEpisodes = animeEpData.data.episodes
-
-            const animeServer = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/servers?animeEpisodeId=${episodeId}`);
-            const animeServerData = await animeServer.json();
-
-
-
-            set({
-                animeEpisodes: animeEpisodes,
-                sub: animeServerData.data.sub,
-                dub: animeServerData.data.dub,
-            });
-
-            console.log(epId)
-            console.log(sub)
-            console.log(dub)
-
-        } catch (error) {
-            console.error("Failed to fetch focus page data:", error);
-
-        }
-    },
-
-    fetchWatchPageDataVideo: async (epId, serverName, category) => {
-        try {
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/sources?animeEpisodeId=${epId}&server=${serverName}&category=${category}`);
-            const videoUrlData = await res.json();
-
-
-
-            set({
-                videoUrl: videoUrlData.data.sources[0].url,
-                tracks: videoUrl.data.tracks,
-                loading: false,
-            });
-
-            console.log(videoUrl)
-            console.log(tracks)
-
-        } catch (error) {
-            console.error("Failed to fetch focus page data:", error);
-        }
-    },
-
     //Genre Page States
     genreAnimes: [],
     genrePageTopAiring: [],
@@ -177,7 +123,86 @@ export const useAnimeStore = create((set, get) => ({
             set({ loading: false });
         }
 
-    }
+    },
+
+
+    //Watch Page States
+    sub: [], // nakatago sub dito
+    dub: [], // nakatago dub dito
+    // animeEpisodes: "",
+    videoUrl: "",
+    tracks: [],
+    fetchWatchPageData: async (animeId, episodeId) => {
+        set({ loading: true });
+        try {
+
+            //pag nagsamila sa genrepage yung request, tyaka palang to mag aactivate yung fetch na ito!.
+            let genreData = null;
+            const { genres } = get();
+
+            if (!genres || genres.length === 0) {
+                const genre = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/home`);
+                const genreFetch = await genre.json();
+                genreData = genreFetch.data.genres;
+            }
+            //
+
+            let animeInfo = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}`);
+            let animeInfoData = await animeInfo.json();
+
+            let animeEp = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/anime/${animeId}/episodes`);
+            let animeEpData = await animeEp.json();
+            let animeEpisodes = animeEpData.data.episodes
+
+            const animeServer = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/servers?animeEpisodeId=${episodeId}`);
+            const animeServerData = await animeServer.json();
+
+
+            set({
+
+                genres: genreData || genres,
+
+                selectedAnime: animeInfoData.data.anime.info,
+                moreInfoAnime: animeInfoData.data.anime.moreInfo,
+                animeEpisodes: animeEpisodes,
+                sub: animeServerData.data.sub,
+                dub: animeServerData.data.dub,
+
+                loading: false
+            });
+
+            console.log(sub)
+            console.log(dub)
+
+        } catch (error) {
+            console.error("Failed to fetch focus page data:", error);
+            set({
+                loading: false
+            })
+        }
+    },
+
+    fetchWatchPageDataVideo: async (epId, serverName, category) => {
+        try {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/sources?animeEpisodeId=${epId}&server=${serverName}&category=${category}`);
+            const videoUrlData = await res.json();
+
+
+
+            set({
+                videoUrl: videoUrlData.data.sources[0].url,
+                tracks: videoUrl.data.tracks,
+                loading: false,
+            });
+
+            console.log(videoUrl)
+            console.log(tracks)
+
+        } catch (error) {
+            console.error("Failed to fetch focus page data:", error);
+        }
+    },
+
 
 }))
 
