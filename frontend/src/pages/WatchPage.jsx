@@ -17,9 +17,12 @@ const WatchPage = () => {
     const videoRef = useRef(null);
     const playerRef = useRef(null);
 
+
     const { fetchWatchPageData, fetchWatchPageDataVideo, videoUrl, tracks, selectedAnime, animeEpisodes, moreInfoAnime } = useAnimeStore();
+
+
     let [search] = useSearchParams();
-    const ep = search.get("ep"); // Query parameter
+    const ep = search.get("ep");
 
     const videoRequest = `${episodeId}?ep=` + ep;
 
@@ -27,36 +30,50 @@ const WatchPage = () => {
         console.log(`Changed to ${serverName}`);
         console.log(`Category to ${category}`);
         await fetchWatchPageDataVideo(videoRequest, serverName, category);
+
+        if (!videoUrl) {
+            console.log('wala pang laman')
+        } else {
+            playerRef.current = videojs(videoRef.current, {
+                controls: true,
+                autoplay: true,
+                preload: "auto",
+                techOrder: ["html5"],
+                sources: [
+                    {
+                        src: videoUrl, // M3U8 URL
+                        type: "application/x-mpegURL",
+                    },
+                ],
+                tracks: tracks.map((track) => ({
+                    kind: track.kind || "subtitles", 
+                    label: track.label, 
+                    srclang: track.srclang || "en", 
+                    src: track.file, 
+                    default: track.default || false, 
+                })),
+            });
+        }
+
     };
+
 
     useEffect(() => {
         fetchWatchPageData(episodeId, videoRequest);
-
-        playerRef.current = videojs(videoRef.current, {
-            controls: true,
-            autoplay: true,
-            preload: "auto",
-            techOrder: ["html5"],
-            sources: [
-                {
-                    src: videoUrl, // M3U8 URL
-                    type: "application/x-mpegURL",
-                },
-            ],
-        });
-
-    }, [videoUrl]);
+    }, [episodeId, videoRequest]);
 
     return (
         <Box maxW={{ lg: "container.xl", sm: "100%" }} pt="70px" h="auto">
+            {/* Video container with video.js */}
             <Box w="100%" h="400px" bg="pink" id="videoContainer">
                 <video
-                    ref={videoRef}
+                    ref={videoRef} 
                     className="video-js vjs-default-skin"
-                    style={{ width: "100%", height: "100%" }}
+                    style={{ width: "100%", height: "100%" }} 
                 ></video>
             </Box>
 
+            {/* Content below the video */}
             <Box w="100%" h="auto" pb="25px">
                 <WatchPageComp1 episode={episode} />
                 <ServerContainer changeServer={changeServer} />
@@ -74,6 +91,7 @@ const WatchPage = () => {
                 </Box>
             </Box>
 
+            {/* Genre Box at the bottom */}
             <GenreBox />
         </Box>
     );
