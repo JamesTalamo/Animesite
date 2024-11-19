@@ -1,4 +1,3 @@
-
 import { Box } from "@chakra-ui/react";
 import { useAnimeStore } from "../product/AnimeStore";
 import { useParams, useSearchParams } from "react-router-dom";
@@ -15,19 +14,23 @@ import ServerContainer from "../components/WatchPage/ServerContainer";
 
 const WatchPage = () => {
     const { episode, episodeId } = useParams();
-    const videoRef = useRef(null); // Ref for the video DOM element
-    const playerRef = useRef(null); // Ref for the Video.js player
+    const videoRef = useRef(null);
+    const playerRef = useRef(null);
 
     const { fetchWatchPageData, fetchWatchPageDataVideo, videoUrl, tracks, selectedAnime, animeEpisodes, moreInfoAnime } = useAnimeStore();
     let [search] = useSearchParams();
     const ep = search.get("ep"); // Query parameter
 
-    let videoRequest = `${episodeId}?ep=` + ep;
+    const videoRequest = `${episodeId}?ep=` + ep;
 
-    const changeServer = (serverName, category) => {
+    const changeServer = async (serverName, category) => {
         console.log(`Changed to ${serverName}`);
         console.log(`Category to ${category}`);
-        fetchWatchPageDataVideo(videoRequest, serverName, category);
+        await fetchWatchPageDataVideo(videoRequest, serverName, category);
+    };
+
+    useEffect(() => {
+        fetchWatchPageData(episodeId, videoRequest);
 
         playerRef.current = videojs(videoRef.current, {
             controls: true,
@@ -41,19 +44,12 @@ const WatchPage = () => {
                 },
             ],
         });
-    };
 
-    useEffect(() => {
-        // Fetch video data
-        fetchWatchPageData(episodeId, videoRequest);
-
-    }, []);
-
+    }, [videoUrl]);
 
     return (
         <Box maxW={{ lg: "container.xl", sm: "100%" }} pt="70px" h="auto">
-            <Box w="100%" h="400px" bg='pink' id="videoContainer">
-                {/* Video.js Player */}
+            <Box w="100%" h="400px" bg="pink" id="videoContainer">
                 <video
                     ref={videoRef}
                     className="video-js vjs-default-skin"
@@ -62,13 +58,8 @@ const WatchPage = () => {
             </Box>
 
             <Box w="100%" h="auto" pb="25px">
-                {/* Title at prev next button */}
                 <WatchPageComp1 episode={episode} />
-
-                {/* Select server button */}
                 <ServerContainer changeServer={changeServer} />
-
-                {/* Details and episodes */}
                 <Box
                     w="100%"
                     h={{ lg: "250px", base: "500px" }}
@@ -89,6 +80,3 @@ const WatchPage = () => {
 };
 
 export default WatchPage;
-
-
-

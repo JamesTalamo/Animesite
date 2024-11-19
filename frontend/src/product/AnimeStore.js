@@ -180,6 +180,8 @@ export const useAnimeStore = create((set, get) => ({
             const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/sources?animeEpisodeId=${epId}&server=${serverName}&category=${category}`);
             const videoUrlData = await res.json();
 
+            console.log(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/episode/sources?animeEpisodeId=${epId}&server=${serverName}&category=${category}`)
+
             set({
                 videoUrl: videoUrlData.data.sources[0].url,
                 tracks: videoUrlData.data.tracks
