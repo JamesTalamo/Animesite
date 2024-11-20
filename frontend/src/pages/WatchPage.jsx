@@ -39,7 +39,7 @@ const WatchPage = () => {
 
         playerRef.current = videojs(videoRef.current, {
             controls: true,
-            autoplay: false,
+            autoplay: true,
             preload: "auto",
             techOrder: ["html5"],
             sources: [
