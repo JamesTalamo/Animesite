@@ -13,6 +13,7 @@ import EpisodeContainer from "../components/SharedComponents/EpisodeContainer";
 import DetailsContainer from "../components/SharedComponents/DetailsContainer";
 import GenreBox from "../components/GenrePage/GenreBox";
 import ServerContainer from "../components/WatchPage/ServerContainer";
+import FocusAnimeBoxContainer from "../components/FocusPage/FocusAnimeBoxContainer"; // kinuha sa focus page. tinatamad nako gumawa ng global components.
 
 const WatchPage = () => {
     const { episode, episodeId } = useParams();
@@ -20,7 +21,7 @@ const WatchPage = () => {
     const playerRef = useRef(null);
 
 
-    const { fetchWatchPageData, fetchWatchPageDataVideo, selectedAnime, animeEpisodes, moreInfoAnime, loading } = useAnimeStore();
+    const { fetchWatchPageData, fetchWatchPageDataVideo, selectedAnime, animeEpisodes, moreInfoAnime, recoAnime, relatedAnime, loading } = useAnimeStore();
 
 
     let [search] = useSearchParams();
@@ -97,6 +98,9 @@ const WatchPage = () => {
                     <EpisodeContainer animeEpisodes={animeEpisodes} />
                 </Box>
             </Box>
+
+            <FocusAnimeBoxContainer anime={recoAnime} animeHead={'Suggested Anime'} />
+            <FocusAnimeBoxContainer anime={relatedAnime} animeHead={'Related Anime'} />
 
             {/* Genre Box at the bottom */}
             <GenreBox />

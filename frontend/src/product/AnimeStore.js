@@ -159,6 +159,9 @@ export const useAnimeStore = create((set, get) => ({
 
                 genres: genreData || genres,
 
+                recoAnime: animeInfoData.data.recommendedAnimes,
+                relatedAnime: animeInfoData.data.relatedAnimes,
+
                 selectedAnime: animeInfoData.data.anime.info,
                 moreInfoAnime: animeInfoData.data.anime.moreInfo,
                 animeEpisodes: animeEpisodes,
