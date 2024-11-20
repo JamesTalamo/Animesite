@@ -89,7 +89,7 @@ const WatchPage = () => {
                     h={{ lg: "250px", base: "500px" }}
                     mt="25px"
                     display="flex"
-                    flexDirection={{ lg: "row", base: "column" }}
+                    flexDirection={{ lg: "row", base: "column-reverse" }}
                     alignItems="center"
                     justifyContent="space-between"
                 >

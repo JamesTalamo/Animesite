@@ -12,16 +12,17 @@ let DetailsContainer = ({ selectedAnime, moreInfoAnime }) => {
             <Text align='start' pl='2%' fontWeight='bold' fontSize='xl' color='white'><span style={{ color: '#E53E3E' }}>D</span>etails :</Text>
 
             <VStack align='start' p='2%'>
-                <Text fontWeight="bold" color='white'>
+                <Text fontWeight="bold" color='white' w='100%' align='start'>
                     Name: <Text as="span" fontWeight="normal" color='white'>{selectedAnime.name}</Text>
                 </Text>
-                <Text fontWeight="bold" color='white'>
+
+                <Text fontWeight="bold" color='white' w='100%' align='start'>
                     Japanese Name: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.japanese}</Text>
                 </Text>
-                <Text fontWeight="bold" color='white'>
+                <Text fontWeight="bold" color='white' w='100%' align='start'>
                     Duration: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.duration}</Text>
                 </Text>
-                <Text fontWeight="bold" color='white'>
+                <Text fontWeight="bold" color='white' w='100%' align='start'>
                     Status: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.status}</Text>
                 </Text>
 
