@@ -49,7 +49,7 @@ let ServerContainer = ({ changeServer }) => {
 
                 <Box w='100%' h='50%' display='flex' alignItems='center' justifyContent='start'>
                     <Text  color='white' fontWeight='bold'>
-                        Sub
+                        Dub
                     </Text>
                     <Box w='100%' h='100%' ml='25px' display='flex' alignItems='center' justifyContent='start' gap='2px'>
 
