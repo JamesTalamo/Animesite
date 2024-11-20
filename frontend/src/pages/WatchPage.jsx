@@ -42,7 +42,7 @@ const WatchPage = () => {
             controls: true,
             autoplay: true,
             preload: "auto",
-            techOrder: ["html5"],
+            // techOrder: ["html5"],
             sources: [
                 {
                     src: videoUrl,
@@ -50,11 +50,10 @@ const WatchPage = () => {
                 },
             ],
             tracks: tracks.map((track) => ({
-                kind: track.kind || "subtitles",
+                kind: track.kind,
                 label: track.label,
-                srclang: track.srclang || "en",
                 src: track.file,
-                default: track.default || false,
+                default: track.default
             })),
         });
     };
