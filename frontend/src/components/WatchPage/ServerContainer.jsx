@@ -1,6 +1,3 @@
-import { FaMicrophoneLines } from "react-icons/fa6"; // for Icon select server
-import { MdOutlineSubtitles } from "react-icons/md";// for Icon select server
-
 import { Box, Button, Text } from "@chakra-ui/react";
 
 import { useAnimeStore } from "../../product/AnimeStore";
