@@ -6,6 +6,8 @@ import { useEffect, useRef } from "react";
 import videojs from "video.js";
 import "video.js/dist/video-js.css"; // Import video.js CSS
 
+import LoadingPage from '../components/LoadingPage'
+
 import WatchPageComp1 from "../components/WatchPage/WatchPageComp1";
 import EpisodeContainer from "../components/SharedComponents/EpisodeContainer";
 import DetailsContainer from "../components/SharedComponents/DetailsContainer";
@@ -18,7 +20,7 @@ const WatchPage = () => {
     const playerRef = useRef(null);
 
 
-    const { fetchWatchPageData, fetchWatchPageDataVideo, videoUrl, tracks, selectedAnime, animeEpisodes, moreInfoAnime } = useAnimeStore();
+    const { fetchWatchPageData, fetchWatchPageDataVideo, selectedAnime, animeEpisodes, moreInfoAnime, loading } = useAnimeStore();
 
 
     let [search] = useSearchParams();
@@ -27,49 +29,54 @@ const WatchPage = () => {
     const videoRequest = `${episodeId}?ep=` + ep;
 
     const changeServer = async (serverName, category) => {
+
         console.log(`Changed to ${serverName}`);
         console.log(`Category to ${category}`);
-        await fetchWatchPageDataVideo(videoRequest, serverName, category);
+        let { videoUrl, tracks } = await fetchWatchPageDataVideo(videoRequest, serverName, category);
 
-        if (!videoUrl) {
-            console.log('wala pang laman')
-        } else {
-            playerRef.current = videojs(videoRef.current, {
-                controls: true,
-                autoplay: true,
-                preload: "auto",
-                techOrder: ["html5"],
-                sources: [
-                    {
-                        src: videoUrl, // M3U8 URL
-                        type: "application/x-mpegURL",
-                    },
-                ],
-                tracks: tracks.map((track) => ({
-                    kind: track.kind || "subtitles", 
-                    label: track.label, 
-                    srclang: track.srclang || "en", 
-                    src: track.file, 
-                    default: track.default || false, 
-                })),
-            });
-        }
+        console.log(videoUrl)
+        console.log(tracks)
 
+        playerRef.current = videojs(videoRef.current, {
+            controls: true,
+            autoplay: false,
+            preload: "auto",
+            techOrder: ["html5"],
+            sources: [
+                {
+                    src: videoUrl,
+                    type: "application/x-mpegURL",
+                },
+            ],
+            tracks: tracks.map((track) => ({
+                kind: track.kind || "subtitles",
+                label: track.label,
+                srclang: track.srclang || "en",
+                src: track.file,
+                default: track.default || false,
+            })),
+        });
     };
 
 
     useEffect(() => {
         fetchWatchPageData(episodeId, videoRequest);
-    }, []);
+    }, [ep]);
+
+
+
+    if (loading) {
+        return <LoadingPage />
+    }
 
     return (
         <Box maxW={{ lg: "container.xl", sm: "100%" }} pt="70px" h="auto">
             {/* Video container with video.js */}
             <Box w="100%" h="400px" bg="pink" id="videoContainer" borderRadius='xl'>
                 <video
-                    ref={videoRef} 
+                    ref={videoRef}
                     className="video-js vjs-default-skin"
-                    style={{ width: "100%", height: "100%" }} 
+                    style={{ width: "100%", height: "100%" }}
                 ></video>
             </Box>
 
