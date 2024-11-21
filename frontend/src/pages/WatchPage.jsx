@@ -60,8 +60,33 @@ const WatchPage = () => {
         }
     };
 
-
     useEffect(() => {
+        //
+        const initializeVideoPlayer = async () => {
+            let { videoUrl, tracks } = await fetchWatchPageDataVideo(videoRequest, 'hd-1', 'sub');
+
+            playerRef.current = videojs(videoRef.current, {
+                controls: true,
+                autoplay: true,
+                preload: "auto",
+                techOrder: ['html5'],
+                sources: [
+                    {
+                        src: videoUrl,
+                        type: "application/x-mpegURL",
+                    },
+                ],
+                tracks: tracks.map((track) => ({
+                    kind: track.kind,
+                    label: track.label,
+                    src: track.file,
+                    default: track.default,
+                })),
+            });
+        };
+
+        initializeVideoPlayer();
+        //
         fetchWatchPageData(episodeId, videoRequest);
     }, [ep]);
 
