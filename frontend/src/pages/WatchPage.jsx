@@ -30,32 +30,44 @@ const WatchPage = () => {
     const videoRequest = `${episodeId}?ep=` + ep;
 
     const changeServer = async (serverName, category) => {
-
         console.log(`Changed to ${serverName}`);
         console.log(`Category to ${category}`);
+
         let { videoUrl, tracks } = await fetchWatchPageDataVideo(videoRequest, serverName, category);
 
-        console.log(videoUrl)
-        console.log(tracks)
+        if (playerRef.current) {
+            playerRef.current.src({ src: videoUrl, type: "application/x-mpegURL" });
 
-        playerRef.current = videojs(videoRef.current, {
-            controls: true,
-            autoplay: true,
-            preload: "auto",
-            // techOrder: ["html5"],
-            sources: [
-                {
-                    src: videoUrl,
-                    type: "application/x-mpegURL",
-                },
-            ],
-            tracks: tracks.map((track) => ({
-                kind: track.kind,
-                label: track.label,
-                src: track.file,
-                default: track.default
-            })),
-        });
+            playerRef.current.removeRemoteTextTracks();  
+            tracks.forEach((track) => {
+                playerRef.current.addRemoteTextTrack({
+                    kind: track.kind,
+                    label: track.label,
+                    language: track.language,
+                    src: track.file,
+                });
+            });
+
+            playerRef.current.play();
+        } else {
+            playerRef.current = videojs(videoRef.current, {
+                controls: true,
+                autoplay: true,
+                preload: "auto",
+                sources: [
+                    {
+                        src: videoUrl,
+                        type: "application/x-mpegURL",
+                    },
+                ],
+                tracks: tracks.map((track) => ({
+                    kind: track.kind,
+                    label: track.label,
+                    src: track.file,
+                    default: track.default,
+                })),
+            });
+        }
     };
 
 
@@ -71,7 +83,7 @@ const WatchPage = () => {
 
     return (
         <Box maxW={{ lg: "container.xl", sm: "100%" }} pt="70px" h="auto">
-            {/* Video container with video.js */}
+        
             <Box w="100%" h="400px" bg="pink" id="videoContainer" borderRadius='xl'>
                 <video
                     ref={videoRef}
@@ -80,7 +92,6 @@ const WatchPage = () => {
                 ></video>
             </Box>
 
-            {/* Content below the video */}
             <Box w="100%" h="auto" pb="25px">
                 <WatchPageComp1 episode={episode} />
                 <ServerContainer changeServer={changeServer} />
