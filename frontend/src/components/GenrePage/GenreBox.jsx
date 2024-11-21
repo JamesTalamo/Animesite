@@ -19,11 +19,11 @@ let GenreBox = () => {
             
             <Wrap spacing={1} justify="start">
                 {genres.map((genre, index) => (
-                    <Link key={index} to={`/genre/${genre}/1`} style={{ width: '120px' }}>
+                    <Link key={index} to={`/genre/${genre}/1`} style={{ width: '125px' }}>
                         <Box
                             align='start'
                             key={index}
-                            flex="0 1 120px"
+                            flex="0 1 125px"
                             h="40px"
                             display="flex"
                             alignItems="center"

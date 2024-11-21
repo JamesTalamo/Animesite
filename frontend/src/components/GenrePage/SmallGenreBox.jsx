@@ -18,13 +18,13 @@ let SmallGenreBox = () => {
                 <span style={{ color: '#E53E3E' }}>G</span>enres
             </Text>
 
-            <Wrap spacing={1} justify="start" p="25px">
+            <Wrap spacing={1} justify="start" p="0px">
                 {genres.map((genre, index) => (
                     <WrapItem key={index}>
-                        <Link to={`/genre/${genre}/1`} style={{ width: '120px' }}>
+                        <Link to={`/genre/${genre}/1`} style={{ width: '125px' }}>
                             <Box
                                 key={index}
-                                flex="0 1 120px"
+                                flex="0 1 125px"
                                 h="40px"
                                 display="flex"
                                 alignItems="center"
