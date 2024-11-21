@@ -37,23 +37,13 @@ const WatchPage = () => {
 
         if (playerRef.current) {
             playerRef.current.src({ src: videoUrl, type: "application/x-mpegURL" });
-
-            playerRef.current.removeRemoteTextTracks();  
-            tracks.forEach((track) => {
-                playerRef.current.addRemoteTextTrack({
-                    kind: track.kind,
-                    label: track.label,
-                    language: track.language,
-                    src: track.file,
-                });
-            });
-
             playerRef.current.play();
         } else {
             playerRef.current = videojs(videoRef.current, {
                 controls: true,
                 autoplay: true,
                 preload: "auto",
+                techOrder: ['html5'],
                 sources: [
                     {
                         src: videoUrl,
@@ -83,12 +73,13 @@ const WatchPage = () => {
 
     return (
         <Box maxW={{ lg: "container.xl", sm: "100%" }} pt="70px" h="auto">
-        
+
             <Box w="100%" h="400px" bg="pink" id="videoContainer" borderRadius='xl'>
                 <video
                     ref={videoRef}
                     className="video-js vjs-default-skin"
                     style={{ width: "100%", height: "100%" }}
+                    data-setup='{"customControlsOnMobile": true, "nativeControlsForTouch": false}'
                 ></video>
             </Box>
 
