@@ -101,10 +101,10 @@ const WatchPage = () => {
 
             <Box w="100%" h="400px" bg="pink" id="videoContainer" borderRadius='xl'>
                 <video
+                    crossorigin="anonymous"
                     ref={videoRef}
                     className="video-js vjs-default-skin"
                     style={{ width: "100%", height: "100%" }}
-                    data-setup='{"customControlsOnMobile": true, "nativeControlsForTouch": false}'
                 ></video>
             </Box>
 
