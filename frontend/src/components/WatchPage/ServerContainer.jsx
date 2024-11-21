@@ -27,7 +27,7 @@ let ServerContainer = ({ changeServer }) => {
             <Box w={{ lg: '79%', base: '100%' }} h='100%' bg='gray.800' display='flex' alignItems='start' justifyContent='space-around' flexDirection='column' p='10px' borderRadius='lg'>
 
                 <Box w='100%' h='50%' display='flex' alignItems='center' justifyContent='start'>
-                    <Text  color='white' fontWeight='bold'>
+                    <Text  color='white' fontWeight='bold' w='100px'>
                         Sub
                     </Text>
                     <Box w='100%' h='100%' ml='25px' display='flex' alignItems='center' justifyContent='start' gap='2px'>
@@ -48,7 +48,7 @@ let ServerContainer = ({ changeServer }) => {
                 </Box>
 
                 <Box w='100%' h='50%' display='flex' alignItems='center' justifyContent='start'>
-                    <Text  color='white' fontWeight='bold'>
+                    <Text  color='white' fontWeight='bold' w='100px'>
                         Dub
                     </Text>
                     <Box w='100%' h='100%' ml='25px' display='flex' alignItems='center' justifyContent='start' gap='2px'>
