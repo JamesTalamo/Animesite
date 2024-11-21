@@ -1,48 +1,40 @@
-
-import { Box, Text, Flex, Image } from "@chakra-ui/react";
-import { useAnimeStore } from "../../product/AnimeStore";
+import { Box, Text, Grid, Image } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 let LeftSideCompSearch = ({ animeName, animeData }) => {
     return (
         <Box
-            bg='gray.800'
+            bg="gray.800"
             w="100%"
-            border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
+            border={{ lg: "1px rgba(255, 255, 255, 0.16) solid", base: "none" }}
             borderRadius="xl"
-            position='relative'
+            position="relative"
+            p="20px"
         >
-
-
-            <Text color="white" fontWeight="bold" fontSize="xl" pt="3%" pl='5%' align="start">
+            {/* Title */}
+            <Text color="white" fontWeight="bold" fontSize="xl" mb="4">
                 <Text as="span" color="#E53E3E">{animeName[0]}</Text>
-                {animeName.slice(1)} 
+                {animeName.slice(1)}
             </Text>
 
-
-            <Flex
-                spacing="0"
-                p="20px"
-                align="center"
-                wrap="wrap"
-                justifyContent="flex-start"
+            {/* Responsive Grid for Anime Cards */}
+            <Grid
+                templateColumns="repeat(auto-fit, minmax(150px, 1fr))"
                 gap="4"
             >
                 {animeData.map((anime) => (
                     <Link key={anime.id} to={`/anime/${anime.id}`}>
                         <Box
-                            p="15px"
                             shadow="lg"
                             rounded="lg"
                             transition="all 0.3s"
                             cursor="pointer"
-                            w="150px"
-                            h="230px"
+                            w="full"
                             overflow="hidden"
                             role="group"
                             _hover={{
-                                backgroundColor: '#2D3748',
-                                border: '1px rgba(255, 255, 255, 0.16) solid'
+                                backgroundColor: "#2D3748",
+                                border: "1px rgba(255, 255, 255, 0.16) solid",
                             }}
                             title={anime.name}
                         >
@@ -51,8 +43,7 @@ let LeftSideCompSearch = ({ animeName, animeData }) => {
                                 src={anime.poster}
                                 objectFit="cover"
                                 w="100%"
-                                h="80%"
-                                position="relative"
+                                h="200px"
                                 transition="all 0.3s"
                                 _groupHover={{
                                     transform: "scale(1.1)",
@@ -64,7 +55,6 @@ let LeftSideCompSearch = ({ animeName, animeData }) => {
                                 fontWeight="bold"
                                 fontSize="sm"
                                 isTruncated
-                                title={anime.name}
                                 color="white"
                             >
                                 {anime.name}
@@ -72,8 +62,7 @@ let LeftSideCompSearch = ({ animeName, animeData }) => {
                         </Box>
                     </Link>
                 ))}
-            </Flex>
-
+            </Grid>
         </Box>
     );
 };

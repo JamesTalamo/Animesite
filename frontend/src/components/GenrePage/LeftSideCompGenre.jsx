@@ -1,6 +1,5 @@
-
-import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
-import { Box, Text, Flex, Image, Button } from "@chakra-ui/react";
+import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
+import { Box, Text, Flex, Image, Button, Grid } from "@chakra-ui/react";
 import { useAnimeStore } from "../../product/AnimeStore";
 import { Link } from "react-router-dom";
 
@@ -14,38 +13,32 @@ let LeftSideCompGenre = ({ genreName, addPage, delPage }) => {
             border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
             borderRadius="xl"
             position='relative'
+            p="20px"
         >
-
-
-            <Text color="white" fontWeight="bold" fontSize="xl" pt="3%" pl='5%' align="start">
+       
+            <Text color="white" fontWeight="bold" fontSize="xl" mb="4" align='start'>
                 <Text as="span" color="#E53E3E">{genreName[0]}</Text>
                 {genreName.slice(1)} Animes
             </Text>
 
-
-            <Flex
-                spacing="0"
-                p="20px"
-                align="center"
-                wrap="wrap"
-                justifyContent="flex-start"
+         
+            <Grid
+                templateColumns="repeat(auto-fit, minmax(150px, 1fr))"
                 gap="4"
             >
                 {genreAnimes.map((anime) => (
                     <Link key={anime.id} to={`/anime/${anime.id}`}>
                         <Box
-                            p="15px"
                             shadow="lg"
                             rounded="lg"
                             transition="all 0.3s"
                             cursor="pointer"
-                            w="150px"
-                            h="230px"
+                            w="full"
                             overflow="hidden"
                             role="group"
                             _hover={{
                                 backgroundColor: '#2D3748',
-                                border: '1px rgba(255, 255, 255, 0.16) solid'
+                                border: '1px rgba(255, 255, 255, 0.16) solid',
                             }}
                             title={anime.name}
                         >
@@ -53,9 +46,8 @@ let LeftSideCompGenre = ({ genreName, addPage, delPage }) => {
                                 borderRadius="lg"
                                 src={anime.poster}
                                 objectFit="cover"
-                                w="100%"
-                                h="80%"
-                                position="relative"
+                                w="90%"
+                                h="200px"
                                 transition="all 0.3s"
                                 _groupHover={{
                                     transform: "scale(1.1)",
@@ -67,7 +59,6 @@ let LeftSideCompGenre = ({ genreName, addPage, delPage }) => {
                                 fontWeight="bold"
                                 fontSize="sm"
                                 isTruncated
-                                title={anime.name}
                                 color="white"
                             >
                                 {anime.name}
@@ -75,9 +66,9 @@ let LeftSideCompGenre = ({ genreName, addPage, delPage }) => {
                         </Box>
                     </Link>
                 ))}
-            </Flex>
+            </Grid>
 
-            <Flex position='relative' h='50px' w='100%' align='center' justify='center' gap='1%'>
+            <Flex position='relative' h='50px' w='100%' align='center' justify='center' gap='2' mt="4">
                 <Button
                     color='#E53E3E'
                     w="40px"

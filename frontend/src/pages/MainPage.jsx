@@ -31,7 +31,7 @@ let MainPage = () => {
         <Box maxW={{ lg: 'container.xl', sm: '100%' }} bg='gray.900'>
             <CarouselPage featAnime={featAnime} />
 
-            <Box w='100%' >
+            <Box w='100%'>
                 <Flex width='100%' justify='space-between' align='center' flexDir={{ lg: 'row', base: 'column' }}  >
                     <Box w={{ lg: '70%', base: '100%' }}>
 
