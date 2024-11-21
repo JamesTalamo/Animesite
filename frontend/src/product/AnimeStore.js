@@ -192,6 +192,38 @@ export const useAnimeStore = create((set, get) => ({
         }
     },
 
+    searchAnime: async (name) => {
+        set({ loading: true })
+        try {
+            const search = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/search?q=${name}&page=1`);
+            const searchData = await search.json();
+
+            let genreData = null;
+            const { genres } = get();
+
+            if (!genres || genres.length === 0) {
+                const genre = await fetch(`${import.meta.env.VITE_BACKEND_URI}/api/v2/hianime/home`);
+                const genreFetch = await genre.json();
+                genreData = genreFetch.data.genres;
+            }
+            //
+            set({ loading: true })
+            set({
+
+                genres: genreData || genres,
+                loading: false,
+            })
+
+            console.log(searchData.data)
+            return ({
+                animes: searchData.data.animes
+            })
+        } catch (error) {
+            console.error("Failed to fetch focus page data:", error);
+            set({ loading: false })
+        }
+    }
+
 
 }))
 
