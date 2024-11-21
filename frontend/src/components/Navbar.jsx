@@ -42,6 +42,8 @@ const Navbar = () => {
                     {isSm ? (
                         <>
                             <Button
+                                position='relative'
+                                right='25px'
                                 onClick={onOpen}
                                 color='white'
                                 bg='gray.800'
@@ -102,8 +104,10 @@ const Navbar = () => {
                             e.preventDefault();
                             handleSubmit();
                         }}>
-                            <InputGroup>
+                            <InputGroup position='relative'
+                                right='25px'>
                                 <Input
+
                                     color='white'
                                     bg='gray.800'
                                     focusBorderColor='red.500'
