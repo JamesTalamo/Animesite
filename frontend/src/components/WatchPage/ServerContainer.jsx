@@ -61,6 +61,7 @@ const ServerContainer = ({ changeServer }) => {
           </Text>
           <Box
             w="100%"
+            h='40px'
             display="flex"
             alignItems="center"
             justifyContent="start"
@@ -101,6 +102,8 @@ const ServerContainer = ({ changeServer }) => {
           </Text>
           <Box
             w="100%"
+            h='40px'
+
             display="flex"
             alignItems="center"
             justifyContent="start"
