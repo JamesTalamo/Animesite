@@ -1,46 +1,71 @@
-import { Box, Container, Flex, Text, Image } from "@chakra-ui/react";
+import { Box, Center, Flex, Text, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, useDisclosure, Divider } from "@chakra-ui/react";
 
 let Footer = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
     return (
-        <Box w="full" h="250px" bg="gray.800" mt='20px'>
-            <Container>
-                <Text textAlign="center" fontWeight="bold" pt="50px" color='white'>
-                    POWERED BY FOLLOWING TECH STACKS
+        <Box w="full" h="200px" bg="gray.800" mt='20px'>
+
+            <Flex alignItems='center' justifyContent='center' p='10px'>
+                <Text
+                    p='10px'
+                    color='white'
+                    fontWeight='bold'
+                    fontSize='20px'
+                >
+                    Anime <Text as='span' color='#E53E3E'>WEEB</Text>
                 </Text>
 
-                <Flex justify="center" align="center" gap='1rem' h="100%" pt='50px'>
-                    <Box w="40px" h="40px" display="flex" justifyContent="center" alignItems="center" title='react'>
-                        <Image
-                            src="https://michaelwashburnjr.com/hubfs/Imported_Blog_Media/react-icon_svg_.png"
-                            objectFit="fit"
-                        />
-                    </Box>
-                    <Box w="40px" h="40px" display="flex" justifyContent="center" alignItems="center" title='vite'>
-                        <Image
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/779px-Vitejs-logo.svg.png"
-                            objectFit="fit"
-                        />
-                    </Box>
-                    <Box w="40px" h="40px" display="flex" justifyContent="center" alignItems="center" title='v2 chakra ui'>
-                        <Image
-                            src="https://avatars.githubusercontent.com/u/54212428?s=280&v=4"
-                            objectFit="fit"
-                        />
-                    </Box>
-                    <Box w="40px" h="40px" display="flex" justifyContent="center" alignItems="center" title='ant design'>
-                        <Image
-                            src="https://www.bookmarks.design/media/image/ant-design.jpg"
-                            objectFit="fit"
-                        />
-                    </Box>
-                    <Box w="40px" h="40px" display="flex" justifyContent="center" alignItems="center" title='Zustand'>
-                        <Image
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpHj4UwTW4ANSlNjzQOiiOqfDa6kal9RpF0A&s"
-                            objectFit="fit"
-                        />
-                    </Box>
-                </Flex>
-            </Container>
+                {/* Divider between Text */}
+                <Divider orientation="vertical" borderColor="gray.700" height="50px" mx="15px" />
+
+                <Box>
+                    <Text
+                        p='10px'
+                        color='white'
+                    >
+                        Made by : <Text
+                            as='span'
+                            fontWeight='bold'
+                            fontSize='20px'>James</Text>
+                    </Text>
+                </Box>
+            </Flex>
+
+            <Center>
+                <Button
+                    colorScheme="red"
+                    onClick={onOpen}
+                    w='200px'
+                >
+                    Creators Note.
+                </Button>
+            </Center>
+
+            <Center pt='10px' color='gray.600'>
+                This does not store any files on its server, it only provides links to media hosted on 3rd party services.
+            </Center>
+
+            {/* Modal */}
+            <Modal isOpen={isOpen} onClose={onClose} size="lg">
+                <ModalOverlay />
+                <ModalContent borderRadius='xl'>
+                    <ModalHeader color='white' bg='gray.700'>About Anime WEEB</ModalHeader>
+                    <ModalCloseButton color='white' />
+                    <ModalBody bg='gray.800'>
+                        <Text color='white' fontWeight='bold'>
+                            Hello, I'm <Text as='span' color='#E53E3E'>JAMES</Text>. I'm currently in my third year of my CS degree as of <Text as='span' color='#E53E3E'>11/21/2024</Text>.
+                            I've learned a lot about how websites work through this project! I learned how to use libraries like Zustand, Chakra v2, Ant Design, React Slick, etc.
+                            <br></br>
+                            I've also learned so many things about React through this project, including routing, query parameters, and params.
+                            <br></br>
+                            <br></br>
+                            I will continue to improve this website further. As I gain new knowledge, I will test it here!
+                        </Text>
+
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
         </Box>
     );
 };
