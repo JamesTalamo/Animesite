@@ -26,7 +26,7 @@ let FocusPage = () => {
 
     return (
 
-        <Box minH='100vh' bg='gray.800' align='center'>
+        <Box minH='100vh' bg='gray.900' align='center'>
 
             <FocusPageComp1 selectedAnime={selectedAnime} />
 

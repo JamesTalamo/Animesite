@@ -20,12 +20,28 @@ var settings = {
     prevArrow: <SamplePrevArrow />,
     responsive: [
         {
+            breakpoint: 1130,
+            settings: {
+                slidesToShow: 6,
+                slidesToScroll: 6,
+                infinite: true,
+                dots: false
+            }
+        },
+        {
             breakpoint: 1024,
             settings: {
                 slidesToShow: 5,
                 slidesToScroll: 5,
-                infinite: true,
-                dots: false
+                initialSlide: 5
+            }
+        },
+        {
+            breakpoint: 820,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                initialSlide: 4
             }
         },
         {
@@ -37,10 +53,17 @@ var settings = {
             }
         },
         {
-            breakpoint: 480,
+            breakpoint: 540,
             settings: {
                 slidesToShow: 2,
                 slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 380,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
             }
         }
     ]
@@ -108,7 +131,7 @@ let FocusAnimeBoxContainer = ({ anime, animeHead }) => {
         <Box
             mt='2.5%'
             mb='2.5%'
-            w={{ lg: '100%', md: '90%', base: '100%' }}
+            w={{ lg: '100%', base: '100%' }}
             bg='gray.800'
             borderRadius='lg'
             border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}

@@ -21,7 +21,7 @@ let RightSideComp = ({ todayAnime, weeklyAnime, monthlyAnime }) => {
     }
 
     return (
-        <Box  border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }} borderRadius='lg' mb='25px' w='100%'>
+        <Box  border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }} borderRadius='lg' mb='25px' w='100%' bg='gray.800'>
             <Text color='white' fontWeight='bold' fontSize='xl' p='15px' align={{lg:'start',base : 'center'}}><span style={{ color: '#E53E3E' }}>T</span>op 10 Animes</Text>
             <Center>
                 <HStack pb='10px' spacing='0'>

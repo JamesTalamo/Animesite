@@ -9,52 +9,14 @@ let LeftSideCompGenre = ({ genreName, addPage, delPage }) => {
 
     return (
         <Box
+            bg='gray.800'
             w="100%"
             border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}
             borderRadius="xl"
             position='relative'
         >
 
-            <Flex position='absolute' h='50px' w='150px' right='5%' top='1%' align='center' justify='space-around'>
-                <Button
-                    color='#E53E3E'
-                    w="40px"
-                    h="40px"
-                    cursor="pointer"
-                    border='1px rgba(255, 255, 255, 0.16) solid'
-                    bg='gray.800'
-                    _hover={{
-                        backgroundColor: "rgba(229, 62, 62, 0.2)",
-                        color: "#E53E3E",
-                    }}
-                    borderRadius="lg"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    onClick={delPage}
-                >
-                    <ArrowBackIcon />
-                </Button>
-                <Button
-                    color='#E53E3E'
-                    w="40px"
-                    h="40px"
-                    cursor="pointer"
-                    border='1px rgba(255, 255, 255, 0.16) solid'
-                    bg='gray.800'
-                    _hover={{
-                        backgroundColor: "rgba(229, 62, 62, 0.2)",
-                        color: "#E53E3E",
-                    }}
-                    borderRadius="lg"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    onClick={addPage}
-                >
-                    <ArrowForwardIcon />
-                </Button>
-            </Flex>
+
             <Text color="white" fontWeight="bold" fontSize="xl" pt="3%" pl='5%' align="start">
                 <Text as="span" color="#E53E3E">{genreName[0]}</Text>
                 {genreName.slice(1)} Animes
@@ -63,8 +25,8 @@ let LeftSideCompGenre = ({ genreName, addPage, delPage }) => {
 
             <Flex
                 spacing="0"
-                p="40px"
-                align="start"
+                p="20px"
+                align="center"
                 wrap="wrap"
                 justifyContent="flex-start"
                 gap="4"
@@ -113,6 +75,47 @@ let LeftSideCompGenre = ({ genreName, addPage, delPage }) => {
                         </Box>
                     </Link>
                 ))}
+            </Flex>
+
+            <Flex position='relative' h='50px' w='100%' align='center' justify='center' gap='1%'>
+                <Button
+                    color='#E53E3E'
+                    w="40px"
+                    h="40px"
+                    cursor="pointer"
+                    border='1px rgba(255, 255, 255, 0.16) solid'
+                    bg='gray.800'
+                    _hover={{
+                        backgroundColor: "rgba(229, 62, 62, 0.2)",
+                        color: "#E53E3E",
+                    }}
+                    borderRadius="lg"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    onClick={delPage}
+                >
+                    <ArrowBackIcon />
+                </Button>
+                <Button
+                    color='#E53E3E'
+                    w="40px"
+                    h="40px"
+                    cursor="pointer"
+                    border='1px rgba(255, 255, 255, 0.16) solid'
+                    bg='gray.800'
+                    _hover={{
+                        backgroundColor: "rgba(229, 62, 62, 0.2)",
+                        color: "#E53E3E",
+                    }}
+                    borderRadius="lg"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    onClick={addPage}
+                >
+                    <ArrowForwardIcon />
+                </Button>
             </Flex>
         </Box>
     );

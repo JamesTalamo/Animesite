@@ -13,7 +13,7 @@ import FocusPage from './pages/FocusPage.jsx'
 
 function App() {
   return (
-    <Box minH="100vh" align='center' bg='gray.800'>
+    <Box minH="100vh" align='center' bg='gray.900'>
       <Navbar />
       <ScrollToTop />
 

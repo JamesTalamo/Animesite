@@ -7,7 +7,7 @@ let LoadingPage = () => {
             h="100vh"  
             align="center" 
             justify="center"  
-            bg='gray.800'
+            bg='gray.900'
             flexDirection='column'
             gap='20px'
         >

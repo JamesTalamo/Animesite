@@ -24,12 +24,12 @@ var settings = {
             settings: {
                 slidesToShow: 5,
                 slidesToScroll: 5,
-                infinite: true,
+                infinite: false,
                 dots: false
             }
         },
         {
-            breakpoint: 600,
+            breakpoint: 750,
             settings: {
                 slidesToShow: 4,
                 slidesToScroll: 4,
@@ -37,10 +37,27 @@ var settings = {
             }
         },
         {
-            breakpoint: 480,
+            breakpoint: 700,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                initialSlide: 2
+            }
+        },
+        {
+            breakpoint: 600,
             settings: {
                 slidesToShow: 2,
-                slidesToScroll: 2
+                slidesToScroll: 2,
+                initialSlide: 2
+            }
+        },
+        {
+            breakpoint: 300,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                initialSlide: 1
             }
         }
     ]
@@ -108,7 +125,7 @@ let AnimeBoxContainer = ({ anime, animeHead }) => {
         <Box
             // mt="2.5%"
             mb="2.5%"
-            w={{ lg: '100%', md: '90%', base: '100%' }}
+            w={{ lg: '100%', base: '100%' }}
             bg="gray.800"
             borderRadius="lg"
             border={{ lg: '1px rgba(255, 255, 255, 0.16) solid', base: 'none' }}

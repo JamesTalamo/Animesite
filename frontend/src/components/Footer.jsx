@@ -2,7 +2,7 @@ import { Box, Container, Flex, Text, Image } from "@chakra-ui/react";
 
 let Footer = () => {
     return (
-        <Box w="full" h="250px" bg="gray.900" mt='20px'>
+        <Box w="full" h="250px" bg="gray.800" mt='20px'>
             <Container>
                 <Text textAlign="center" fontWeight="bold" pt="50px" color='white'>
                     POWERED BY FOLLOWING TECH STACKS
