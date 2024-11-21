@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 
 import videojs from "video.js";
 import "video.js/dist/video-js.css"; // Import video.js CSS
+import '../components/WatchPage/videoJs.css'
 
 import LoadingPage from '../components/LoadingPage'
 
@@ -57,6 +58,10 @@ const WatchPage = () => {
                     default: track.default,
                 })),
             });
+
+
+
+
         }
     };
 

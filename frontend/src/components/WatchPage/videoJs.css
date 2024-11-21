@@ -1,0 +1,4 @@
+
+.vjs-text-track-cue-0 div {
+    background-color: rgba(0, 0, 0, 0.4) !important; /* Ensure it overrides default styles */
+}

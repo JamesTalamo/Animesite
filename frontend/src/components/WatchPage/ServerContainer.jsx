@@ -17,7 +17,7 @@ const ServerContainer = ({ changeServer }) => {
       flexWrap="wrap" // Allow wrapping on small screens
       gap="15px"
     >
-      {/* Instruction Box */}
+
       <Box
         w='100%'
         h="auto"
@@ -35,7 +35,7 @@ const ServerContainer = ({ changeServer }) => {
 
       {/* Servers Box */}
       <Box
-        w={{ lg: "79%", base: "100%" }}
+        w="100%"
         h="auto"
         bg="gray.800"
         display="flex"
@@ -48,12 +48,13 @@ const ServerContainer = ({ changeServer }) => {
       >
         {/* Sub Servers */}
         <Box
+          borderRadius='lg'
           w="100%"
           display="flex"
           flexDirection={{ base: "column", sm: "row" }} // Stack on small screens
           alignItems="center"
           gap="10px"
-          bg={{lg:'gray.800',base:'gray.700'}}
+          bg='gray.700'
         >
           <Text color="white" fontWeight="bold" w="100px" flexShrink={0}>
             Sub
@@ -68,10 +69,12 @@ const ServerContainer = ({ changeServer }) => {
           >
             {sub.map((server, index) => (
               <Button
+                cursor='pointer'
+                fontSize='sm'
+                p="10px"
                 key={index}
                 w={{ base: "auto", sm: "auto" }} // Adjust width for small screens
                 bg="gray.800"
-                p="10px"
                 border="1px rgba(255, 255, 255, 0.16) solid"
                 onClick={() => changeServer(server.serverName, "sub")}
                 color="white"
@@ -85,12 +88,13 @@ const ServerContainer = ({ changeServer }) => {
 
         {/* Dub Servers */}
         <Box
+          borderRadius='lg'
           w="100%"
           display="flex"
           flexDirection={{ base: "column", sm: "row" }} // Stack on small screens
           alignItems="center"
           gap="10px"
-          bg={{lg:'gray.800',base:'gray.700'}}
+          bg='gray.700'
         >
           <Text color="white" fontWeight="bold" w="100px" flexShrink={0}>
             Dub
@@ -105,10 +109,12 @@ const ServerContainer = ({ changeServer }) => {
           >
             {dub.map((server, index) => (
               <Button
+                cursor='pointer'
+                fontSize='sm'
+                p="10px"
                 key={index}
                 w={{ base: "auto", sm: "auto" }}
                 bg="gray.800"
-                p="10px"
                 border="1px rgba(255, 255, 255, 0.16) solid"
                 onClick={() => changeServer(server.serverName, "dub")}
                 color="white"
