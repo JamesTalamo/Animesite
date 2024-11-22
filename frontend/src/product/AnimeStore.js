@@ -50,6 +50,7 @@ export const useAnimeStore = create((set, get) => ({
 
 
     // Focus Page States
+    detailsGenres: [],
     animeEpisodes: [],
     moreInfoAnime: [],
     recoAnime: [],
@@ -80,10 +81,12 @@ export const useAnimeStore = create((set, get) => ({
                 recoAnime: animeInfoData.data.recommendedAnimes,
                 relatedAnime: animeInfoData.data.relatedAnimes,
                 moreInfoAnime: animeInfoData.data.anime.moreInfo,
+                detailsGenres: animeInfoData.data.anime.moreInfo.genres,
                 selectedAnime: animeInfoData.data.anime.info,
                 animeEpisodes: animeEpData.data.episodes,
                 loading: false,
             });
+
         } catch (error) {
             console.error("Failed to fetch focus page data:", error);
             set({ loading: false });
@@ -164,12 +167,14 @@ export const useAnimeStore = create((set, get) => ({
 
                 selectedAnime: animeInfoData.data.anime.info,
                 moreInfoAnime: animeInfoData.data.anime.moreInfo,
+                detailsGenres: animeInfoData.data.anime.moreInfo.genres,
                 animeEpisodes: animeEpisodes,
                 sub: animeServerData.data.sub,
                 dub: animeServerData.data.dub,
 
                 loading: false
             });
+
 
 
         } catch (error) {
@@ -184,7 +189,6 @@ export const useAnimeStore = create((set, get) => ({
             const videoUrlData = await res.json();
 
 
-            console.log(videoUrlData.data.tracks)
             return {
                 tracks: videoUrlData.data.tracks,
                 videoUrl: videoUrlData.data.sources[0].url,

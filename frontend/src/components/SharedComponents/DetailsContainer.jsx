@@ -1,6 +1,8 @@
-import { Box, Text, VStack } from "@chakra-ui/react"
+import { Box, Text, VStack, Badge, Flex } from "@chakra-ui/react"
 
-let DetailsContainer = ({ selectedAnime, moreInfoAnime }) => {
+
+let DetailsContainer = ({ selectedAnime, moreInfoAnime, detailsGenres }) => {
+
     return (
         <Box
             bg='gray.800'
@@ -11,23 +13,42 @@ let DetailsContainer = ({ selectedAnime, moreInfoAnime }) => {
             borderRadius='lg'>
             <Text align='start' pl='2%' fontWeight='bold' fontSize='xl' color='white'><span style={{ color: '#E53E3E' }}>D</span>etails :</Text>
 
-            <VStack align='start' p='2%'>
-                <Text fontWeight="bold" color='white' w='100%' align='start'>
-                    Name: <Text as="span" fontWeight="normal" color='white'>{selectedAnime.name}</Text>
-                </Text>
+            <Flex flexDirection={{ lg: 'row', base: 'column' }}>
+                <VStack align='start' p='2%'>
+                    <Text fontWeight="bold" color='white' w='100%' align='start'>
+                        Name: <Text as="span" fontWeight="normal" color='white'>{selectedAnime.name}</Text>
+                    </Text>
 
-                <Text fontWeight="bold" color='white' w='100%' align='start'>
-                    Japanese Name: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.japanese}</Text>
-                </Text>
-                <Text fontWeight="bold" color='white' w='100%' align='start'>
-                    Duration: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.duration}</Text>
-                </Text>
-                <Text fontWeight="bold" color='white' w='100%' align='start'>
-                    Status: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.status}</Text>
-                </Text>
+                    <Text fontWeight="bold" color='white' w='100%' align='start'>
+                        Japanese Name: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.japanese}</Text>
+                    </Text>
+                    <Text fontWeight="bold" color='white' w='100%' align='start'>
+                        Duration: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.duration}</Text>
+                    </Text>
+                    <Text fontWeight="bold" color='white' w='100%' align='start'>
+                        Status: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.status}</Text>
+                    </Text>
+                    <Text fontWeight="bold" color='white' w='100%' align='start'>
+                        Premiered: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.premiered}</Text>
+                    </Text>
 
 
-            </VStack>
+
+                </VStack>
+
+                <VStack align='start' p='2%'>
+                    <Text fontWeight="bold" color='white' w='100%' align='start'>
+                        Genres: <Box as='span'>
+                            {detailsGenres.map((genre) => (<Badge m='5px'>{genre}</Badge>))}
+                        </Box>
+                    </Text>
+                    <Text fontWeight="bold" color='white' w='100%' align='start'>
+                        Studio: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.studios}</Text>
+                    </Text>
+
+                </VStack>
+            </Flex>
+
         </Box>
     )
 }

@@ -22,7 +22,7 @@ const WatchPage = () => {
     const playerRef = useRef(null);
 
 
-    const { fetchWatchPageData, fetchWatchPageDataVideo, selectedAnime, animeEpisodes, moreInfoAnime, recoAnime, relatedAnime, loading } = useAnimeStore();
+    const { fetchWatchPageData, fetchWatchPageDataVideo, selectedAnime, animeEpisodes, moreInfoAnime, recoAnime, relatedAnime, loading, detailsGenres } = useAnimeStore();
 
 
     let [search] = useSearchParams();
@@ -31,8 +31,8 @@ const WatchPage = () => {
     const videoRequest = `${episodeId}?ep=` + ep;
 
     const changeServer = async (serverName, category) => {
-        console.log(`Changed to ${serverName}`);
-        console.log(`Category to ${category}`);
+        // console.log(`Changed to ${serverName}`);
+        // console.log(`Category to ${category}`);
 
         let { videoUrl, tracks } = await fetchWatchPageDataVideo(videoRequest, serverName, category);
 
@@ -125,7 +125,7 @@ const WatchPage = () => {
                     alignItems="center"
                     justifyContent="space-between"
                 >
-                    <DetailsContainer selectedAnime={selectedAnime} moreInfoAnime={moreInfoAnime} />
+                    <DetailsContainer selectedAnime={selectedAnime} moreInfoAnime={moreInfoAnime} detailsGenres={detailsGenres} />
                     <EpisodeContainer animeEpisodes={animeEpisodes} />
                 </Box>
             </Box>

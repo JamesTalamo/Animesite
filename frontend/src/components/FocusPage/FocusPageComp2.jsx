@@ -1,4 +1,4 @@
-import { Box, Flex, Text, VStack, Button } from "@chakra-ui/react"
+import { Flex } from "@chakra-ui/react"
 
 import { useAnimeStore } from '../../product/AnimeStore'
 
@@ -9,8 +9,8 @@ import DetailsContainer from "../SharedComponents/DetailsContainer"
 
 let FocusPageComp2 = () => {
 
-    let { selectedAnime, moreInfoAnime, animeEpisodes } = useAnimeStore()
-
+    let { selectedAnime, moreInfoAnime, animeEpisodes, detailsGenres } = useAnimeStore()
+    console.log(moreInfoAnime)
     return (
 
         <Flex
@@ -21,7 +21,7 @@ let FocusPageComp2 = () => {
         >
 
 
-            <DetailsContainer selectedAnime={selectedAnime} moreInfoAnime={moreInfoAnime} />
+            <DetailsContainer selectedAnime={selectedAnime} moreInfoAnime={moreInfoAnime} detailsGenres={detailsGenres}/>
 
             <EpisodeContainer animeEpisodes={animeEpisodes} />
 
