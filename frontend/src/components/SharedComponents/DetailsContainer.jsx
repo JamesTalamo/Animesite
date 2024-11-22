@@ -46,7 +46,7 @@ let DetailsContainer = ({ selectedAnime, moreInfoAnime, detailsGenres }) => {
                             {detailsGenres.map((genre) => (
                                 <Link to={`/genre/${genre}/1`}>
 
-                                    <Badge m='5px' bg='gray.700'>
+                                    <Badge m='5px' bg='gray.700' color='white'>
                                         {genre}
                                     </Badge>
                                 </Link>
