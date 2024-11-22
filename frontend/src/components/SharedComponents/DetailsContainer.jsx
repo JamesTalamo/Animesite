@@ -38,12 +38,12 @@ let DetailsContainer = ({ selectedAnime, moreInfoAnime, detailsGenres }) => {
 
                 <VStack align='start' p='2%'>
                     <Text fontWeight="bold" color='white' w='100%' align='start'>
+                        Studio: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.studios}</Text>
+                    </Text>
+                    <Text fontWeight="bold" color='white' w='100%' align='start'>
                         Genres: <Box as='span'>
                             {detailsGenres.map((genre) => (<Badge m='5px'>{genre}</Badge>))}
                         </Box>
-                    </Text>
-                    <Text fontWeight="bold" color='white' w='100%' align='start'>
-                        Studio: <Text as="span" fontWeight="normal" color='white'>{moreInfoAnime.studios}</Text>
                     </Text>
 
                 </VStack>
