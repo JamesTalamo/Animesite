@@ -1,4 +1,5 @@
 import { Box, Text, VStack, Badge, Flex } from "@chakra-ui/react"
+import { Link } from "react-router-dom"
 
 
 let DetailsContainer = ({ selectedAnime, moreInfoAnime, detailsGenres }) => {
@@ -42,7 +43,15 @@ let DetailsContainer = ({ selectedAnime, moreInfoAnime, detailsGenres }) => {
                     </Text>
                     <Text fontWeight="bold" color='white' w='100%' align='start'>
                         Genres: <Box as='span'>
-                            {detailsGenres.map((genre) => (<Badge m='5px'>{genre}</Badge>))}
+                            {detailsGenres.map((genre) => (
+                                <Link to={`/genre/${genre}/1`}>
+
+                                    <Badge m='5px' bg='gray.700'>
+                                        {genre}
+                                    </Badge>
+                                </Link>
+                            ))}
+
                         </Box>
                     </Text>
 
