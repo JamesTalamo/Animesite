@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Text, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, useDisclosure, Divider } from "@chakra-ui/react";
+import { Box, Center, Flex, Text, Button, HStack, Image, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, useDisclosure, Divider } from "@chakra-ui/react";
 
 let Footer = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -61,6 +61,92 @@ let Footer = () => {
                             <br></br>
                             <br></br>
                             I will continue to improve this website further. As I gain new knowledge, I will test it here!
+                            <Box pt='20px'>
+                                <Text>Tech Stack:</Text>
+                                <HStack flexWrap='wrap'>
+                                    <Image
+                                        m='10px'
+                                        h='50px'
+                                        w='50px'
+                                        bg='black'
+                                        title='React'
+                                        src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlGmKtrnxElpqw3AExKXPWWBulcwjlvDJa1Q&s'
+                                    />
+
+                                    <Image
+                                        m='10px'
+                                        h='50px'
+                                        w='50px'
+                                        bg='black'
+                                        title='V2 Chakra'
+                                        src='https://avatars.githubusercontent.com/u/54212428?s=280&v=4'
+                                    />
+
+
+                                    <Image
+                                        m='10px'
+                                        h='50px'
+                                        w='50px'
+                                        bg='black'
+                                        title='Ant Design'
+                                        src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDFMkgc-3Ic_ulT8KOXJCkvQeLLUlgo9TpOg&s'
+                                    />
+                                    <Image
+                                        m='10px'
+                                        h='50px'
+                                        w='50px'
+                                        bg='black'
+                                        title='React Slick Carousel'
+                                        src='https://www.bacancytechnology.com/blog/wp-content/uploads/2023/07/React-Slick-Slider.webp'
+                                    />
+
+                                    <Image
+                                        m='10px'
+                                        h='50px'
+                                        w='50px'
+                                        bg='black'
+                                        title='Zustand'
+                                        src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpHj4UwTW4ANSlNjzQOiiOqfDa6kal9RpF0A&s'
+                                    />
+                                    
+                                    <Image
+                                        m='10px'
+                                        h='50px'
+                                        w='50px'
+                                        bg='black'
+                                        title='Video JS'
+                                        src='https://avatars.githubusercontent.com/u/3287189?v=4'
+                                    />
+
+                                    <Image
+                                        m='10px'
+                                        h='50px'
+                                        w='50px'
+                                        bg='black'
+                                        title='Render'
+                                        src='https://pbs.twimg.com/profile_images/1735429515541938176/zOO1N7Su_400x400.jpg'
+                                    />
+
+                                    <Image
+                                        m='10px'
+                                        h='50px'
+                                        w='50px'
+                                        bg='black'
+                                        title='Vercel'
+                                        src='https://smlvqzf0a1b66cku.public.blob.vercel-storage.com/images/Vercel%20Logo-IMoeV2W33gFclXzAfZxmAHqtjBuTzP.png'
+                                    />
+
+
+                                    <Image
+                                        m='10px'
+                                        h='50px'
+                                        w='50px'
+                                        bg='black'
+                                        title='Vite'
+                                        src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc4XOdTwDFjrNDoRbCH2vDqCNCKD9u8zVr_g&s'
+                                    />
+                                </HStack>
+                            </Box>
                         </Text>
 
                     </ModalBody>
