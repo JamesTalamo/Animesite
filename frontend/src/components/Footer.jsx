@@ -55,12 +55,9 @@ let Footer = () => {
                     <ModalBody bg='gray.800'>
                         <Text color='white' fontWeight='bold'>
                             Hello, I'm <Text as='span' color='#E53E3E'>JAMES</Text>. I'm currently in my third year of my CS degree as of <Text as='span' color='#E53E3E'>11/21/2024</Text>.
-                            I've learned a lot about how websites work through this project! I learned how to use libraries like Zustand, Chakra v2, Ant Design, React Slick, etc.
-                            <br></br>
-                            I've also learned so many things about React through this project, including routing, query parameters, and params.
                             <br></br>
                             <br></br>
-                            I will continue to improve this website further. As I gain new knowledge, I will test it here!
+                            I did not spend any money building this website!
                             <Box pt='20px'>
                                 <Text>Tech Stack:</Text>
                                 <HStack flexWrap='wrap'>
@@ -108,7 +105,7 @@ let Footer = () => {
                                         title='Zustand'
                                         src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpHj4UwTW4ANSlNjzQOiiOqfDa6kal9RpF0A&s'
                                     />
-                                    
+
                                     <Image
                                         m='10px'
                                         h='50px'
