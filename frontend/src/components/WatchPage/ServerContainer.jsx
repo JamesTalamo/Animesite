@@ -72,9 +72,9 @@ const ServerContainer = ({ changeServer }) => {
               <Button
                 cursor='pointer'
                 fontSize='sm'
-                p="10px"
+                h='30px'
                 key={index}
-                w={{ base: "auto", sm: "auto" }} // Adjust width for small screens
+                w='auto'
                 bg="gray.800"
                 border="1px rgba(255, 255, 255, 0.16) solid"
                 onClick={() => changeServer(server.serverName, "sub")}
@@ -114,9 +114,9 @@ const ServerContainer = ({ changeServer }) => {
               <Button
                 cursor='pointer'
                 fontSize='sm'
-                p="10px"
+                h='30px'
                 key={index}
-                w={{ base: "auto", sm: "auto" }}
+                w='auto'
                 bg="gray.800"
                 border="1px rgba(255, 255, 255, 0.16) solid"
                 onClick={() => changeServer(server.serverName, "dub")}
