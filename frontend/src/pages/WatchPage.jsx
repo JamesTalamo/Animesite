@@ -33,6 +33,7 @@ const WatchPage = () => {
     const changeServer = async (serverName, category) => {
         // console.log(`Changed to ${serverName}`);
         // console.log(`Category to ${category}`);
+    
 
         let { videoUrl, tracks } = await fetchWatchPageDataVideo(videoRequest, serverName, category);
 
@@ -69,7 +70,7 @@ const WatchPage = () => {
         //
         const initializeVideoPlayer = async () => {
             let { videoUrl, tracks } = await fetchWatchPageDataVideo(videoRequest, 'hd-1', 'sub');
-
+            
             playerRef.current = videojs(videoRef.current, {
                 controls: true,
                 autoplay: true,
