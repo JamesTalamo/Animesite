@@ -43,8 +43,8 @@ let DetailsContainer = ({ selectedAnime, moreInfoAnime, detailsGenres }) => {
                     </Text>
                     <Text fontWeight="bold" color='white' w='100%' align='start'>
                         Genres: <Box as='span'>
-                            {detailsGenres.map((genre) => (
-                                <Link to={`/genre/${genre}/1`}>
+                            {detailsGenres.map((genre, key) => (
+                                <Link to={`/genre/${genre}/1`} key={key}>
 
                                     <Badge m='5px' bg='gray.700' color='white'>
                                         {genre}

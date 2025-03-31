@@ -189,6 +189,7 @@ export const useAnimeStore = create((set, get) => ({
             const videoUrlData = await res.json();
 
             console.log(videoUrlData)
+            
             return {
                 tracks: videoUrlData.data.tracks,
                 videoUrl: videoUrlData.data.sources[0].url,

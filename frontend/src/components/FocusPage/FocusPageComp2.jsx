@@ -10,7 +10,7 @@ import DetailsContainer from "../SharedComponents/DetailsContainer"
 let FocusPageComp2 = () => {
 
     let { selectedAnime, moreInfoAnime, animeEpisodes, detailsGenres } = useAnimeStore()
-    console.log(moreInfoAnime)
+    
     return (
 
         <Flex
